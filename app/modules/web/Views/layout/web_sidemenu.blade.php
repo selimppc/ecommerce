@@ -1,0 +1,97 @@
+<div id="all_prods_cont" class="col-md-3 col-sm-12 col-xs-12 row-left-0 margin-top-30">
+	<div class="border-top-2-resp border-bottom-2-resp">
+		<div class="header">
+			<i class="fa fa-2x fa-bars"></i>
+			<span>All products</span>
+		</div>								
+	</div>
+
+	<div id="home_product_list" class="home-product-list left-sidebar">
+		
+
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+		 
+			
+
+			<?php
+				$product_page_type = DB::table('page_parent')->whereNotIn('id',['3'])->orderBy('sort_order','asc')->get();
+			?>
+			@if(!empty($product_page_type))
+				@foreach($product_page_type as $product_page)
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingOne">
+					      <h4 class="panel-title">
+					        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#product_page_{{$product_page->id}}" aria-expanded="true" aria-controls="collapseOne">
+					          {{$product_page->title}}
+					        </a>
+					      </h4>
+					    </div>
+
+					    <div id="product_page_{{$product_page->id}}" class="panel-collapse collapse <?php if(Request::segment(1) ==$product_page->slug ){echo 'in';}?>" role="tabpanel" aria-labelledby="headingOne">
+		      				<div class="panel-body">
+		      					<?php
+		      						$sub_child_pages = DB::table('article')->where('type',$product_page->id)->Where('sub_page_id',NULL)->get();
+		      					?>
+		      					@if(!empty($sub_child_pages))
+		      						<ul>
+		      							@foreach($sub_child_pages as $sub_child)
+		      								<li>
+		      									<a href="{{URL::to('')}}/{{$product_page->slug}}/{{$sub_child->slug}}" >
+		      										{{$sub_child->title}}
+		      									</a>
+		      								</li>
+		      							@endforeach
+		      						</ul>
+		      					@endif
+		      				</div>
+		      			</div>
+					</div>
+				@endforeach
+			@endif
+
+
+			<?php
+				$product_group_data = DB::table('groups')->orderBy('sortorder','asc')->get();
+				$count = 1;
+			?>
+
+			@if(!empty($product_group_data))
+				@foreach($product_group_data as $productgrop)
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingOne">
+							<h4 class="panel-title">
+						        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#product_group_{{$productgrop->id}}" aria-expanded="true" aria-controls="collapseOne">
+						          {{$productgrop->title}}
+						        </a>
+						    </h4>
+						</div>
+
+						<div id="product_group_{{$productgrop->id}}" class="panel-collapse collapse <?php if(Request::segment(1) ==$productgrop->slug ){echo 'in';}?>" role="tabpanel" aria-labelledby="headingOne">
+							<div class="panel-body">
+								
+								<?php
+									$product_subgroup_data = DB::table('product_subgroup')->where('product_group_id',$productgrop->id)->orderBy('sort_order','asc')->get();
+								?>								
+								@if(!empty($product_subgroup_data))
+										<ul>
+											@foreach($product_subgroup_data as $product_subgroup)
+												<li>
+													<a href="{{URL::to('')}}/{{$productgrop->slug}}/{{$product_subgroup->slug}}">{{$product_subgroup->title}}</a>
+												</li>
+											@endforeach
+										</ul>
+									@endif	
+								
+							</div>
+						</div>
+					</div>
+					<?php $count++;?>
+				@endforeach
+			@endif
+		 
+
+		</div>
+		
+	</div>
+	
+</div>

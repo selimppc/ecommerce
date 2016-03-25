@@ -1,0 +1,37 @@
+<?php $__env->startSection('content'); ?>
+	<div class="col-md-12">
+		<?php echo $__env->make('web::layout.web_sidemenu', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		<div class="col-md-9 col-sm-12 col-xs-12 row-right-0">
+			<div class="inner_banner margin-top-50 margin-bottom-50">
+				<img src="<?php echo e(URL::to('')); ?>/web/images/inner-banner.png">
+			</div>
+		</div>
+
+		<div class="col-md-9 col-sm-12 col-xs-12 row-right-0">
+			<div class="general-page-header">
+				<?php echo e($productcategory->title); ?>
+
+			</div>
+
+			<div class="row">
+
+				<div class="general-page-description">
+					<?php if(!empty($product_content)): ?>
+						<?php foreach($product_content as $product_data): ?>
+							<div class="product_data_container">
+								<div class="image_container" style="background-image:url('<?php echo e(URL::to('')); ?>/<?php echo e($product_data->featured_image); ?>')"></div>
+								<div class="title"><?php echo e($product_data->title); ?></div>
+								<div class="description"><?php echo e($product_data->desc); ?></div>
+							</div>
+						<?php endforeach; ?>
+					<?php else: ?>
+						No content yet
+					<?php endif; ?>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('web::layout.web_master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

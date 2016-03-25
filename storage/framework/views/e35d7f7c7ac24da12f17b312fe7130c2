@@ -1,0 +1,48 @@
+<?php $__env->startSection('content'); ?>
+
+<div class="col-md-12">
+	<?php echo $__env->make('web::layout.web_sidemenu', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	<div class="col-md-9 col-sm-12 col-xs-12 row-right-0">
+		<div class="inner_banner margin-top-50 margin-bottom-50">
+			<img src="<?php echo e(URL::to('')); ?>/web/images/inner-banner.png">
+		</div>
+	</div>
+
+	<div class="col-md-9 col-sm-12 col-xs-12 row-right-0 ">
+		<div class="width100 floatleft border-top-2 border-bottom-2">
+			<div class="product-listing-header">
+				<h2><?php echo e($product_subgroup->title); ?></h2>
+			</div>
+		</div>
+
+		<div class="row">
+			<?php if(!empty($productdata)): ?>
+				<?php foreach($productdata as $product): ?>
+					<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+						<a href="<?php echo e(URL::to('/')); ?>/<?php echo e($product->slug); ?>" class="featured_product_a">
+							<div class="product-listing-image">
+								<img src="<?php echo e(URL::to('/')); ?>/<?php echo e($product->thumb); ?>">
+							</div>
+
+							<div class="product-listing-bottom">
+								<div class="product-name">
+									<?php echo e($product->title); ?>
+
+								</div>
+								<div class="product-price">
+									AUD <?php echo e($product->sell_rate); ?>
+
+								</div>
+							</div>
+						</a>
+						<a class="product-listing-buy-now-button" href="<?php echo e(URL::to('/')); ?>/<?php echo e($product->slug); ?>">Buy Now</a>
+					</div>
+				<?php endforeach; ?>
+			<?php else: ?>
+				<div class="no_product">No product yet</div>
+			<?php endif; ?>
+		</div>
+	</div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('web::layout.web_master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
