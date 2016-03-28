@@ -1,31 +1,30 @@
-@extends('web::layout.web_master')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="product-details-container">
 			<div class="col-md-4 col-sm-12 col-xs-12">
 				<div class="product-thum-image">
-					<img id="zoom_01" data-zoom-image="{{URL::to('')}}/{{$product->image}}" src="{{URL::to('')}}/{{$product->thumb}}" width="100%">
+					<img id="zoom_01" data-zoom-image="<?php echo e(URL::to('')); ?>/<?php echo e($product->image); ?>" src="<?php echo e(URL::to('')); ?>/<?php echo e($product->thumb); ?>" width="100%">
 				</div>
-				<a href="{{URL::to('')}}/{{$product->image}}" class="fancybox image_gallery_container">
-					<img src="{{URL::to('')}}/web/images/enlarge.png"><br/>
+				<a href="<?php echo e(URL::to('')); ?>/<?php echo e($product->image); ?>" class="fancybox image_gallery_container">
+					<img src="<?php echo e(URL::to('')); ?>/web/images/enlarge.png"><br/>
 						ENLARGE
 				</a>
 
 				<a href="#" class="image_gallery_container">
-					<img src="{{URL::to('')}}/web/images/print.png"><br/>
+					<img src="<?php echo e(URL::to('')); ?>/web/images/print.png"><br/>
 						PRINT
 				</a>
 
 				<a href="#" class="image_gallery_container">
-					<img src="{{URL::to('')}}/web/images/ask.png">
+					<img src="<?php echo e(URL::to('')); ?>/web/images/ask.png">
 					<br/>
 						EMAIL
 				</a>
 			</div>
 			<div class="col-md-4 col-sm-12 col-xs-12">
 				<div class="product-header">
-					{{$product->title}}
+					<?php echo e($product->title); ?>
+
 				</div>
 				<div class="product-descrption">
 					<?php echo $product->short_description;?>
@@ -47,37 +46,37 @@
 					<form>
 
 					<div class="price_container">
-						@if($product->product_group_id == 10)
+						<?php if($product->product_group_id == 10): ?>
 
 							<div class="price">
 								<input checked id="price1" type="radio" name="price" value="100">
-								<label for="price1">Pick up<br/> ${{$product->sell_rate}}</label>
+								<label for="price1">Pick up<br/> $<?php echo e($product->sell_rate); ?></label>
 							</div>
 
 							<div class="price">
 								<input id="price2" type="radio" name="price" value="100">
-								<label for="price2">Delivered<br/> ${{$product->cost_price}}</label>
+								<label for="price2">Delivered<br/> $<?php echo e($product->cost_price); ?></label>
 							</div>
 
-						@else
+						<?php else: ?>
 
 							<div class="price">
-								<input checked id="price1" type="radio" name="price" value="{{$product->before_price}}">
-								<label for="price1">Before<br/> ${{$product->before_price}}</label>
-							</div>
-
-							<div class="price">
-								<input checked id="price1" type="radio" name="price" value="{{$product->sell_rate}}">
-								<label for="price1">Now<br/> ${{$product->sell_rate}}</label>
+								<input checked id="price1" type="radio" name="price" value="<?php echo e($product->before_price); ?>">
+								<label for="price1">Before<br/> $<?php echo e($product->before_price); ?></label>
 							</div>
 
 							<div class="price">
-								<input id="price2" type="radio" name="price" value="{{$product->cost_price}}">
-								<label for="price2">Delivered<br/> ${{$product->cost_price}}</label>
+								<input checked id="price1" type="radio" name="price" value="<?php echo e($product->sell_rate); ?>">
+								<label for="price1">Now<br/> $<?php echo e($product->sell_rate); ?></label>
+							</div>
+
+							<div class="price">
+								<input id="price2" type="radio" name="price" value="<?php echo e($product->cost_price); ?>">
+								<label for="price2">Delivered<br/> $<?php echo e($product->cost_price); ?></label>
 							</div>
 
 
-						@endif
+						<?php endif; ?>
 					</div>
 					
 					<div class="quantity">
@@ -105,34 +104,36 @@
 				</div>								
 			</div>
 			<div class="row">
-				@if(!empty($related_product_r))
-					@foreach($related_product_r as $related_product)
+				<?php if(!empty($related_product_r)): ?>
+					<?php foreach($related_product_r as $related_product): ?>
 
 						<div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
-							<a href="{{URL::to('')}}/{{$related_product->slug}}" class="featured_product_a">
+							<a href="<?php echo e(URL::to('')); ?>/<?php echo e($related_product->slug); ?>" class="featured_product_a">
 								<div class="product-listing-image">
-									<img src="{{URL::to('')}}/{{$related_product->thumb}}">
+									<img src="<?php echo e(URL::to('')); ?>/<?php echo e($related_product->thumb); ?>">
 								</div>
 
 								<div class="product-listing-bottom">
 									<div class="product-name">
-										{{$related_product->title}}
+										<?php echo e($related_product->title); ?>
+
 									</div>
 									<div class="product-price">
-										AUD {{$related_product->sell_rate}}
+										AUD <?php echo e($related_product->sell_rate); ?>
+
 									</div>
 								</div>
 							</a>
-							<a class="product-listing-buy-now-button" href="{{URL::to('')}}/{{$related_product->slug}}">Buy Now</a>
+							<a class="product-listing-buy-now-button" href="<?php echo e(URL::to('')); ?>/<?php echo e($related_product->slug); ?>">Buy Now</a>
 						</div>
 
-					@endforeach
-				@endif
+					<?php endforeach; ?>
+				<?php endif; ?>
 			</div>	
 		</div>
 	</div>
 
-	<script type='text/javascript' src="{{ URL::asset('web/scripts/jquery.fancybox.js') }}"></script> 
+	<script type='text/javascript' src="<?php echo e(URL::asset('web/scripts/jquery.fancybox.js')); ?>"></script> 
 	 <script>
 		jQuery(function(){
 			
@@ -155,4 +156,5 @@
 			zoomWindowHeight:378
 	   }); 
 	</script>
-@stop
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('web::layout.web_master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -22,6 +22,8 @@ class Product extends Model
         'group',
         'sell_rate',
         'sell_unit',
+        'cost_price',
+        'before_price',
         'sell_unit_quantity',
         'stock_unit',
         'stock_unit_quantity',

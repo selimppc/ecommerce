@@ -489,7 +489,6 @@ a.developer_company:hover{
 }
 
 .product-thum-image{
-    background: #ffffff;
     width: 100%;
     float: left;
 }
@@ -869,6 +868,77 @@ input.cart-checkout {
     outline: none;
     border: none;
 }
+
+.price_row{
+        border-top: 2px solid #a87c4f;
+    border-bottom: 2px solid #a87c4f;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    padding: 8px 0px;
+    margin-bottom: 15px;
+    margin-top: 40px;
+}
+
+.price_container{
+    width: 100%;
+    float: left;
+}
+
+.price{
+    float: left;
+    width: 33.3%;
+}
+
+.price input{
+    float: left;
+}
+
+.price label{
+        float: left;
+    margin-left: 5px;
+    font-weight: normal;
+}
+
+.quantity{
+        float: left;
+    width: 50%;
+    margin-top: 15px;
+}
+
+.quantity label{
+    width: 100%;
+    float: left;
+    font-weight: normal;
+}
+
+.quantity input{
+    background: transparent;
+    border: 1px solid rgba(200,200,200,.3);
+    padding: 5px;
+    outline: none;
+}
+
+.buy_now_button{
+        background: #ff7722;
+    text-decoration: none;
+    text-transform: uppercase;
+    float: right;
+    margin-top: 40px;
+    border: none;
+}
+
+.buy_now_button input:hover{
+    background: rgba(255,255,255,.5);    
+}
+
+.buy_now_button input{
+        float: left;
+         background: #ff7722;
+    padding: 8px 25px;
+    width: 100%;
+    border: none;
+}
 /*==================================================+
 //                 Media Queries                  //
 +==================================================*/
@@ -959,6 +1029,7 @@ input.cart-checkout {
     background-size: cover;
     background-repeat: no-repeat;
     margin-right: 3%;
+    overflow: hidden;
 }
 
 .product_data_container .description{

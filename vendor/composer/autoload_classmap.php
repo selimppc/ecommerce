@@ -10,6 +10,7 @@ return array(
     'AddColumnInArticleTable' => $baseDir . '/database/migrations/2016_03_15_105209_add_column_in_article_table.php',
     'AddColumnInParentPageTable' => $baseDir . '/database/migrations/2016_03_15_110140_add_column_in_parent_page_table.php',
     'AddColumnProductcategorysTable' => $baseDir . '/database/migrations/2016_02_21_095323_add_column_productcategorys_table.php',
+    'AddFieldInproductTable' => $baseDir . '/database/migrations/2016_03_28_115908_add_field_inproduct_table.php',
     'AddFieldPageParent' => $baseDir . '/database/migrations/2016_03_12_111638_add_field_page_parent.php',
     'AddImagesToProductTable' => $baseDir . '/database/migrations/2016_01_19_102310_add_images_to_product_table.php',
     'AddIsFeaturedToProductCategoryTable' => $baseDir . '/database/migrations/2016_01_11_104935_add_is_featured_to_product_category_table.php',

@@ -45,9 +45,20 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label('Sell Rate', 'Sell Rate:', ['class' => 'control-label']) !!}
+            {!! Form::label('Delivered Price', 'Delivered Price:', ['class' => 'control-label']) !!}
+            <small class="required">(Required)</small>
+            {!! Form::text('cost_price', null, ['id'=>'cost_price', 'class' => 'form-control','required']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('Pick up Price', 'Pick up/Now Price:', ['class' => 'control-label']) !!}
             <small class="required">(Required)</small>
             {!! Form::text('sell_rate', null, ['id'=>'sell_rate', 'class' => 'form-control','required']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('Before Price', 'Before Price:', ['class' => 'control-label']) !!}
+            {!! Form::text('before_price', null, ['id'=>'before_price', 'class' => 'form-control']) !!}
         </div>
 
         <div class="form-group">
