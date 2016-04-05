@@ -163,9 +163,20 @@ a:hover{
     margin-right: 20px;
 }
 
+.quation{
+        color: #ff7722;
+    font-size: 23px;
+    float: left;
+    margin-top: -2px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
 .hot_line{
     float: left;
-    font-size: 14px;
+    font-size: 18px;
+    text-shadow: 0 -1px 0 #ccc;
+
     color: #ff7722;
 }
 
@@ -288,6 +299,13 @@ ul.top_menu li a:hover{
     float: left;
 }
 
+.left-sidebar .panel-default.special>.panel-heading{
+    background: #FF0000;
+}
+
+.left-sidebar .panel.special{
+    border: 1px solid #FF0000;
+}
 .left-sidebar .panel{
     border: 1px solid #ff7722;
 }
@@ -402,7 +420,7 @@ a.product-listing-buy-now-button:hover{
     text-align: center;
     font-family: 'Arial'; 
     color: #ffffff;
-    padding: 45% 5px;
+    padding: 15% 5px;
 }
 .home-header span{
     font-family: 'Oswald', sans-serif;
@@ -635,6 +653,19 @@ a.buy_now_btn:hover{
     margin: 4%;
 }
 
+.general-page-description ul{
+    margin: 0 0 0 15px;
+    padding: 0;
+}
+
+.general-page-description ul li{
+        margin-bottom: 10px;
+    font-size: 13px;
+    letter-spacing: .2px;
+}
+
+
+
 .general-page-description p{
        line-height: 18px;
     margin-bottom: 20px;
@@ -645,6 +676,12 @@ a.buy_now_btn:hover{
     width: 100%;
     float: left;
     color: #fff;
+}
+
+.delivery_text{
+    margin-top: 30px;
+    width: 100%;
+    float: left;
 }
 
 .login_box_container h2{
@@ -860,6 +897,10 @@ a.cart-continue-shopping {
     text-decoration: none;
 }
 
+a.cart-continue-shopping:hover{
+    background: #ff7722;
+}
+
 input.cart-checkout {
     background-color: #ff7722;
     color: #FFF;
@@ -868,6 +909,21 @@ input.cart-checkout {
     outline: none;
     border: none;
 }
+
+a.cart-checkout {
+    background-color: #ff7722;
+    color: #FFF;
+    padding: 7px 15px;
+    float: right;
+    outline: none;
+    border: none;
+}
+
+a.cart-checkout:hover{
+    background: #546f7a;
+}
+
+
 
 .price_row{
         border-top: 2px solid #a87c4f;
@@ -918,6 +974,17 @@ input.cart-checkout {
     padding: 5px;
     outline: none;
 }
+.quantity select{
+    background: transparent;
+    border: 1px solid rgba(200,200,200,.3);
+    padding: 5px;
+    outline: none;
+    width: 100%;
+}
+
+.quantity select option{
+    color:#000;
+}
 
 .buy_now_button{
         background: #ff7722;
@@ -939,6 +1006,159 @@ input.cart-checkout {
     width: 100%;
     border: none;
 }
+
+.empty_cart{
+        background: #fff;
+    padding: 20px;
+    min-height: 175px;
+}
+
+.product_remove_cross {
+    background: url('../images/close.png');
+    width: 20px;
+    background-repeat: no-repeat;
+    border: none;
+    outline: none;
+    height: 20px;
+    cursor: pointer;
+    margin-top: 15px;
+    float: right;
+}
+
+.product_update{
+     background: url('../images/edit.png');
+    width: 20px;
+    background-repeat: no-repeat;
+    border: none;
+    outline: none;
+    height: 20px;
+    cursor: pointer;
+    margin-top: 17px;
+    float: left;
+}
+
+.billing_address{
+       width: 100%;
+    float: left;
+    padding: 20px;
+    background: #fff;
+}
+
+.billing_address h2{
+        text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    color: #576d78;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.billing_address p{
+        color: #666;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.customer_reviews_section{
+    width: 100%;
+    float: left;
+    margin-top: 30px;
+        padding: 0px 15px;
+}
+.customer_reviews_section button{
+    border-radius: 0px;
+}
+
+.customer_reviews_section button{
+  background: #ff7722;
+    border-color: #ff7722;  
+}
+
+.customer_reviews_section input.btn{
+  background: #ff7722;
+  border-radius: 0px;
+    border-color: #ff7722;  
+}
+
+.customer_reviews_section .modal-header .close {
+    margin-top: -7px;
+}
+.customer_reviews_section button.reviewbutton{
+    float: right;
+    background: #ff7722;
+    border-color: #ff7722;
+}
+
+.customer_reviews_section .modal-header{
+        background: #ff7722;
+    color: #fff;
+    height: 40px;
+}
+
+.customer_reviews_section .modal-content{
+    border-radius: 0px;
+}
+
+.all_reviews_container{
+        width: 100%;
+    float: left;
+    color: #fff;
+}
+
+.all_reviews_container .customer_reviews{
+        width: 100%;
+    float: left;
+    border-bottom: 1px solid rgba(168, 124, 79, .3);
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.all_reviews_container .customer_reviews .customer_left{
+        float: left;
+    width: 20%;
+    margin-right: 5%;
+}
+
+.all_reviews_container .customer_reviews .customer_left .customer_name{
+    width: 100%;
+    float: left;
+    font-size: 13px;
+}
+
+.all_reviews_container .customer_reviews .customer_left .customer_location{
+    width: 100%;
+    float: left;
+    font-size: 12px;
+}
+
+.all_reviews_container .customer_reviews .customer_left .customer_reviews_date{
+    width: 100%;
+    float: left;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.all_reviews_container .customer_reviews .customer_right{
+    float: left;
+    width: 75%;
+}
+
+.all_reviews_container .customer_reviews .customer_right .product_name{
+    width: 100%;
+    float: left;
+    font-size: 13px;
+}
+
+.all_reviews_container .customer_reviews .customer_right .comment{
+    width: 100%;
+    float: left;
+    font-size: 12px;
+}
+
+.all_reviews_container .customer_reviews .customer_right .comment .desc{
+    float: left;
+}
+
 /*==================================================+
 //                 Media Queries                  //
 +==================================================*/

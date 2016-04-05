@@ -104,6 +104,7 @@ Route::group(['middleware' => 'auth'], function()
     @include('routes_gal_image.php');
     @include('routes_slider_image.php');
     @include('routes_article.php');
+    @include('routes_review.php');
     @include('routes_product_category.php');
     @include('routes_product_group.php');
     @include('routes_product_subgroup.php');

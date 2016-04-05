@@ -32,7 +32,10 @@ class Product extends Model
         'image',
         'thumb',
         'features',
-        'sort_order'
+        'sort_order',
+        'product_code',
+        'size',
+        'other_size'
         
     ];
 
@@ -46,5 +49,13 @@ class Product extends Model
 
     public function relSubGroup(){
         return $this->belongsTo('App\ProductSubgroups', 'product_subgroup_id', 'id');
+    }
+
+     public function relGetproductgroup(){
+        return $this->hasOne('App\ProductGroup', 'id', 'product_group_id');
+    }
+
+     public function relGetproductsubgroup(){
+        return $this->hasOne('App\ProductSubgroups', 'id', 'product_subgroup_id');
     }
 }

@@ -122,6 +122,13 @@
                 <span>User List</span>
             </a>
         </li>
+
+        <li class="sub-menu">
+            <a href={{URL::to('reviews/all-list')}}>
+                <i class="icon-user-md"></i>
+                <span>Reviews List</span>
+            </a>
+        </li>
         {{--<li class="sub-menu">--}}
             {{--<a href={{URL::to('user/request')}}>--}}
                 {{--<i class="icon-trello"></i>--}}

@@ -57,7 +57,7 @@
 
 			@if(!empty($product_group_data))
 				@foreach($product_group_data as $productgrop)
-					<div class="panel panel-default">
+					<div class="panel panel-default <?php if($productgrop->id == '11'){echo 'special';} ?>">
 						<div class="panel-heading" role="tab" id="headingOne">
 							<h4 class="panel-title">
 						        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#product_group_{{$productgrop->id}}" aria-expanded="true" aria-controls="collapseOne">
@@ -89,6 +89,15 @@
 				@endforeach
 			@endif
 		 
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingOne">
+					<h4 class="panel-title">
+				        <a role="button" href="{{URL::to('')}}/customer-reviews">
+				         Customer reviews
+				        </a>
+				    </h4>
+				</div>
+			</div>
 
 		</div>
 		

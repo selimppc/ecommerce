@@ -4,9 +4,16 @@
 
 <div class="col-md-12">
 	@include('web::layout.web_sidemenu')
+
 	<div class="col-md-9 col-sm-12 col-xs-12 row-right-0">
 		<div class="inner_banner margin-top-50 margin-bottom-50">
-			<img src="{{URL::to('')}}/web/images/inner-banner.png">
+
+			@if($product_subgroup->product_group_id == 11)
+				<img src="{{URL::to('')}}/web/images/special-clearence.jpg">
+			@else
+				<img src="{{URL::to('')}}/web/images/inner-banner.png">
+			@endif
+			
 		</div>
 	</div>
 

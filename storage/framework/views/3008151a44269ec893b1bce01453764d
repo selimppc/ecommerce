@@ -122,6 +122,13 @@
                 <span>User List</span>
             </a>
         </li>
+
+        <li class="sub-menu">
+            <a href=<?php echo e(URL::to('reviews/all-list')); ?>>
+                <i class="icon-user-md"></i>
+                <span>Reviews List</span>
+            </a>
+        </li>
         <?php /*<li class="sub-menu">*/ ?>
             <?php /*<a href=<?php echo e(URL::to('user/request')); ?>>*/ ?>
                 <?php /*<i class="icon-trello"></i>*/ ?>

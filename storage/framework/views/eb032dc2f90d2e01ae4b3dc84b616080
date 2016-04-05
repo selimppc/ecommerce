@@ -32,6 +32,8 @@
                         <thead>
                             <tr>
                                 <th> Title </th>
+                                <th>Product Group</th>
+                                <th>Product Sub Group</th>
                                 <th> Status</th>
                                 <th> Action </th>
                             </tr>
@@ -41,6 +43,8 @@
                                 <?php foreach($data as $values): ?>
                                      <tr class="gradeX">
                                         <td><?php echo e($values->title); ?></td>
+                                        <td><?php echo e($values->relGetproductgroup->title); ?></td>
+                                        <td><?php echo e($values->relGetproductsubgroup->title); ?></td>
                                         <td><?php echo e($values->status); ?></td>
                                         <td>
                                             <a href="<?php echo e(route('product-show', $values->slug)); ?>" data-toggle="modal" data-target="#etsbModal" class="btn btn-info btn-xs" title="View"><i class="icon-eye-open"></i></a>

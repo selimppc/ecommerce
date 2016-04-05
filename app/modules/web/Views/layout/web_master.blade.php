@@ -42,7 +42,7 @@
                                     <div class="row">
                                         <div class="upper_section">
                                             <div class="hot_line">
-                                                1 800 123 4567
+                                                02-95672422
                                             </div>
                                             <ul class="top_menu">
                                                                        
@@ -54,9 +54,15 @@
                                                 </li>
                                             </ul>
                                             <div class="my_bag_container">
-                                                <a href="#">
+                                                <a href="{{URL::to('')}}/mycart">
                                                     <span class="text">Cart</span>
-                                                    <span class="wishlist_amount">(0)</span>
+                                                    <span class="wishlist_amount">(
+                                                        @if(Session::has('product_cart'))
+                                                            {{count(Session::get('product_cart'))}}
+                                                        @else
+                                                            0
+                                                        @endif
+                                                        )</span>
                                                 </a>
                                             </div>
                                         </div>
@@ -85,15 +91,23 @@
                                         <li>
                                             <a href="{{URL::to('')}}/about-us">About us</a>
                                         </li>
+
                                         <li>
-                                            <a href="{{URL::to('')}}/delivery-installation">Delivery & Installation</a>
+                                            <a href="{{URL::to('')}}/terms-and-conditions">Terms And Conditions</a>
                                         </li>
+
                                         <li>
+                                            <a href="{{URL::to('')}}/privacy-security">Privacy & Security</a>
+                                        </li>
+                                        <!-- <li>
+                                            <a href="{{URL::to('')}}/delivery-installation">Delivery & Installation</a>
+                                        </li> -->
+                                       <!--  <li>
                                             <a href="{{URL::to('')}}/wholesale-customers">Wholesale Customers</a>
                                         </li>
                                         <li>
                                             <a href="{{URL::to('')}}/splashbacks">Splashbacks</a>
-                                        </li>
+                                        </li> -->
                                         <li>
                                             <a href="{{URL::to('')}}/contact-us">Contact us</a>
                                         </li>

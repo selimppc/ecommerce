@@ -37,44 +37,79 @@
 				</div>
 
 				<div class="product-specification-description">
+					<table class="table">
+
+						@if(!empty($product->product_code))
+							<tr>
+								<td>Product Code</td>
+								<td>{{$product->product_code}}</td>
+							</tr>
+						@endif
+
+						@if(!empty($product->size))
+							<tr>
+								<td>Sizes</td>
+								<td>{{$product->size}}</td>
+							</tr>
+						@endif
+
+						@if(!empty($product->other_size))
+							<tr>
+								<td>Other sizes</td>
+								<td>{{$product->other_size}}</td>
+							</tr>
+						@endif
+
+						@if(!empty($product->stock_unit_quantity))
+							<tr>
+								<td>Stock Level</td>
+								<td>{{$product->stock_unit_quantity}}</td>
+							</tr>
+						@endif
+					</table>
 					
-					<?php echo $product->long_description; ?>
 
 					<div class="price_row">
 						Price
 					</div>
 
-					<form>
+					<form method="post" action="{{URL::to('/')}}/order/add_to_cart">
 
 					<div class="price_container">
 						@if($product->product_group_id == 10)
 
 							<div class="price">
-								<input checked id="price1" type="radio" name="price" value="100">
+								<input checked id="price1" type="radio" name="price" value="{{$product->sell_rate}}">
 								<label for="price1">Pick up<br/> ${{$product->sell_rate}}</label>
 							</div>
 
-							<div class="price">
-								<input id="price2" type="radio" name="price" value="100">
-								<label for="price2">Delivered<br/> ${{$product->cost_price}}</label>
-							</div>
+							@if(!empty($product->cost_price))
+								<div class="price">
+									<input id="price2" type="radio" name="price" value="{{$product->cost_price}}">
+									<label for="price2">Delivered<br/> ${{$product->cost_price}}</label>
+								</div>
+							@endif
 
 						@else
 
-							<div class="price">
-								<input checked id="price1" type="radio" name="price" value="{{$product->before_price}}">
-								<label for="price1">Before<br/> ${{$product->before_price}}</label>
-							</div>
+							@if(!empty($product->before_price))
+								<div class="price">
+									<input checked id="price1" type="radio" name="price" value="{{$product->before_price}}">
+									<label for="price1">Before<br/> ${{$product->before_price}}</label>
+								</div>
+							@endif
 
 							<div class="price">
-								<input checked id="price1" type="radio" name="price" value="{{$product->sell_rate}}">
+								<input id="price1" type="radio" name="price" value="{{$product->sell_rate}}">
 								<label for="price1">Now<br/> ${{$product->sell_rate}}</label>
 							</div>
 
-							<div class="price">
-								<input id="price2" type="radio" name="price" value="{{$product->cost_price}}">
-								<label for="price2">Delivered<br/> ${{$product->cost_price}}</label>
-							</div>
+							@if(!empty($product->cost_price))
+								<div class="price">
+									<input id="price2" type="radio" name="price" value="{{$product->cost_price}}">
+									<label for="price2">Delivered<br/> ${{$product->cost_price}}</label>
+								</div>
+							@endif
 
 
 						@endif
@@ -82,10 +117,22 @@
 					
 					<div class="quantity">
 						<label>Quantity</label>
-						<input type="number" name="quantity" value="1">
+						<select name="quantity">
+							<?php
+								if(count($product->stock_unit_quantity) > 0):
+									for($i=1;$i<= $product->stock_unit_quantity;$i++){
+							?>
+										<option value="{{$i}}">{{$i}}</option>
+							<?php
+									}
+								endif;
+							?>
+						</select>
 					</div>
 
 					<div class="buy_now_button">
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						<input type="hidden" name="product_id" value="{{$product->id}}">
 						<input type="submit" name="submit" value="Buy Now">
 					</div>
 

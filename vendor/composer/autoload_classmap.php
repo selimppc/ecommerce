@@ -6,10 +6,12 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddColoumnToProductsTable' => $baseDir . '/database/migrations/2016_04_05_110650_add_coloumn_to_products_table.php',
     'AddColumnArticleTable' => $baseDir . '/database/migrations/2016_03_12_113542_add_column_article_table.php',
     'AddColumnInArticleTable' => $baseDir . '/database/migrations/2016_03_15_105209_add_column_in_article_table.php',
     'AddColumnInParentPageTable' => $baseDir . '/database/migrations/2016_03_15_110140_add_column_in_parent_page_table.php',
     'AddColumnProductcategorysTable' => $baseDir . '/database/migrations/2016_02_21_095323_add_column_productcategorys_table.php',
+    'AddFieldCustomerReviewTable' => $baseDir . '/database/migrations/2016_03_30_115927_add_field_customer_review_table.php',
     'AddFieldInproductTable' => $baseDir . '/database/migrations/2016_03_28_115908_add_field_inproduct_table.php',
     'AddFieldPageParent' => $baseDir . '/database/migrations/2016_03_12_111638_add_field_page_parent.php',
     'AddImagesToProductTable' => $baseDir . '/database/migrations/2016_01_19_102310_add_images_to_product_table.php',
@@ -30,6 +32,7 @@ return array(
     'App\\Modules\\Admin\\Controllers\\TestController' => $baseDir . '/app/modules/admin_m/Controllers/TestController.php',
     'App\\Modules\\ServiceProvider' => $baseDir . '/app/modules/ServiceProvider.php',
     'App\\Modules\\Web\\Controllers\\CartController' => $baseDir . '/app/modules/web/Controllers/CartController.php',
+    'App\\Modules\\Web\\Controllers\\CustomerreviewsController' => $baseDir . '/app/modules/web/Controllers/CustomerreviewsController.php',
     'App\\Modules\\Web\\Controllers\\OrderController' => $baseDir . '/app/modules/web/Controllers/OrderController.php',
     'App\\Modules\\Web\\Controllers\\ProductCategoryController' => $baseDir . '/app/modules/web/Controllers/ProductCategoryController.php',
     'App\\Modules\\Web\\Controllers\\ProductController' => $baseDir . '/app/modules/web/Controllers/ProductController.php',
@@ -55,6 +58,7 @@ return array(
     'CreateCentralSettingsTable' => $baseDir . '/database/migrations/2015_10_28_164029_create_central_settings_table.php',
     'CreateCountryTable' => $baseDir . '/database/migrations/2015_10_13_071204_create_country_table.php',
     'CreateCrudTable' => $baseDir . '/database/migrations/2015_11_24_164202_create_crud_table.php',
+    'CreateCustomerReviewTable' => $baseDir . '/database/migrations/2016_03_30_102634_create_customer_review_table.php',
     'CreateCustomerTable' => $baseDir . '/database/migrations/2016_02_29_122141_create_customer_table.php',
     'CreateDumpSqlTable' => $baseDir . '/database/migrations/2015_12_24_150619_create_dump_sql_table.php',
     'CreateGalImageTable' => $baseDir . '/database/migrations/2015_12_02_144731_create_gal_image_table.php',
@@ -62,6 +66,8 @@ return array(
     'CreateMediaTable' => $baseDir . '/database/migrations/2015_12_06_122601_create_media_table.php',
     'CreateMenuTable' => $baseDir . '/database/migrations/2015_12_03_134653_create_menu_table.php',
     'CreateMenuTypeTable' => $baseDir . '/database/migrations/2015_12_03_140939_create_menu_type_table.php',
+    'CreateOrderDetailsTable' => $baseDir . '/database/migrations/2016_03_31_105618_create_order_details_table.php',
+    'CreateOverheadTable' => $baseDir . '/database/migrations/2016_03_31_104858_create_overhead_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateProduct' => $baseDir . '/database/migrations/2016_01_04_102630_create_product.php',
     'CreateProductCategory' => $baseDir . '/database/migrations/2016_01_04_095645_create_product_category.php',

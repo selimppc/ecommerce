@@ -25,7 +25,7 @@ class CustomerRequest extends Request
     {
 
         return [
-           'email' => 'required|unique:customer',
+           'email' => 'required',
            'first_name' => 'required',
            'last_name' => 'required',
             'password' => 'required',

@@ -27,7 +27,7 @@ class ProductRequest extends Request
             'title' => 'required|max:256',
             'slug' => 'required',
             'status' => 'required',
-            'cost_price' => 'required',
+            'sell_rate' => 'required',
             'product_group_id' => 'required|integer'
         ];
     }

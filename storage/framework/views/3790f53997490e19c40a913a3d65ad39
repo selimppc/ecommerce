@@ -59,7 +59,7 @@
 
 			<?php if(!empty($product_group_data)): ?>
 				<?php foreach($product_group_data as $productgrop): ?>
-					<div class="panel panel-default">
+					<div class="panel panel-default <?php if($productgrop->id == '11'){echo 'special';} ?>">
 						<div class="panel-heading" role="tab" id="headingOne">
 							<h4 class="panel-title">
 						        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#product_group_<?php echo e($productgrop->id); ?>" aria-expanded="true" aria-controls="collapseOne">
@@ -92,6 +92,15 @@
 				<?php endforeach; ?>
 			<?php endif; ?>
 		 
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingOne">
+					<h4 class="panel-title">
+				        <a role="button" href="<?php echo e(URL::to('')); ?>/customer-reviews">
+				         Customer reviews
+				        </a>
+				    </h4>
+				</div>
+			</div>
 
 		</div>
 		

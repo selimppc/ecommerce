@@ -33,6 +33,8 @@
                         <thead>
                             <tr>
                                 <th> Title </th>
+                                <th>Product Group</th>
+                                <th>Product Sub Group</th>
                                 <th> Status</th>
                                 <th> Action </th>
                             </tr>
@@ -42,6 +44,8 @@
                                 @foreach($data as $values)
                                      <tr class="gradeX">
                                         <td>{{$values->title}}</td>
+                                        <td>{{$values->relGetproductgroup->title}}</td>
+                                        <td>{{$values->relGetproductsubgroup->title}}</td>
                                         <td>{{$values->status}}</td>
                                         <td>
                                             <a href="{{ route('product-show', $values->slug) }}" data-toggle="modal" data-target="#etsbModal" class="btn btn-info btn-xs" title="View"><i class="icon-eye-open"></i></a>

@@ -45,20 +45,57 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label('Delivered Price', 'Delivered Price:', ['class' => 'control-label']) !!}
-            <small class="required">(Required)</small>
-            {!! Form::text('cost_price', null, ['id'=>'cost_price', 'class' => 'form-control','required']) !!}
-        </div>
-
-        <div class="form-group">
             {!! Form::label('Pick up Price', 'Pick up/Now Price:', ['class' => 'control-label']) !!}
             <small class="required">(Required)</small>
             {!! Form::text('sell_rate', null, ['id'=>'sell_rate', 'class' => 'form-control','required']) !!}
         </div>
 
         <div class="form-group">
+            {!! Form::label('Delivered Price', 'Delivered Price:', ['class' => 'control-label']) !!}
+            {!! Form::text('cost_price', null, ['id'=>'cost_price', 'class' => 'form-control']) !!}
+        </div>
+        
+
+        <div class="form-group">
             {!! Form::label('Before Price', 'Before Price:', ['class' => 'control-label']) !!}
             {!! Form::text('before_price', null, ['id'=>'before_price', 'class' => 'form-control']) !!}
+        </div>
+
+        
+
+        
+        <div class="form-group">
+            {!! Form::label('Sort Order', 'Sort Order:', ['class' => 'control-label']) !!}
+            {!! Form::text('sort_order', null, ['id'=>'sort_order', 'class' => 'form-control']) !!}
+        </div>
+
+
+        <div class="form-group" >
+            {!! Form::label('is_featured', 'Is featured?', ['class' => 'control-label']) !!}
+            <small class="required">(Required)</small>
+            {!! Form::Select('is_featured',array('No'=>'No','Yes'=>'Yes'),Input::old('status'),['class'=>'form-control ','required']) !!}
+        </div>
+       
+
+    </div>
+</div>
+
+<div class="col-md-6" style="padding-right: 0;">
+
+    
+    <div class="form-group">
+            {!! Form::label('Product Code', 'Product Code:', ['class' => 'control-label']) !!}
+            {!! Form::text('product_code', null, ['id'=>'product_code', 'class' => 'form-control']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('Sizes', 'Sizes:', ['class' => 'control-label']) !!}
+            {!! Form::text('size', null, ['id'=>'size', 'class' => 'form-control']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('Other Sizes', 'Other sizes:', ['class' => 'control-label']) !!}
+            {!! Form::text('other_size', null, ['id'=>'other_size', 'class' => 'form-control']) !!}
         </div>
 
         <div class="form-group">
@@ -67,45 +104,13 @@
             {!! Form::text('stock_unit_quantity', null, ['id'=>'stock_unit_quantity', 'class' => 'form-control','required']) !!}
         </div>
 
-        
-        <div class="form-group">
-            {!! Form::label('Sort Order', 'Sort Order:', ['class' => 'control-label']) !!}
-            {!! Form::text('sort_order', null, ['id'=>'sort_order', 'class' => 'form-control']) !!}
-        </div>
 
-        <div class="form-group">
+         <div class="form-group">
             {!! Form::label('status', 'Status:', ['class' => 'control-label']) !!}
             <small class="required">(Required)</small>
             {!! Form::Select('status',array('active'=>'Active','inactive'=>'Inactive'),Input::old('status'),['class'=>'form-control ','required']) !!}
         </div>
 
-        <div class="form-group">
-            {!! Form::label('is_featured', 'Is featured?', ['class' => 'control-label']) !!}
-            <small class="required">(Required)</small>
-            {!! Form::Select('is_featured',array('No'=>'No','Yes'=>'Yes'),Input::old('status'),['class'=>'form-control ','required']) !!}
-        </div>
-
-    </div>
-</div>
-
-<div class="col-md-6" style="padding-right: 0;">
-
-    
-
-    <div class="form-group">
-        {!! Form::label('Short Description', 'Short Description', ['class' => 'control-label']) !!}
-        {!! Form::textarea('short_description', null, ['id'=>'short_description', 'class' => 'form-control', 'cols'=>'30' , 'rows'=>'5']) !!}
-    </div>
-
-    <div class="form-group">
-        {!! Form::label('Specification', 'Full Description', ['class' => 'control-label']) !!}
-        {!! Form::textarea('long_description', null, ['id'=>'long_description', 'class' => 'form-control', 'cols'=>'30' , 'rows'=>'10']) !!}
-    </div>
-
-    <div class="form-group">
-        {!! Form::label('Features', 'Features', ['class' => 'control-label']) !!}
-        {!! Form::textarea('features', null, ['id'=>'features', 'class' => 'form-control', 'cols'=>'30' , 'rows'=>'5']) !!}
-    </div>
 
     <div class="form-group">
         <label class="control-label col-md-12">Featured Image</label>
@@ -135,12 +140,20 @@
          <span>
          Attached image thumbnail is
          supported in Latest Firefox, Chrome, Opera,
-         Safari and Internet Explorer 10 only
+         Safari and Internet Explorer 10 only<br/><br/>
+         Image size should be less than 300KB & resolution is width:800px and height:880px
          </span>
         </div>
     </div>
 
 </div>
+
+    <div class="form-group" style="width: 100%;float: left;">
+        {!! Form::label('Description', 'Description', ['class' => 'control-label']) !!}
+        {!! Form::textarea('short_description', null, ['id'=>'short_description', 'class' => 'form-control', 'cols'=>'30' , 'rows'=>'5']) !!}
+    </div>
+
+
 </div>
 
 
@@ -206,4 +219,12 @@
         });
 
     });
+</script>
+
+<script type="text/javascript" src="<?php echo URL::to('')."/ckeditor/ckeditor.js"; ?>"></script>
+
+<script>
+    
+    CKEDITOR.replace( "short_description", {});
+
 </script>

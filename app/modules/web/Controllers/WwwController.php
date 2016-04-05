@@ -62,6 +62,32 @@ class WwwController extends Controller
         ]);
     }
 
+    public function termscondition(){
+        $slug = 'terms-and-conditions';
+
+        $data = Article::where('slug',$slug)->first();
+
+        $title =$data->title;
+
+        return view('web::general.commonpage', [
+            'title'=>$title,
+            'data'=>$data
+        ]);
+    }
+
+    public function privacy(){
+        $slug = 'privacy-security';
+
+        $data = Article::where('slug',$slug)->first();
+
+        $title =$data->title;
+
+        return view('web::general.commonpage', [
+            'title'=>$title,
+            'data'=>$data
+        ]);
+    }
+
     public function contact(){
         $slug = 'contact-us';
 
@@ -69,7 +95,7 @@ class WwwController extends Controller
 
         $title =$data->title;
 
-        return view('web::general.commonpage', [
+        return view('web::general.contact', [
             'title'=>$title,
             'data'=>$data
         ]);
