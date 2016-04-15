@@ -83,19 +83,14 @@ class ArticleController extends Controller
     {
         $input = $request->all();
 
-
         $image = Input::file('featured_image');
-        $image_2 = Input::file('featured_image_2');
-
         $tittle = Input::get('title');
         $slug = str_slug($tittle);
         $input['slug'] = $slug;
-
-        if(count($image)>0 || count($image_2)>0){
+        if(count($image)>0){
             $file_type_required = 'png,jpeg,jpg';
             $destinationPath = 'uploads/featured_image/';
             $uploadfolder = 'uploads/';
-
             if ( !file_exists($uploadfolder) ) {
                 $oldmask = umask(0);  // helpful when used in linux server
                 mkdir ($uploadfolder, 0777);
@@ -104,40 +99,50 @@ class ArticleController extends Controller
                 $oldmask = umask(0);  // helpful when used in linux server
                 mkdir ($destinationPath, 0777);
             }
-
             if($image)
                 $file_name = ArticleController::image_upload($image,$file_type_required,$destinationPath);
-            if($image_2)
-                $file_name_2 = ArticleController::image_upload($image_2,$file_type_required,$destinationPath);
-
             if(isset($file_name) != ''){
                 $input['featured_image'] = $file_name[0];
                 $input['thumbnail'] = $file_name[1];
             }
-            if(isset($file_name_2) != ''){
-                $input['featured_image_2'] = $file_name_2[0];
-                $input['thumbnail_2'] = $file_name_2[1];
-            }
-            /*else{
-                Session::flash('flash_message_error', 'Some thing error in image file type! Please Try again');
-                return redirect()->back();
-            }*/
         }
 
         DB::beginTransaction();
         try {
+            //save to article table
             $article_data = Article::create($input);
 
-            for($i=0;$i<count(Input::get('posttitle'));$i++){
+            //set sub artile arrays
+            $files = Input::file('post_image');
+            $post_title = Input::get('post_title');
+            $post_desc = Input::get('post_desc');
 
-                 $article_id = $article_data->id;
-                 $posttitle = $input['posttitle'][$i];
-                 $postdescription = $input['postdescription'][$i];
-                
-                $article_sub_array = ['article_id' => $article_id,'title'=>$posttitle,'desc' => $postdescription];
-                Articlesub::create($article_sub_array);
+            for($i=0; $i<count(Input::get('post_title')); $i++){
+                // sub article
+                $model = new Articlesub();
+                $model->article_id = @$article_data->id;
+                $model->title = @$post_title[$i];
+                $model->desc = @$post_desc[$i];
+
+                // files and data(s)
+                $rules = array('file' => 'required|mimes:png,gif,jpeg,jpg');
+                $validator = Validator::make(array('file' => $files[$i]), $rules);
+                if ($validator->passes()) {
+                    // Files destination
+                    $destinationPath = 'uploads/sub_article/';
+                    // Create folders if they don't exist
+                    if (!file_exists($destinationPath)) {
+                        mkdir($destinationPath, 0777, true);
+                    }
+                    $file_original_name = $files[$i]->getClientOriginalName();
+                    $file_name = rand(11111, 99999) . $file_original_name;
+                    $upload_success = $files[$i]->move($destinationPath, $file_name);
+
+                    //model data
+                    $model->image = 'uploads/sub_article/' . $file_name;
+                }
+                $model->save();
             }
-
             DB::commit();
             Session::flash('flash_message', 'Successfully added!');
         }catch (\Exception $e) {
@@ -145,6 +150,7 @@ class ArticleController extends Controller
             DB::rollback();
             Session::flash('flash_message_error', $e->getMessage());
         }
+
         return redirect()->route('article-index');
     }
 
