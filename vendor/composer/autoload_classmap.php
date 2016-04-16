@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Add2tablesIntoProductTable' => $baseDir . '/database/migrations/2016_04_06_100955_add_2tables_into_product_table.php',
     'AddColoumnToProductsTable' => $baseDir . '/database/migrations/2016_04_05_110650_add_coloumn_to_products_table.php',
     'AddColumnArticleTable' => $baseDir . '/database/migrations/2016_03_12_113542_add_column_article_table.php',
     'AddColumnInArticleTable' => $baseDir . '/database/migrations/2016_03_15_105209_add_column_in_article_table.php',
@@ -49,6 +50,7 @@ return array(
     'BaseFacebook' => $vendorDir . '/hybridauth/hybridauth/hybridauth/Hybrid/thirdparty/Facebook/base_facebook.php',
     'CentralSettingsTableSeeder' => $baseDir . '/database/seeds/CentralSettingsTableSeeder.php',
     'CountryTable' => $baseDir . '/database/seeds/CountryTable.php',
+    'CreateArticleSub' => $baseDir . '/database/migrations/2016_04_12_111440_create_article_sub.php',
     'CreateArticleTable' => $baseDir . '/database/migrations/2015_12_02_165638_create_article_table.php',
     'CreateBlogCatTable' => $baseDir . '/database/migrations/2015_12_21_161752_create_blog_cat_table.php',
     'CreateBlogCommentTable' => $baseDir . '/database/migrations/2015_12_21_171616_create_blog_comment_table.php',

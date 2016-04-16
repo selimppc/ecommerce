@@ -8,17 +8,17 @@
 					<img id="zoom_01" data-zoom-image="{{URL::to('')}}/{{$product->image}}" src="{{URL::to('')}}/{{$product->thumb}}" width="100%">
 				</div>
 				<a href="{{URL::to('')}}/{{$product->image}}" class="fancybox image_gallery_container">
-					<img src="{{URL::to('')}}/web/images/enlarge.png"><br/>
+					<img alt="{{$product->meta_title}}" title="{{$product->title}}" src="{{URL::to('')}}/web/images/enlarge.png"><br/>
 						ENLARGE
 				</a>
 
 				<a href="#" class="image_gallery_container">
-					<img src="{{URL::to('')}}/web/images/print.png"><br/>
+					<img alt="{{$product->meta_title}}" title="{{$product->title}}" src="{{URL::to('')}}/web/images/print.png"><br/>
 						PRINT
 				</a>
 
 				<a href="#" class="image_gallery_container">
-					<img src="{{URL::to('')}}/web/images/ask.png">
+					<img alt="{{$product->meta_title}}" title="{{$product->title}}" src="{{URL::to('')}}/web/images/ask.png">
 					<br/>
 						EMAIL
 				</a>
@@ -64,6 +64,13 @@
 							<tr>
 								<td>Stock Level</td>
 								<td>{{$product->stock_unit_quantity}}</td>
+							</tr>
+						@endif
+
+						@if(!empty($product->delivery_info))
+							<tr>
+								<td>Delivery Info</td>
+								<td>{{$product->delivery_info}}</td>
 							</tr>
 						@endif
 					</table>
@@ -158,7 +165,7 @@
 						<div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
 							<a href="{{URL::to('')}}/{{$related_product->slug}}" class="featured_product_a">
 								<div class="product-listing-image">
-									<img src="{{URL::to('')}}/{{$related_product->thumb}}">
+									<img alt="{{$related_product->meta_title}}" title="{{$related_product->title}}" src="{{URL::to('')}}/{{$related_product->thumb}}">
 								</div>
 
 								<div class="product-listing-bottom">

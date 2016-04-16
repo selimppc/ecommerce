@@ -28,7 +28,8 @@ class ProductRequest extends Request
             'slug' => 'required',
             'status' => 'required',
             'sell_rate' => 'required',
-            'product_group_id' => 'required|integer'
+            'product_group_id' => 'required|integer',
+            'meta_title' => 'required'
         ];
     }
 }

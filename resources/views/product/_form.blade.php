@@ -33,7 +33,7 @@
      
 
         <div class="form-group">
-            {!! Form::label('title', 'Title:', ['class' => 'control-label']) !!}
+            {!! Form::label('title', 'Product Title:', ['class' => 'control-label']) !!}
             <small class="required">(Required)</small>
             {!! Form::text('title', null, ['id'=>'title', 'class' => 'form-control','required','onkeyup'=>"sel_url()"]) !!}
         </div>
@@ -42,6 +42,12 @@
             {!! Form::label('Slug', 'Slug:', ['class' => 'control-label']) !!}
             <small class="required">(Required)</small>
             {!! Form::text('slug', null, ['id'=>'slug', 'class' => 'form-control']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::label('Meta Title', 'Meta Title:', ['class' => 'control-label']) !!}
+            <small class="required">(Required)</small>
+            {!! Form::text('meta_title', null, ['id'=>'meta_title', 'class' => 'form-control']) !!}
         </div>
 
         <div class="form-group">
@@ -104,6 +110,10 @@
             {!! Form::text('stock_unit_quantity', null, ['id'=>'stock_unit_quantity', 'class' => 'form-control','required']) !!}
         </div>
 
+        <div class="form-group">
+            {!! Form::label('Delivery Info', 'Delivery Info:', ['class' => 'control-label']) !!}
+            {!! Form::text('delivery_info', null, ['id'=>'delivery_info', 'class' => 'form-control']) !!}
+        </div>
 
          <div class="form-group">
             {!! Form::label('status', 'Status:', ['class' => 'control-label']) !!}

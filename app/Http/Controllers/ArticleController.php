@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Articlesub;
 use App\Pageparent;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -81,6 +82,8 @@ class ArticleController extends Controller
     public function store(Requests\ArticleRequest $request)
     {
         $input = $request->all();
+
+
         $image = Input::file('featured_image');
         $image_2 = Input::file('featured_image_2');
 
@@ -123,7 +126,18 @@ class ArticleController extends Controller
 
         DB::beginTransaction();
         try {
-            Article::create($input);
+            $article_data = Article::create($input);
+
+            for($i=0;$i<count(Input::get('posttitle'));$i++){
+
+                 $article_id = $article_data->id;
+                 $posttitle = $input['posttitle'][$i];
+                 $postdescription = $input['postdescription'][$i];
+                
+                $article_sub_array = ['article_id' => $article_id,'title'=>$posttitle,'desc' => $postdescription];
+                Articlesub::create($article_sub_array);
+            }
+
             DB::commit();
             Session::flash('flash_message', 'Successfully added!');
         }catch (\Exception $e) {

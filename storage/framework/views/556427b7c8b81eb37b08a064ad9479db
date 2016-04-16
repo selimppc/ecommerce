@@ -1,0 +1,85 @@
+<div class="modal-dialog"  style="width: 75%;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title"><?php echo e($pageTitle); ?></h4>
+        </div>
+
+        <div class="modal-body">
+            <div style="padding: 30px;">
+                <table id="" class="table table-bordered table-hover table-striped">
+                   <tr>
+                        <th class="col-lg-4">Product Group</th>
+                        <td><?php echo e(isset($data->relProductGroup->title)?$data->relProductGroup->title:''); ?></td>
+                    </tr>
+                    <tr>
+                        <th class="col-lg-4">Product SubGroup</th>
+                        <?php /*<td><?php echo e(isset($data->product_subgroup_id)?$data->relSubGroup->title:''); ?></td>*/ ?>
+                        <td><?php echo e(@$data->relSubGroup->title); ?></td>
+                    </tr>
+                  <!--   <tr>
+                        <th class="col-lg-4">Category</th>
+                        <td><?php echo e(isset($data->relCatProduct->title)?$data->relCatProduct->title:''); ?></td>
+                    </tr> -->
+                   <tr>
+                        <th> Title </th>
+                        <td><?php echo e($data->title); ?></td>
+                    </tr>                
+                    <tr>
+                        <th> Slug </th>
+                        <td><?php echo e($data->slug); ?></td>
+                    </tr>
+                    <tr>
+                        <th> SKU Code </th>
+                        <td><?php echo e($data->sku); ?></td>
+                    </tr>
+                    <tr>
+                        <th> Sell Unit </th>
+                        <td><?php echo e($data->sell_unit); ?></td>
+                    </tr>
+
+                    <tr>
+                        <th> Sell Quantity </th>
+                        <td><?php echo e($data->sell_unit_quantity); ?></td>
+                    </tr>
+                    <tr>
+                        <th> Sell Rate </th>
+                        <td><?php echo e($data->sell_rate); ?></td>
+                    </tr>
+                    <tr>
+                        <th> Cost Price </th>
+                        <td><?php echo e($data->cost_price); ?></td>
+                    </tr>
+                    <tr>
+                        <th> Stock Unit </th>
+                        <td><?php echo e($data->stock_unit); ?></td>
+                    </tr>
+                    <tr>
+                        <th> Stock Quantity </th>
+                        <td><?php echo e($data->stock_unit_quantity); ?></td>
+                    </tr>
+                    <tr>
+                        <th> Is Price Vary?</th>
+                        <td><?php echo e($data->is_price_vary); ?></td>
+                    </tr>
+                    <tr>
+                        <th> Is featured? </th>
+                        <td><?php echo e($data->is_featured); ?></td>
+                    </tr>
+                    <tr>
+                        <th> Short Description </th>
+                        <td><?php echo e($data->short_description); ?></td>
+                    </tr>
+                     <tr>
+                        <th> Full Description </th>
+                        <td><?php echo e($data->long_description); ?></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="<?php echo e(URL::previous()); ?>" class="btn btn-default" type="button"> Close </a>
+        </div>
+
+    </div>
+</div>
+

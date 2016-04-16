@@ -6,17 +6,17 @@
 					<img id="zoom_01" data-zoom-image="<?php echo e(URL::to('')); ?>/<?php echo e($product->image); ?>" src="<?php echo e(URL::to('')); ?>/<?php echo e($product->thumb); ?>" width="100%">
 				</div>
 				<a href="<?php echo e(URL::to('')); ?>/<?php echo e($product->image); ?>" class="fancybox image_gallery_container">
-					<img src="<?php echo e(URL::to('')); ?>/web/images/enlarge.png"><br/>
+					<img alt="<?php echo e($product->meta_title); ?>" title="<?php echo e($product->title); ?>" src="<?php echo e(URL::to('')); ?>/web/images/enlarge.png"><br/>
 						ENLARGE
 				</a>
 
 				<a href="#" class="image_gallery_container">
-					<img src="<?php echo e(URL::to('')); ?>/web/images/print.png"><br/>
+					<img alt="<?php echo e($product->meta_title); ?>" title="<?php echo e($product->title); ?>" src="<?php echo e(URL::to('')); ?>/web/images/print.png"><br/>
 						PRINT
 				</a>
 
 				<a href="#" class="image_gallery_container">
-					<img src="<?php echo e(URL::to('')); ?>/web/images/ask.png">
+					<img alt="<?php echo e($product->meta_title); ?>" title="<?php echo e($product->title); ?>" src="<?php echo e(URL::to('')); ?>/web/images/ask.png">
 					<br/>
 						EMAIL
 				</a>
@@ -65,8 +65,15 @@
 								<td><?php echo e($product->stock_unit_quantity); ?></td>
 							</tr>
 						<?php endif; ?>
+
+						<?php if(!empty($product->delivery_info)): ?>
+							<tr>
+								<td>Delivery Info</td>
+								<td><?php echo e($product->delivery_info); ?></td>
+							</tr>
+						<?php endif; ?>
 					</table>
-					<?php echo $product->long_description; ?>
+					
 
 					<div class="price_row">
 						Price
@@ -157,7 +164,7 @@
 						<div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
 							<a href="<?php echo e(URL::to('')); ?>/<?php echo e($related_product->slug); ?>" class="featured_product_a">
 								<div class="product-listing-image">
-									<img src="<?php echo e(URL::to('')); ?>/<?php echo e($related_product->thumb); ?>">
+									<img alt="<?php echo e($related_product->meta_title); ?>" title="<?php echo e($related_product->title); ?>" src="<?php echo e(URL::to('')); ?>/<?php echo e($related_product->thumb); ?>">
 								</div>
 
 								<div class="product-listing-bottom">

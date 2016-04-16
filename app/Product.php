@@ -35,7 +35,9 @@ class Product extends Model
         'sort_order',
         'product_code',
         'size',
-        'other_size'
+        'other_size',
+        'meta_title',
+        'delivery_info'
         
     ];
 

@@ -49,7 +49,7 @@
                                         <td>{{$values->status}}</td>
                                         <td>
                                             <a href="{{ route('product-show', $values->slug) }}" data-toggle="modal" data-target="#etsbModal" class="btn btn-info btn-xs" title="View"><i class="icon-eye-open"></i></a>
-                                            <a href="{{ route('productvariation-index', $values->slug) }}" target="_blank" class="btn btn-primary btn-xs" title="Variation"><i class="icon-adjust"></i></a>
+                                            <!-- <a href="{{ route('productvariation-index', $values->slug) }}" target="_blank" class="btn btn-primary btn-xs" title="Variation"><i class="icon-adjust"></i></a> -->
                                             <a href="{{ route('product-edit', $values->slug) }}" target="_blank" class="btn btn-primary btn-xs" title="Edit"><i class="icon-edit"></i></a>
                                             <a href="{{ route('product-delete', $values->slug) }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to Delete?')" title="Delete"><i class="icon-trash"></i></a>
                                         </td>

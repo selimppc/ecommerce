@@ -21,7 +21,7 @@
         <li><a  href={{URL::to('product_group/index')}}>Product group</a></li>
         <li><a  href={{URL::to('product_subgroup/index')}}>Product sub group</a></li>
         <li><a  href={{URL::to('product/index')}}>Product</a></li>
-        <li><a  href={{URL::to('gal_image/index')}}>Gallery Image</a></li>
+        <!-- <li><a  href={{URL::to('gal_image/index')}}>Gallery Image</a></li> -->
     </ul>
 </li>
 

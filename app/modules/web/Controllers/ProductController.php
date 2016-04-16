@@ -18,7 +18,12 @@ class ProductController extends Controller
 		$product = DB::table('product')->where('slug',$product_slug)->first();
 		$related_product_r = DB::table('product')->where('product_subgroup_id',$product->product_subgroup_id)->whereNotIn('id',[$product->id])->get();
 
-		$title =$product->title ." | ";
+		if($product->meta_title != ''){
+			$title =$product->meta_title ." | ";
+		}else{
+			$title =$product->title ." | ";
+		}
+		
 
 			return view('web::product.details',[
                 'title' => $title,
