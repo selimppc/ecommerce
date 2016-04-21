@@ -1,0 +1,65 @@
+<?php
+	use App\ProductSubgroups;
+?>
+<div class="col-md-3 padding-left-0">
+	<div class="top-left-menu-container">
+		<ul class="left-menu-product scroll-menu-close">
+
+			<li>
+				<a>Product</a>
+			</li>
+
+			<?php if(!empty($productgroup_data)): ?>:
+				<?php foreach($productgroup_data as $productgroup): ?>:
+					<li>
+						<?php if($productgroup->id == '4'): ?>
+							<a href="<?php echo e(URL::to('')); ?>/pre-order"><?php echo e($productgroup->title); ?></a>
+						<?php elseif($productgroup->id == '5'): ?>
+							<a href="<?php echo e(URL::to('')); ?>/lay-by-instruction"><?php echo e($productgroup->title); ?></a>
+						<?php else: ?>
+							<a href="#"><?php echo e($productgroup->title); ?></a>
+						<?php endif; ?>
+						
+
+						<?php
+							$product_subgroup_data =  DB::table('product_subgroup')->where('product_group_id', $productgroup->id)->orderBy('sort_order','asc')->get();
+							if(!empty($product_subgroup_data)):
+						?>
+								<ul>
+									<?php foreach($product_subgroup_data as $product_subgroup): ?>
+										<li>
+											<a href="<?php echo e(URL::to('/')); ?>/<?php echo e($productgroup->slug); ?>/<?php echo e($product_subgroup->slug); ?>"><?php echo e($product_subgroup->title); ?></a>
+											<?php
+												if($product_subgroup->id == 7):
+											?>
+												<ul>
+													<li>
+														<a href="<?php echo e(Url::to('/')); ?>/<?php echo e($productgroup->slug); ?>/<?php echo e($product_subgroup->slug); ?>/by-brand">By Brands</a>
+													</li>
+													<li>
+														<a href="<?php echo e(Url::to('/')); ?>/<?php echo e($productgroup->slug); ?>/<?php echo e($product_subgroup->slug); ?>/by-seats">By Seats</a>
+													</li>
+													<li>
+														<a href="<?php echo e(Url::to('/')); ?>/<?php echo e($productgroup->slug); ?>/<?php echo e($product_subgroup->slug); ?>/by-voltage">By Voltage</a>
+													</li>
+												</ul>
+											<?php endif;?>
+										</li>
+									<?php endforeach; ?>
+								</ul>
+
+						<?php endif;?>
+					</li>
+				<?php endforeach; ?>
+			<?php endif; ?>;
+			
+			
+		</ul>
+
+		
+
+		<div class="home-left-sidebar-fb">
+			<div class="fb-page" data-href="https://www.facebook.com/Asims-Toys-Kids-Ride-On-Toys-869410779777184/" data-tabs="timeline" data-width="280" data-height="400" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>
+		</div>
+	</div>
+</div>

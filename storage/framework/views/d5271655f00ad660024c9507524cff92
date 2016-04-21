@@ -1,0 +1,105 @@
+<?php $__env->startSection('content'); ?>
+  
+		<div class="home-banner-container">
+			<div class="camera_wrap camera_azure_skin" id="camera_wrap_1">
+
+				<?php if(!empty($slider_data)): ?>:
+					<?php foreach($slider_data as $slider): ?>
+						<div data-src="<?php echo e(URL::to('/')); ?>/<?php echo e($slider->image); ?>"></div>
+					<?php endforeach; ?>
+				<?php endif; ?>;
+	            
+	            
+	        </div><!-- #camera_wrap_1 -->
+		</div>
+
+		<div class="pos-new-product home-text-container">
+			<h4><?php echo e($data->title); ?></h4>
+			<div class="description">
+				<?php echo $data->desc; ?>
+			</div>
+		</div>
+
+
+		<div class="pos-new-product home-new-product-container">
+			<div class="pos-new-product-title title_block">
+				<h4>New Products</h4>
+			</div>
+
+			<ul>
+			
+				<?php if(!empty($featured_product_data)): ?>:
+					<?php foreach($featured_product_data as $featured_product): ?>
+
+						<li class="newproductslider-item ajax_block_product first_item last_item_of_line ">
+							<div class="item-inner">
+
+								<a href="<?php echo e(URL::to('/')); ?>/<?php echo e($featured_product->slug); ?>" title="Malesuada mi" class="bigpic_15_newproduct123 product_image">
+									<img src="<?php echo e(URL::to('/')); ?>/<?php echo e($featured_product->image); ?>"  alt="" />
+								</a>
+				
+								<h5 class="s_title_block">
+									<a href="<?php echo e(URL::to('/')); ?>/<?php echo e($featured_product->slug); ?>" title="Malesuada mi"><?php echo e($featured_product->title); ?></a>
+								</h5>
+			                                            
+			                    <p class="price_container"><span class="price">$229.00</span></p>                                            						
+								<div class="action">						
+									<a class="exclusive ajax_add_to_cart_button" href="#" title="Add to Cart">&nbsp;</a>
+									<a class="lnk_more" href="<?php echo e(URL::to('/')); ?>/<?php echo e($featured_product->slug); ?>" title="View">&nbsp;</a>
+			                     </div>
+							</div> 
+						</li>
+
+
+					<?php endforeach; ?>
+				<?php endif; ?>
+
+				
+
+
+
+			</ul>
+		</div>
+
+		<div class="pos-new-product home-text-container">
+			<div class="col-md-4">
+				<div class="home-youtube">
+					<a class="fancybox-media" href="https://www.youtube.com/watch?v=ypNoWgnbIpg">
+						<img src="<?php echo e(URL::to('/')); ?>/web/images/youtube.jpg">
+					</a>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="home-youtube">
+					<a class="fancybox-media" href="https://www.youtube.com/watch?v=WaS2zOWQM00">
+						<img src="<?php echo e(URL::to('/')); ?>/web/images/youtube.jpg">
+					</a>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="home-youtube">
+					<a class="fancybox-media" href="https://www.youtube.com/watch?v=ypNoWgnbIpg">
+						<img src="<?php echo e(URL::to('/')); ?>/web/images/youtube.jpg">
+					</a>
+				</div>
+			</div>
+		</div>
+
+	
+<?php $__env->stopSection(); ?>
+
+
+
+
+							
+							
+
+							
+
+							
+
+
+
+<?php echo $__env->make('web::layout.web_master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

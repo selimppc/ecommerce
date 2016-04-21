@@ -1,0 +1,111 @@
+<?php $__env->startSection('content'); ?>
+	<div class="pos-new-product home-text-container">
+		<h4>login</h4>
+		<div class="description">
+			
+			<div class="col-md-12">
+				<?php if(Session::has('flash_message_error')): ?>
+	                <div class="alert alert-success">
+	                    <p>Email already presents</p>
+	                </div>
+	            <?php endif; ?>
+
+					<?php if(count($errors) > 0): ?>
+						<div class="alert alert-danger">
+							<ul>
+								<?php foreach($errors->all() as $error): ?>
+									<li><?php echo e($error); ?></li>
+								<?php endforeach; ?>
+							</ul>
+						</div>
+					<?php endif; ?>
+
+						<?php echo Form::open(['route' => 'customer-registration']); ?>
+
+						<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+							<div class="col-md-6">
+								<div class="login_container">
+									<div class="form-group">
+										<label>Email Address</label>
+										<?php echo Form::email('email', null, ['id'=>'email', 'class' => 'form-control','required']); ?>
+
+										
+									</div>
+									
+									<div class="form-group">
+										<label>First Name</label>
+										<?php echo Form::text('first_name', null, ['id'=>'first_name', 'class' => 'form-control','required']); ?>
+
+									</div>
+
+									<div class="form-group">
+										<label>Last Name</label>
+										<?php echo Form::text('last_name', null, ['id'=>'last_name', 'class' => 'form-control','required']); ?>
+
+									</div>
+
+									<div class="form-group">
+										<label>Post code</label>
+										<?php echo Form::text('post_code', null, ['id'=>'post_code', 'class' => 'form-control','required']); ?>
+
+									</div>
+
+									<div class="form-group">
+										<label>Country</label>
+										<?php echo Form::Select('country',array('Australia'=>'Australia'),Input::old('country'),['class'=>'form-control ','required']); ?>
+
+										
+									</div>
+									<div class="form-group">
+										<input type="submit" class="form-control register_btn" name="submit" value="Register">
+									</div>
+
+								</div>
+								
+							</div>
+
+							<div class="col-md-6">
+								
+								<div class="login_container">
+									<div class="form-group">
+										<label>Password</label>
+										<?php echo Form::password('password', null, ['id'=>'password', 'class' => 'form-control','required']); ?>
+
+									</div>
+
+									<div class="form-group">
+										<label>Address</label>
+										 <?php echo Form::textarea('address', null, ['id'=>'address', 'class' => 'form-control', 'cols'=>'15' , 'rows'=>'5']); ?>
+
+									</div>
+									
+									<div class="form-group">
+										<label>Suburb</label>
+										<?php echo Form::text('suburb', null, ['id'=>'suburb', 'class' => 'form-control','required']); ?>
+
+									</div>
+									<div class="form-group">
+										<label>Please select state</label>
+										<?php echo Form::Select('state',array('ACT'=>'ACT','NSW'=>'NSW','VIC' => 'VIC','QLD' => 'QLD','SA' => 'SA','WA' => 'WA','TAS' => 'TAS','NT' => 'NT'),Input::old('state'),['class'=>'form-control ','required']); ?>
+
+										
+									</div>
+									<div class="form-group">
+										<label>Telephone</label>
+										<?php echo Form::text('telephone', null, ['id'=>'telephone', 'class' => 'form-control','required']); ?>
+
+									</div>
+								</div>
+							</div>
+						<?php echo Form::close(); ?>
+
+
+					</div>
+					
+
+
+
+		</div>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('web::layout.web_master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

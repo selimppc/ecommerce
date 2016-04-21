@@ -1,0 +1,37 @@
+<?php $__env->startSection('content'); ?>
+	<div class="pos-new-product home-new-product-container">
+
+		<div class="pos-new-product-title title_block">
+			<h4>Pre order</h4>
+			
+		</div>
+
+
+		
+			<?php if(!empty($productdata)): ?>
+				<ul>
+					<?php foreach($productdata as $product): ?>
+						<li class="newproductslider-item ajax_block_product first_item last_item_of_line ">
+							<div class="item-inner">
+								<a href="<?php echo e(URL::to('/')); ?>/<?php echo e($product->slug); ?>" title="Malesuada mi" class="bigpic_15_newproduct123 product_image">
+									<img src="<?php echo e(URL::to('/')); ?>/<?php echo e($product->image); ?>"  alt="" />
+								</a>
+								<h5 class="s_title_block">
+									<a href="<?php echo e(URL::to('/')); ?>/<?php echo e($product->slug); ?>" title="Malesuada mi"><?php echo e($product->title); ?></a>
+								</h5>
+			                                            
+			                    <p class="price_container"><span class="price">$<?php echo e($product->sell_rate); ?></span></p>                                            						
+								<div class="action">						
+									<a class="exclusive ajax_add_to_cart_button" href="<?php echo e(URL::to('/')); ?>/<?php echo e($product->slug); ?>" title="Add to Cart">&nbsp;</a>
+									<a class="lnk_more" href="<?php echo e(URL::to('/')); ?>/<?php echo e($product->slug); ?>" title="View">&nbsp;</a>
+			                     </div>
+							</div>
+						</li>
+					<?php endforeach; ?>
+				</ul>
+			<?php endif; ?>
+		
+
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('web::layout.web_master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

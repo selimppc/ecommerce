@@ -1,0 +1,15 @@
+<?php $__env->startSection('content'); ?>
+	<div class="pos-new-product home-text-container">
+		<h4><?php echo e($data->title); ?></h4>
+		<div class="description">
+			<?php
+				if(!empty($data->desc)){
+					echo $data->desc;
+				}else{
+					echo 'No content yet.';
+				}
+			?>
+		</div>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('web::layout.web_master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
