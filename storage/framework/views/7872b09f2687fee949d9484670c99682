@@ -1,7 +1,7 @@
 <div class="modal-dialog" style="width: 80%;">
     <div class="modal-content">
         <div class="modal-header">
-            <h4 class="modal-title">{{$pageTitle}}</h4>
+            <h4 class="modal-title"><?php echo e($pageTitle); ?></h4>
             <a href="" class="btn btn-default" style="float: right;margin-top: -30px;color: #fff;" type="button"> X </a>
         </div>
 
@@ -19,46 +19,46 @@
                         <table id="" class="table table-bordered table-hover table-striped">
                             <tr>
                                 <th class="col-lg-4"> Title </th>
-                                <td>{{ isset($data->title)?$data->title:''}}</td>
+                                <td><?php echo e(isset($data->title)?$data->title:''); ?></td>
                             </tr>
                             <tr>
                                 <th class="col-lg-4"> Slug </th>
-                                <td>{{ isset($data->slug)?$data->slug:'' }}</td>
+                                <td><?php echo e(isset($data->slug)?$data->slug:''); ?></td>
                             </tr>
                             <tr>
                                 <th class="col-lg-4"> Featured Image </th>
                                 <td>
                                     <div>
-                                        @if($data->thumbnail)
-                                        <a href="{{ route('article.image.show', $data->slug) }}" class="btn btn-info btn-xs" data-toggle="modal" data-target="#imageView"><img src="{{ URL::to($data->thumbnail) }}" height="50px" width="50px" alt="{{$data->thumbnail}}" />
+                                        <?php if($data->thumbnail): ?>
+                                        <a href="<?php echo e(route('article.image.show', $data->slug)); ?>" class="btn btn-info btn-xs" data-toggle="modal" data-target="#imageView"><img src="<?php echo e(URL::to($data->thumbnail)); ?>" height="50px" width="50px" alt="<?php echo e($data->thumbnail); ?>" />
                                         </a>
-                                            @endif
+                                            <?php endif; ?>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <th class="col-lg-4"> Desc </th>
-                                <td>{!! isset($data->desc)?$data->desc:'' !!}</td>
+                                <td><?php echo isset($data->desc)?$data->desc:''; ?></td>
                             </tr>
                             <tr>
                                 <th class="col-lg-4"> Meta Title </th>
-                                <td>{{ isset($data->meta_title)?$data->meta_title:'' }}</td>
+                                <td><?php echo e(isset($data->meta_title)?$data->meta_title:''); ?></td>
                             </tr>
                             <tr>
                                 <th class="col-lg-4"> Meta Keyword </th>
-                                <td>{{ isset($data->meta_keyword)?$data->meta_keyword:'' }}</td>
+                                <td><?php echo e(isset($data->meta_keyword)?$data->meta_keyword:''); ?></td>
                             </tr>
                             <tr>
                                 <th class="col-lg-4"> Meta Desc </th>
-                                <td>{{ isset($data->meta_desc)?$data->meta_desc:'' }}</td>
+                                <td><?php echo e(isset($data->meta_desc)?$data->meta_desc:''); ?></td>
                             </tr>
                             <tr>
                                 <th class="col-lg-4"> Sort Order </th>
-                                <td>{{ isset($data->sort_order)?$data->sort_order:'' }}</td>
+                                <td><?php echo e(isset($data->sort_order)?$data->sort_order:''); ?></td>
                             </tr>
                             <tr>
                                 <th class="col-lg-4"> Status </th>
-                                <td>{{ isset($data->status)?$data->status:'' }}</td>
+                                <td><?php echo e(isset($data->status)?$data->status:''); ?></td>
                             </tr>
 
 
@@ -68,24 +68,24 @@
                     <div role="tabpanel" class="tab-pane article-page-tab " id="advanced">
                         
                         <table id="" class="table table-bordered table-hover table-striped">
-                            @if(!empty($all_article_data))
+                            <?php if(!empty($all_article_data)): ?>
                                 <tr>
                                     <th> Title </th>
                                     <th> Description </th>
                                     <th> Image</th>
                                     <th> Action</th>
                                 </tr>
-                                @foreach($all_article_data as $all_article)
+                                <?php foreach($all_article_data as $all_article): ?>
 
                                     <tr>
-                                        <td> {{$all_article->title}} </td>
-                                        <td> {{$all_article->desc}} </td>
-                                        <td> {{$all_article->image}}</td>
-                                        <td> <a href="{{ route('article-subarticledelete', $all_article->id) }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to Delete?')" title="Delete"><i class="icon-trash"></i></a></td>
+                                        <td> <?php echo e($all_article->title); ?> </td>
+                                        <td> <?php echo e($all_article->desc); ?> </td>
+                                        <td> <?php echo e($all_article->image); ?></td>
+                                        <td> <a href="<?php echo e(route('article-subarticledelete', $all_article->id)); ?>" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to Delete?')" title="Delete"><i class="icon-trash"></i></a></td>
                                     </tr>
 
-                                @endforeach
-                            @endif                           
+                                <?php endforeach; ?>
+                            <?php endif; ?>                           
 
                         </table>
                     </div>

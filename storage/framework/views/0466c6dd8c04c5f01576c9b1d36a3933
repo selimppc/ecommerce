@@ -1,0 +1,101 @@
+<div class="cart-item-container">
+
+			<?php if(!empty($product_cart_r)): ?>
+
+				<table class="table table-striped cart-table" style="width: 100%;margin-bottom: 20px;">
+				<thead style="background: #546f7a;color: #fff;">
+					<tr>
+						<td style="padding:8px;">Item</td>
+						<td style="padding:8px;text-align:center;">Qty</td>
+						<td style="padding:8px;text-align:right;">Unit Price</td>
+						<td style="padding:8px;text-align:right;" class="text-align-right">Line Total</td>
+					</tr>
+				</thead>
+
+				<tbody>
+					<?php
+						$total_value = 0;
+
+						$count = 0;
+					?>
+					<?php foreach($product_cart_r as $product_cart): ?>
+						<?php
+							$product_id = $product_cart['product_id'];
+							$product = DB::table('product')->where('id',$product_id)->first();
+						?>
+						<tr>
+							
+							<td style="padding:8px;color: #576d78;text-transform: uppercase;font-weight: 700;float: left;">
+									
+								<?php echo e($product->title); ?>
+
+								
+							</td>
+							<td style="padding: 8px;outline: none;width: 50px;text-align: center;">
+								<?php echo e($product_cart['product_qty']); ?>
+
+							</td>
+							<td style="padding:8px;text-align:right;">
+								
+									$<?php echo e($product_cart['product_price']); ?>
+
+								
+							</td>
+							<td style="padding:8px;text-align:right;">
+								
+										$<?php echo e($product_cart['product_qty']*$product_cart['product_price']); ?>				
+										<?php
+											$total_value+=$product_cart['product_qty']*$product_cart['product_price'];
+										?>
+								
+							</td>	
+							
+						</tr>
+						<?php $count++;?>
+					<?php endforeach; ?>
+						<tr style="background-color: #f1f1f1;">
+							<td>
+								&nbsp;</td>
+							<td>
+							</td>
+							<td style="padding:8px;text-align:right;">Total:</td>
+							<td style="padding:8px;text-align:right;">$<?php echo e($total_value); ?></td>
+							
+						</tr>
+				</tbody>
+			</table>
+
+
+			<?php else: ?>
+				<div class="empty_cart">Your Cart is empty</div>
+			<?php endif; ?>
+			
+		</div>
+
+		<div class="col-md-6" style="width:50%;float:left;">
+			<div class="row">
+				<div class="billing_address">
+					<h2 style="text-transform: uppercase;font-size: 14px;font-weight: 700;color: #576d78;margin: 0;margin-bottom: 20px;">Billing Details</h2>
+					<p style="color: #666;font-size: 13px;margin-bottom: 2px;"><?php echo e($user_data->first_name); ?> <?php echo e($user_data->last_name); ?></p>
+					<p style="color: #666;font-size: 13px;margin-bottom: 2px;"><?php echo e($user_data->email); ?></p>
+					<p style="color: #666;font-size: 13px;margin-bottom: 2px;"><?php echo e($user_data->address); ?></p>
+					<p style="color: #666;font-size: 13px;margin-bottom: 2px;"><?php echo e($user_data->suburb); ?> <?php echo e($user_data->state); ?> <?php echo e($user_data->postcode); ?></p>
+					<p style="color: #666;font-size: 13px;margin-bottom: 2px;"><?php echo e($user_data->country); ?></p>
+					<p style="color: #666;font-size: 13px;margin-bottom: 2px;"><?php echo e($user_data->telephone); ?></p>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-6" style="width:50%;float:left;">
+			<div class="row">
+				<div class="billing_address">
+					<h2 style="text-transform: uppercase;font-size: 14px;font-weight: 700;color: #576d78;margin: 0;margin-bottom: 20px;">Delivery Details</h2>
+					<p style="color: #666;font-size: 13px;margin-bottom: 2px;"><?php echo e($delivery_data->first_name); ?> <?php echo e($delivery_data->last_name); ?></p>
+					<p style="color: #666;font-size: 13px;margin-bottom: 2px;"><?php echo e($delivery_data->email); ?></p>
+					<p style="color: #666;font-size: 13px;margin-bottom: 2px;"><?php echo e($delivery_data->address); ?></p>
+					<p style="color: #666;font-size: 13px;margin-bottom: 2px;"><?php echo e($delivery_data->suburb); ?> <?php echo e($delivery_data->state); ?> <?php echo e($delivery_data->postcode); ?></p>
+					<p style="color: #666;font-size: 13px;margin-bottom: 2px;"><?php echo e($delivery_data->country); ?></p>
+					<p style="color: #666;font-size: 13px;margin-bottom: 2px;"><?php echo e($delivery_data->telephone); ?></p>
+				</div>
+			</div>
+		</div>

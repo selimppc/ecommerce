@@ -20,6 +20,11 @@ Route::any("product/edit/{slug}", [
     "uses" => "ProductController@edit"
 ]);
 
+Route::any("product/duplicate/{slug}", [
+    "as"   => "product-duplicate",
+    "uses" => "ProductController@duplicate"
+]);
+
 Route::any("product/delete/{slug}", [
     "as"   => "product-delete",
     "uses" => "ProductController@delete"

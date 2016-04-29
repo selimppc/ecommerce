@@ -34,7 +34,7 @@ class WwwController extends Controller
     public function home_page()
     {
     	$title = "Welcome to the";
-    	$slider_data = SliderImage::where('cat_slider_id', 1)->get();
+    	$slider_data = SliderImage::where('cat_slider_id', 1)->where('status','active')->get();
     	$featured_product_data = Product::where('is_featured','Yes')->where('status','active')->get();
 
     	$home_value = "off-the-wall";

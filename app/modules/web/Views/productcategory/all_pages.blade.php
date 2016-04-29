@@ -5,7 +5,11 @@
 		@include('web::layout.web_sidemenu')
 		<div class="col-md-9 col-sm-12 col-xs-12 row-right-0">
 			<div class="inner_banner margin-top-50 margin-bottom-50">
-				<img src="{{URL::to('')}}/web/images/inner-banner.png">
+				@if(!empty($productcategory->featured_image))
+					<img src="<?=$productcategory->featured_image?>">
+				@else
+					<img src="{{URL::to('')}}/web/images/inner-banner.png">
+				@endif
 			</div>
 
 		</div>
@@ -25,7 +29,7 @@
 								<div class="image_container">
 
 									<div class="product-thum-image">
-										<img class="zoom_01" data-zoom-image="{{URL::to('')}}/{{$product_data->featured_image}}" src="{{URL::to('')}}/{{$product_data->featured_image}}" width="100%">
+										<img class="zoom_01" data-zoom-image="{{URL::to('')}}/{{$product_data->image}}" src="{{URL::to('')}}/{{$product_data->image}}" width="100%">
 									</div>
 
 								</div>

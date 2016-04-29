@@ -135,10 +135,10 @@ return [
     'driver' => 'smtp',
     'host' => 'smtp.gmail.com',
     'port' => 465,
-    'from' => array('address' => 'tanin09008@gmail.com', 'name' => 'BZM Graphics'),
+    'from' => array('address' => 'halfwaysmtp@gmail.com', 'name' => 'OFF THE WALL'),
     'encryption' => 'ssl',
-    'username' => 'tanin09008@gmail.com',
-    'password' => 'tanvir123',
+    'username' => 'halfwaysmtp@gmail.com',
+    'password' => 'halfwaysmtpmithun',
     'sendmail' => '/usr/sbin/sendmail -bs',
     'pretend' => false,
 

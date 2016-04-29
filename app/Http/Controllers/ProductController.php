@@ -125,6 +125,36 @@ class ProductController extends Controller
        return view('product.show', ['data' => $data,'pageTitle' => $pageTitle]);
     }
 
+    public function duplicate($slug){
+
+        $data = Product::where('slug',$slug)->first();
+
+        $model = new Product();
+        $model->product_category_id = $data->product_category_id;
+        $model->product_group_id = $data->product_group_id;
+        $model->product_subgroup_id = $data->product_subgroup_id;
+        $model->title = "copy-" . $data->title;
+        $model->slug = "copy-" . $data->slug;
+        $model->short_description = $data->short_description;
+        $model->long_description = $data->long_description;
+        $model->status = $data->status;
+        $model->class = $data->class;
+        $model->sell_rate =  $data->sell_rate;
+        $model->cost_price =  $data->cost_price;
+        $model->stock_unit_quantity =  $data->stock_unit_quantity;
+        $model->is_featured =  $data->is_featured;
+        $model->before_price =  $data->before_price;
+        $model->product_code =  $data->product_code;
+        $model->size =  $data->size;
+        $model->other_size =  $data->other_size;
+        $model->meta_title =  $data->meta_title;
+        $model->delivery_info  = $data->delivery_info;
+
+        $model->save();
+
+        return redirect()->route('product-index');
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -182,11 +212,11 @@ class ProductController extends Controller
 
             if ($file_name != '') {
                 if(!empty($model->image)){
-                    unlink(public_path()."/".$model->image);    
+                    @unlink(public_path()."/".$model->image);    
                 }
                 
                 if(!empty($model->thumb)){
-                    unlink(public_path()."/".$model->thumb);    
+                    @unlink(public_path()."/".$model->thumb);    
                 }
                 
                 $input['image'] = $file_name[0];
@@ -232,8 +262,8 @@ class ProductController extends Controller
             if ($model->delete()) {
 
                 if(!empty($model->image)):
-                    unlink(public_path()."/".$model->image);
-                    unlink(public_path()."/".$model->thumb);
+                    @unlink(public_path()."/".$model->image);
+                    @unlink(public_path()."/".$model->thumb);
                 endif;
                 DB::commit();               
                 Session::flash('flash_message', " Successfully Deleted.");

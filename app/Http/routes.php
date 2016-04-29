@@ -117,6 +117,7 @@ Route::group(['middleware' => 'auth'], function()
     @include('routes_blog_comment.php');
     @include('routes_media.php');
     @include('routes_widget.php');
+    @include('routes_order_payment.php');
 
 
 /*Route::get('/', [

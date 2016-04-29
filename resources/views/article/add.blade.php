@@ -82,7 +82,7 @@
                     </div>
 
                     <div class="form-group last">
-                        <label class="control-label col-md-3">Featured Image</label>
+                        <label class="control-label col-md-3">Banner Image</label>
                         <div class="col-md-9">
                             <div class="fileupload fileupload-new" data-provides="fileupload">
                                 <div class="fileupload-new thumbnail" style="width: 120px; height: 120px;">
@@ -108,11 +108,11 @@
 
                     <div class="form-group">
                         {!! Form::label('type', 'Type:', ['class' => 'control-label']) !!}
-                        <small class="required">(Required)</small>
+                        <!-- <small class="required">(Required)</small> -->
                         @if(count($type)>0)
-                            {!! Form::select('type', $type,Input::old('type'),['class' => 'form-control','id'=>'type','required']) !!}
+                            {!! Form::select('type', $type,Input::old('type'),['class' => 'form-control','id'=>'type']) !!}
                         @else
-                            {!! Form::text('type', 'No Type ID available',['id'=>'type','class' => 'form-control','required','disabled']) !!}
+                            {!! Form::text('type', 'No Type ID available',['id'=>'type','class' => 'form-control','disabled']) !!}
                         @endif
                     </div>
 
@@ -128,7 +128,7 @@
                     </div>
 
                     {{--<div class="form-group last">
-                        <label class="control-label col-md-3">Featured Image 2</label>
+                        <label class="control-label col-md-3">Banner Image 2</label>
                         <div class="col-md-9">
                             <div class="fileupload fileupload-new" data-provides="fileupload">
                                 <div class="fileupload-new thumbnail" style="width: 120px; height: 120px;">
@@ -137,7 +137,7 @@
                                 <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
                                 <div>
                                            <span class="btn btn-white btn-file">
-                                           <span class="fileupload-new"><i class="icon-paper-clip"></i> Select image-2</span>
+                                           <span class="fileupload-new"><i class="icon-paper-clip"></i> Select image</span>
                                            <span class="fileupload-exists"><i class="icon-undo"></i> Change</span>
                                            <input type="file" name="featured_image_2" id="featured_image_2" class="default" />
                                            </span>
@@ -166,14 +166,14 @@
 
                                         <label for="title" class="control-label">Title:</label>
                                         <small class="required">(Required)</small>
-                                        <input class="form-control" required="required" name="post_title[]" type="text">
+                                        <input class="form-control"  name="post_title[]" type="text">
 
                                     </div>
 
 
                                      <div class="form-group">
                                         <label for="title" class="control-label">Description:</label>
-                                        <textarea class="form-control" rows="4" required="required" name="post_desc[]" ></textarea>
+                                        <textarea class="form-control" rows="4" name="post_desc[]" ></textarea>
                                     </div>
                                 </div>
 
@@ -188,7 +188,7 @@
                                                     <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
                                                     <div>
                                                         <span class="btn btn-white btn-file">
-                                                        <span class="fileupload-new"><i class="icon-paper-clip"></i> Select image-2</span>
+                                                        <span class="fileupload-new"><i class="icon-paper-clip"></i> Select image</span>
                                                         <span class="fileupload-exists"><i class="icon-undo"></i> Change</span>
                                                         <input type="file" name="post_image[]" id="" class="default">
                                                         </span>

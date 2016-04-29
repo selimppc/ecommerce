@@ -48,6 +48,11 @@ Route::any("article/delete/{slug}", [
     "uses" => "ArticleController@delete"
 ]);
 
+Route::any("article/subarticledelete/{id}", [
+    "as"   => "article-subarticledelete",
+    "uses" => "ArticleController@subarticledelete"
+]);
+
 Route::any('article/image-show/{slug}', [
     'as' => 'article.image.show',
     'uses' => 'ArticleController@image_show'

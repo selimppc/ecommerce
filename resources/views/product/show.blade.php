@@ -2,6 +2,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <h4 class="modal-title">{{$pageTitle}}</h4>
+            <a href="" class="btn btn-default" style="float: right;margin-top: -30px;color: #fff;" type="button"> X </a>
         </div>
 
         <div class="modal-body">
@@ -29,49 +30,46 @@
                         <td>{{$data->slug}}</td>
                     </tr>
                     <tr>
-                        <th> SKU Code </th>
-                        <td>{{$data->sku}}</td>
+                        <th> Meta Title </th>
+                        <td>{{$data->meta_title}}</td>
                     </tr>
                     <tr>
-                        <th> Sell Unit </th>
-                        <td>{{$data->sell_unit}}</td>
+                        <th> Pick up/Now Price </th>
+                        <td>{{$data->sell_rate}}</td>
                     </tr>
 
                     <tr>
-                        <th> Sell Quantity </th>
-                        <td>{{$data->sell_unit_quantity}}</td>
-                    </tr>
-                    <tr>
-                        <th> Sell Rate </th>
-                        <td>{{$data->sell_rate}}</td>
-                    </tr>
-                    <tr>
-                        <th> Cost Price </th>
+                        <th> Delivered Price </th>
                         <td>{{$data->cost_price}}</td>
                     </tr>
                     <tr>
-                        <th> Stock Unit </th>
-                        <td>{{$data->stock_unit}}</td>
+                        <th>Before Price </th>
+                        <td>{{$data->before_price}}</td>
+                    </tr>
+                   
+                    <tr>
+                        <th> Product Code </th>
+                        <td>{{$data->product_code}}</td>
+                    </tr>
+                    <tr>
+                        <th> Sizes </th>
+                        <td>{{$data->size}}</td>
+                    </tr>
+                    <tr>
+                        <th> Other Sizes</th>
+                        <td>{{$data->other_size}}</td>
                     </tr>
                     <tr>
                         <th> Stock Quantity </th>
                         <td>{{$data->stock_unit_quantity}}</td>
                     </tr>
                     <tr>
-                        <th> Is Price Vary?</th>
-                        <td>{{$data->is_price_vary}}</td>
-                    </tr>
-                    <tr>
-                        <th> Is featured? </th>
-                        <td>{{$data->is_featured}}</td>
-                    </tr>
-                    <tr>
-                        <th> Short Description </th>
-                        <td>{{$data->short_description}}</td>
+                        <th> Delivery Info </th>
+                        <td>{{$data->delivery_info}}</td>
                     </tr>
                      <tr>
-                        <th> Full Description </th>
-                        <td>{{$data->long_description}}</td>
+                        <th> Description </th>
+                        <td>{{$data->short_description}}</td>
                     </tr>
                 </table>
             </div>

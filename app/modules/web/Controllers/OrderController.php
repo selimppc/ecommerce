@@ -7,15 +7,83 @@ use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\ProductGroup;
+use App\Product;
+use App\Orderoverhead;
+use App\Orderdetails;
 use App\Customer;
 use App\Deliverydetails;
 use DB;
 use Session;
 use Input;
+use Mail;
 
 class OrderController extends Controller
 {
 
+    public function test(Request $request){
+
+        $email = 'mithun.cse521@gmail.com';
+        $invoice_id = '11111';
+
+        $product_cart = $request->session()->get('product_cart');
+
+        $user_id = $request->session()->get('billing_id');
+        $deliver_id = $request->session()->get('deliver_id');
+
+        $user_data = DB::table('customer')->where('id',$user_id)->first();
+        $delivery_data = DB::table('deliverydetails')->where('id',$deliver_id)->orderBy('id', 'desc')->first();
+
+        Mail::send('web::cart.mail_template', array('user_data' =>$user_data,'delivery_data'=>$delivery_data,'product_cart_r' => $product_cart),
+        function($message) use ($email,$invoice_id)
+        {
+            $message->from('test@edutechsolutionsbd.com', 'Purchase product | OFF THE WALL');
+            $message->to($email);
+            $message->cc('mithun.cse521@gmail.com', 'Purchase product | OFF THE WALL');
+            // $message->replyTo('tanintjt.1990@gmail.com','User Signup Request');
+            $message->subject('Your Order No is ' .$invoice_id );
+        });
+        // $paypal_email = 'offthewallframing@gmail.com';
+        // $return_url = '';
+        // $cancel_url = '';
+        // $notify_url = '';
+        // $item_name = 'Test Item';
+        // $item_amount = 5.00;
+
+        // $querystring = '';
+
+        //  // Firstly Append paypal account to querystring
+        // $querystring .= "?business=".urlencode($paypal_email)."&";
+
+        // $querystring .= "item_name=".urlencode('hello')."&";
+        // $querystring .= "amount=".urlencode(100)."&";
+
+        // $querystring .= "cmd=_xclick&";
+        // //$querystring .= "item_number=MEM32507725&";
+        // $querystring .= "tax=0&";
+        // $querystring .= "quantity=1&";
+        // $querystring .= "no_note=1&";
+        // $querystring .= "currency_code=USD&";
+        // $querystring .= "address_override=1&";
+        // $querystring .= "first_name=Craig &";
+        // $querystring .= "last_name=Anderson&";
+        // $querystring .= "address1= Lot 5 Unit 2 Boundary st&";
+        // $querystring .= "city=Tumut&";
+        // $querystring .= "state=NSW&";
+        // $querystring .= "zip=2720&";
+        // $querystring .= "country=US&";
+     
+        // // Append paypal return addresses
+        // $querystring .= "return=".urlencode(stripslashes($return_url))."&";
+        // $querystring .= "cancel_return=".urlencode(stripslashes($cancel_url))."&";
+        // $querystring .= "notify_url=".urlencode($notify_url);
+     
+        // // Append querystring with custom field
+        // $querystring .= "user_id=craig.anderson350@bigpond.com";
+     
+        // // Redirect to paypal IPN
+        // $reval = 'https://www.sandbox.paypal.com/cgi-bin/webscr'.$querystring;
+        //  return redirect($reval);
+    }
 	public function add_to_cart(Request $request){
 
 		if(isset($_POST)){
@@ -184,6 +252,99 @@ class OrderController extends Controller
                 'user_data' => $user_data,
                 'delivery_data' => $delivery_data
             ]);
+    }
+
+    public function thankyou(){
+
+        $title = 'Thank you';
+
+        return View('web::cart.thankyou',[
+                'title' => $title
+            ]);
+    }
+
+    public function saveorder(Request $request){
+
+        $product_cart_r = $request->session()->get('product_cart');
+        
+        $user_id = $request->session()->get('billing_id');
+        $deliver_id = $request->session()->get('deliver_id');
+
+        DB::beginTransaction();
+        try {
+
+            $invoice_number = DB::table('order_overhead')->orderBy('id','desc')->first();;
+
+            if(empty($invoice_number)){
+                $invoice_number = 1;
+            }else{
+                $invoice_number = $invoice_number->id +1;
+            }
+
+            $modal = new Orderoverhead();
+
+            $modal->invoice_id = 'INV-'.$invoice_number;
+            $modal->user_id = $user_id;
+            $modal->status ='open';
+
+            $modal->save();
+
+            foreach($product_cart_r as $product_cart){
+
+                $deliver_modal = new Orderdetails();
+
+                $deliver_modal->order_head_id =$modal->id;
+                $deliver_modal->product_id =$product_cart['product_id'];
+                $deliver_modal->qty = $product_cart['product_qty'];
+                $deliver_modal->price = $product_cart['product_price'];
+                $deliver_modal->status= 0;
+
+                $deliver_modal->save();
+
+                $product_remove =  Product::where('id',$product_cart['product_id'])->first();
+
+                $product_remove->stock_unit_quantity = $product_remove->stock_unit_quantity - $product_cart['product_qty'];
+
+                $product_remove->save();
+            }
+            
+             
+
+            DB::commit();
+
+            $invoice_id = $modal->invoice_id;
+
+            $user_data = DB::table('customer')->where('id',$user_id)->first();
+            $delivery_data = DB::table('deliverydetails')->where('id',$deliver_id)->orderBy('id', 'desc')->first();
+
+            $email = $user_data->email;
+
+            Mail::send('web::cart.mail_template', array('user_data' =>$user_data,'delivery_data'=>$delivery_data,'product_cart_r' => $product_cart_r),
+            function($message) use ($email,$invoice_id)
+            {
+                $message->from('offthewallframing@gmail.com', 'Purchase product | OFF THE WALL');
+                $message->to($email);
+                $message->cc('offthewallframing@gmail.com', 'Purchase product | OFF THE WALL');
+                // $message->replyTo('tanintjt.1990@gmail.com','User Signup Request');
+                $message->subject('Your Order No is ' .$invoice_id );
+            });
+
+            $ajax_response_data = array(
+                'status' => "1",
+                'message' => "22"
+            );
+            echo json_encode($ajax_response_data);
+            exit;
+
+        }catch (\Exception $e) {
+            //If there are any exceptions, rollback the transaction`
+            DB::rollback();
+            print_r($e->getMessage());
+            Session::flash('flash_message_error', $e->getMessage());
+        }
+
+
+       
     }
 	
 }

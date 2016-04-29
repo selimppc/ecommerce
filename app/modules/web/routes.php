@@ -66,6 +66,11 @@ Route::any('mycart',[
 		'uses' => 'CartController@mycart'
 	]);
 
+Route::any('order/test',[
+		'as' => 'order_test',
+		'uses' => 'OrderController@test'
+	]);
+
 Route::any('order/update_cart',[
 		'as' => 'update_cart',
 		'uses' => 'OrderController@update_cart'
@@ -111,6 +116,15 @@ Route::any('order/confirm',[
 		'uses' => 'OrderController@orderconfirm'
 	]);
 
+Route::any('order/thank-you',[
+		'as' => 'order-thank-you',
+		'uses' => 'OrderController@thankyou'
+	]);
+
+Route::any('order/saveorder',[
+		'as' => 'order-thank-you',
+		'uses' => 'OrderController@saveorder'
+	]);
 
 Route::any('customer-reviews',[
 		'as' => 'customer-reviews',

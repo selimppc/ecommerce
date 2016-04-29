@@ -15,7 +15,7 @@ class ProductController extends Controller
 
 	public function index($product_slug){
 
-		$product = DB::table('product')->where('slug',$product_slug)->first();
+		$product = DB::table('product')->where('slug',$product_slug)->where('status','active')->first();
 		$related_product_r = DB::table('product')->where('product_subgroup_id',$product->product_subgroup_id)->whereNotIn('id',[$product->id])->get();
 
 		if($product->meta_title != ''){

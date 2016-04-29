@@ -50,10 +50,13 @@
                                             <a href="<?php echo e(route('product-show', $values->slug)); ?>" data-toggle="modal" data-target="#etsbModal" class="btn btn-info btn-xs" title="View"><i class="icon-eye-open"></i></a>
                                             <!-- <a href="<?php echo e(route('productvariation-index', $values->slug)); ?>" target="_blank" class="btn btn-primary btn-xs" title="Variation"><i class="icon-adjust"></i></a> -->
                                             <a href="<?php echo e(route('product-edit', $values->slug)); ?>" target="_blank" class="btn btn-primary btn-xs" title="Edit"><i class="icon-edit"></i></a>
+                                            <a href="<?php echo e(route('product-duplicate', $values->slug)); ?>" target="_self" class="btn btn-primary btn-xs" title="Duplicate"><i class="icon-copy"></i></a>
                                             <a href="<?php echo e(route('product-delete', $values->slug)); ?>" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to Delete?')" title="Delete"><i class="icon-trash"></i></a>
                                         </td>
                                      </tr>
                                 <?php endforeach; ?>
+                                <?php echo $data->render(); ?>
+
                             <?php endif; ?>
                         </table>
                        

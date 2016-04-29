@@ -56,7 +56,7 @@ class ArticleController extends Controller
     public function add_index()
     {
         $pageTitle = "Article/Page";
-        $parent_id = Pageparent::lists('title','id');
+        $parent_id = [''=>'Please select parent']+ Pageparent::lists('title','id')->all();
         return view('article.add', [
                 'pageTitle'=> $pageTitle,
                 'type' => $parent_id
@@ -117,32 +117,36 @@ class ArticleController extends Controller
             $post_title = Input::get('post_title');
             $post_desc = Input::get('post_desc');
 
-            for($i=0; $i<count(Input::get('post_title')); $i++){
-                // sub article
-                $model = new Articlesub();
-                $model->article_id = @$article_data->id;
-                $model->title = @$post_title[$i];
-                $model->desc = @$post_desc[$i];
+           
+            if(!empty($post_title[0])):
+                for($i=0; $i<count(Input::get('post_title')); $i++){
+                    // sub article
+                    $model = new Articlesub();
+                    $model->article_id = @$article_data->id;
+                    $model->title = @$post_title[$i];
+                    $model->desc = @$post_desc[$i];
 
-                // files and data(s)
-                $rules = array('file' => 'required|mimes:png,gif,jpeg,jpg');
-                $validator = Validator::make(array('file' => $files[$i]), $rules);
-                if ($validator->passes()) {
-                    // Files destination
-                    $destinationPath = 'uploads/sub_article/';
-                    // Create folders if they don't exist
-                    if (!file_exists($destinationPath)) {
-                        mkdir($destinationPath, 0777, true);
+                    // files and data(s)
+                    $rules = array('file' => 'required|mimes:png,gif,jpeg,jpg');
+                    $validator = Validator::make(array('file' => $files[$i]), $rules);
+                    if ($validator->passes()) {
+                        // Files destination
+                        $destinationPath = 'uploads/sub_article/';
+                        // Create folders if they don't exist
+                        if (!file_exists($destinationPath)) {
+                            mkdir($destinationPath, 0777, true);
+                        }
+                        $file_original_name = $files[$i]->getClientOriginalName();
+                        $file_name = rand(11111, 99999) . $file_original_name;
+                        $upload_success = $files[$i]->move($destinationPath, $file_name);
+
+                        //model data
+                        $model->image = 'uploads/sub_article/' . $file_name;
                     }
-                    $file_original_name = $files[$i]->getClientOriginalName();
-                    $file_name = rand(11111, 99999) . $file_original_name;
-                    $upload_success = $files[$i]->move($destinationPath, $file_name);
-
-                    //model data
-                    $model->image = 'uploads/sub_article/' . $file_name;
+                    $model->save();
                 }
-                $model->save();
-            }
+
+                endif;
             DB::commit();
             Session::flash('flash_message', 'Successfully added!');
         }catch (\Exception $e) {
@@ -164,7 +168,8 @@ class ArticleController extends Controller
     {
         $pageTitle = 'Show the detail';
         $data = Article::where('slug',$slug)->first();
-        return view('article.view', ['data' => $data, 'pageTitle'=> $pageTitle]);
+        $all_article_data = Articlesub::where('article_id',$data->id)->get();
+        return view('article.view', ['data' => $data, 'pageTitle'=> $pageTitle,'all_article_data' => $all_article_data]);
     }
 
     /**
@@ -176,14 +181,16 @@ class ArticleController extends Controller
     public function edit($slug)
     {
         $data = Article::where('slug',$slug)->first();
-        $parent_id = Pageparent::lists('title','id');
+        $parent_id = [''=>'Please select parent']+ Pageparent::lists('title','id')->all();
 
         $sub_page_id = Article::where('id',$data->sub_page_id)->first();
+        $sub_article_data = Articlesub::where('article_id',$data->id)->get();
 
         return view('article.update', [
             'data' => $data,
             'type' => $parent_id,
-            'sub_page_id' => $sub_page_id
+            'sub_page_id' => $sub_page_id,
+            'sub_article_data' => $sub_article_data
         ]);
     }
 
@@ -194,18 +201,19 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Requests\ArticleRequest $request, $slug)
+    public function update(Request $request, $slug)
     {
         $model = Article::where('slug',$slug)->first();
         $input = $request->all();
+
+
         $image=Input::file('featured_image');
-        $image_2 = Input::file('featured_image_2');
 
         $tittle = Input::get('title');
         $slug = str_slug($tittle);
         $input['slug'] = $slug;
 
-            if(count($image)>0 || count($image_2)>0) {
+            if(count($image)>0 ) {
                 $file_type_required = 'png,jpeg,jpg';
                 $destinationPath = 'uploads/featured_image/';
 
@@ -223,9 +231,7 @@ class ArticleController extends Controller
                 if($image){
                     $file_name = ArticleController::image_upload($image, $file_type_required, $destinationPath);
                 }
-                if($image_2){
-                    $file_name_2 = ArticleController::image_upload($image_2,$file_type_required,$destinationPath);
-                }
+                
 
                 if (isset($file_name) != '') {
 
@@ -235,16 +241,79 @@ class ArticleController extends Controller
                     $input['featured_image'] = $file_name[0];
                     $input['thumbnail'] = $file_name[1];
                 }
-                if(isset($file_name_2) != ''){
-                    //unlink(public_path()."/".$model->featured_image_2);
-                    //unlink(public_path()."/".$model->thumbnail);
-                    $input['featured_image_2'] = $file_name_2[0];
-                    $input['thumbnail_2'] = $file_name_2[1];
-                }
+               
             }
             DB::beginTransaction();
             try {
                 $model->update($input);
+
+                //set sub artile arrays
+                $files = Input::file('post_image');
+                $post_title = Input::get('post_title');
+                $post_desc = Input::get('post_desc');
+                $post_id = Input::get('post_id');
+
+                if(!empty($post_title[0])):
+                    for($i=0; $i<count(Input::get('post_id')); $i++){
+                        // sub article
+                        $sub_model = Articlesub::where('id',$post_id[$i])->first();
+                        $sub_model->article_id = @$model->id;
+                        $sub_model->title = @$post_title[$i];
+                        $sub_model->desc = @$post_desc[$i];
+
+                        // files and data(s)
+                        $rules = array('file' => 'required|mimes:png,gif,jpeg,jpg');
+                        $validator = Validator::make(array('file' => $files[$i]), $rules);
+                        if ($validator->passes()) {
+                            // Files destination
+                            $destinationPath = 'uploads/sub_article/';
+                            // Create folders if they don't exist
+                            if (!file_exists($destinationPath)) {
+                                mkdir($destinationPath, 0777, true);
+                            }
+                            $file_original_name = $files[$i]->getClientOriginalName();
+                            $file_name = rand(11111, 99999) . $file_original_name;
+                            $upload_success = $files[$i]->move($destinationPath, $file_name);
+
+                            //model data
+                            $sub_model->image = 'uploads/sub_article/' . $file_name;
+                        }
+                        $sub_model->save();
+                    }
+
+                endif;
+
+                $file2 = Input::file('post_image2');
+                $post_title2 = Input::get('post_title2');
+                $post_desc2 = Input::get('post_desc2');
+
+                if(!empty($post_title2)){
+
+                    $model2 = new Articlesub();
+                    $model2->article_id = @$model->id;
+                    $model2->title = @$post_title2;
+                    $model2->desc = @$post_desc2;
+
+                    // files and data(s)
+                    $rules = array('file' => 'required|mimes:png,gif,jpeg,jpg');
+                    $validator = Validator::make(array('file' => $file2), $rules);
+                    if ($validator->passes()) {
+                        // Files destination
+                        $destinationPath = 'uploads/sub_article/';
+                        // Create folders if they don't exist
+                        if (!file_exists($destinationPath)) {
+                            mkdir($destinationPath, 0777, true);
+                        }
+                        $file_original_name = $file2->getClientOriginalName();
+                        $file_name = rand(11111, 99999) . $file_original_name;
+                        $upload_success = $file2->move($destinationPath, $file_name);
+
+                        //model data
+                        $model2->image = 'uploads/sub_article/' . $file_name;
+                    }
+                    $model2->save();
+                }
+
                 DB::commit();
                 Session::flash('flash_message', "Successfully Updated");
             }
@@ -271,6 +340,23 @@ class ArticleController extends Controller
                     unlink($model->featured_image);
                     unlink($model->featured_imag2);
                     unlink($model->thumbnail);
+                }
+                Session::flash('flash_message', " Successfully Deleted.");
+                return redirect()->back();
+            }
+        } catch(\Exception $e) {
+            Session::flash('flash_message_error',$e->getMessage() );
+            return redirect()->back();
+        }
+    }
+
+    public function subarticledelete($id)
+    {
+        try {
+            $model = Articlesub::where('id',$id)->first();
+            if ($model->delete()) {
+                if($model->featured_image != null){
+                    unlink($model->image);
                 }
                 Session::flash('flash_message', " Successfully Deleted.");
                 return redirect()->back();

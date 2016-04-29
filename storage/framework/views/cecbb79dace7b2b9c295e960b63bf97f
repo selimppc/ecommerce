@@ -2,6 +2,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <h4 class="modal-title"><?php echo e($pageTitle); ?></h4>
+            <a href="" class="btn btn-default" style="float: right;margin-top: -30px;color: #fff;" type="button"> X </a>
         </div>
 
         <div class="modal-body">
@@ -29,49 +30,46 @@
                         <td><?php echo e($data->slug); ?></td>
                     </tr>
                     <tr>
-                        <th> SKU Code </th>
-                        <td><?php echo e($data->sku); ?></td>
+                        <th> Meta Title </th>
+                        <td><?php echo e($data->meta_title); ?></td>
                     </tr>
                     <tr>
-                        <th> Sell Unit </th>
-                        <td><?php echo e($data->sell_unit); ?></td>
+                        <th> Pick up/Now Price </th>
+                        <td><?php echo e($data->sell_rate); ?></td>
                     </tr>
 
                     <tr>
-                        <th> Sell Quantity </th>
-                        <td><?php echo e($data->sell_unit_quantity); ?></td>
-                    </tr>
-                    <tr>
-                        <th> Sell Rate </th>
-                        <td><?php echo e($data->sell_rate); ?></td>
-                    </tr>
-                    <tr>
-                        <th> Cost Price </th>
+                        <th> Delivered Price </th>
                         <td><?php echo e($data->cost_price); ?></td>
                     </tr>
                     <tr>
-                        <th> Stock Unit </th>
-                        <td><?php echo e($data->stock_unit); ?></td>
+                        <th>Before Price </th>
+                        <td><?php echo e($data->before_price); ?></td>
+                    </tr>
+                   
+                    <tr>
+                        <th> Product Code </th>
+                        <td><?php echo e($data->product_code); ?></td>
+                    </tr>
+                    <tr>
+                        <th> Sizes </th>
+                        <td><?php echo e($data->size); ?></td>
+                    </tr>
+                    <tr>
+                        <th> Other Sizes</th>
+                        <td><?php echo e($data->other_size); ?></td>
                     </tr>
                     <tr>
                         <th> Stock Quantity </th>
                         <td><?php echo e($data->stock_unit_quantity); ?></td>
                     </tr>
                     <tr>
-                        <th> Is Price Vary?</th>
-                        <td><?php echo e($data->is_price_vary); ?></td>
-                    </tr>
-                    <tr>
-                        <th> Is featured? </th>
-                        <td><?php echo e($data->is_featured); ?></td>
-                    </tr>
-                    <tr>
-                        <th> Short Description </th>
-                        <td><?php echo e($data->short_description); ?></td>
+                        <th> Delivery Info </th>
+                        <td><?php echo e($data->delivery_info); ?></td>
                     </tr>
                      <tr>
-                        <th> Full Description </th>
-                        <td><?php echo e($data->long_description); ?></td>
+                        <th> Description </th>
+                        <td><?php echo e($data->short_description); ?></td>
                     </tr>
                 </table>
             </div>

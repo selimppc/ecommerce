@@ -58,6 +58,8 @@
                     {!! Form::close() !!}
 
 
+                    
+
                     <table  class="display table table-bordered table-striped" id="data-table-example">
                         <thead>
                         <tr>

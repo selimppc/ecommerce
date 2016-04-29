@@ -30,6 +30,7 @@ class ProductCategoryController extends Controller
 								->where('product_group_id',$product_group->id)
 								->where('product_subgroup_id',$product_subgroup->id)
 								->where('preorder','0')
+								->where('status','active')
 								->orderBy('sort_order','asc')
 								->get();
 					
@@ -47,7 +48,7 @@ class ProductCategoryController extends Controller
 			$productcategory = DB::table('article')->where('slug',$sub_slug)->first();
 			$title =$productcategory->title . ' | ';
 
-			$product_content = DB::table('article')->where('sub_page_id',$productcategory->id)->get();
+			$product_content = DB::table('article_sub')->where('article_id',$productcategory->id)->get();
 
 			return view('web::productcategory.all_pages',[
 	            'title' => $title,
