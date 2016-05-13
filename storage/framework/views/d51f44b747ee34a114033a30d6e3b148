@@ -2,7 +2,7 @@
 	<div class="col-md-12">
 		<?php echo $__env->make('web::layout.web_sidemenu', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 		<div class="col-md-9 col-sm-12 col-xs-12 row-right-0">
-			<div class="inner_banner margin-top-50 margin-bottom-50">
+			<div class="inner_banner margin-top-20 margin-bottom-30">
 				<?php if(!empty($productcategory->featured_image)): ?>
 					<img src="<?=$productcategory->featured_image?>">
 				<?php else: ?>
@@ -28,7 +28,10 @@
 								<div class="image_container">
 
 									<div class="product-thum-image">
-										<img class="zoom_01" data-zoom-image="<?php echo e(URL::to('')); ?>/<?php echo e($product_data->image); ?>" src="<?php echo e(URL::to('')); ?>/<?php echo e($product_data->image); ?>" width="100%">
+										<a href="<?php echo e(URL::to('')); ?>/<?php echo e($product_data->image); ?>" class="fancybox">
+											<img alt="<?php echo e(@$product_data->meta_title); ?>" title="<?php echo e($product_data->title); ?>" src="<?php echo e(URL::to('')); ?>/<?php echo e($product_data->image); ?>">												
+										</a>
+										
 									</div>
 
 								</div>
@@ -59,18 +62,7 @@
 	</script>
 
 
-	<script>
-	     $('.zoom_01').elevateZoom({
-			cursor: "crosshair",
-			responsive:'True',
-			zoomWindowFadeIn: 500,
-			zoomWindowFadeOut: 750,
-			zoomWindowWidth:410,
-			zoomWindowHeight:378
-	   });
-
-
-	</script>
+	
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('web::layout.web_master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -4,7 +4,7 @@
 	<div class="col-md-12">
 		@include('web::layout.web_sidemenu')
 		<div class="col-md-9 col-sm-12 col-xs-12 row-right-0">
-			<div class="inner_banner margin-top-50 margin-bottom-50">
+			<div class="inner_banner margin-top-20 margin-bottom-30">
 				@if(!empty($productcategory->featured_image))
 					<img src="<?=$productcategory->featured_image?>">
 				@else
@@ -29,7 +29,10 @@
 								<div class="image_container">
 
 									<div class="product-thum-image">
-										<img class="zoom_01" data-zoom-image="{{URL::to('')}}/{{$product_data->image}}" src="{{URL::to('')}}/{{$product_data->image}}" width="100%">
+										<a href="{{URL::to('')}}/{{$product_data->image}}" class="fancybox">
+											<img alt="{{@$product_data->meta_title}}" title="{{$product_data->title}}" src="{{URL::to('')}}/{{$product_data->image}}">												
+										</a>
+										
 									</div>
 
 								</div>
@@ -60,17 +63,6 @@
 	</script>
 
 
-	<script>
-	     $('.zoom_01').elevateZoom({
-			cursor: "crosshair",
-			responsive:'True',
-			zoomWindowFadeIn: 500,
-			zoomWindowFadeOut: 750,
-			zoomWindowWidth:410,
-			zoomWindowHeight:378
-	   });
-
-
-	</script>
+	
 
 @stop

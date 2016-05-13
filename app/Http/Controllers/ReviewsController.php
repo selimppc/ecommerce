@@ -50,4 +50,19 @@ class ReviewsController extends Controller{
 
         return redirect()->route('all-list');
 	}
+
+     public function delete($id)
+    {
+        try {
+            $model = Customerreviews::where('id',$id)->first();
+            if ($model->delete()) {               
+                Session::flash('flash_message', " Successfully Deleted.");
+                return redirect()->back();
+            }
+        } catch(\Exception $e) {
+            Session::flash('flash_message_error',$e->getMessage() );
+            return redirect()->back();
+        }
+    }
+
 }

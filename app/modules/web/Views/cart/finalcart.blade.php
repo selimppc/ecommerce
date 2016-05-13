@@ -71,6 +71,7 @@
 					<thead>
 						<tr>
 							<td>Item</td>
+							<td>Matt Colour</td>
 							<td>Qty</td>
 							<td>Unit Price</td>
 							<td class="text-align-right">Line Total</td>
@@ -87,6 +88,9 @@
 							<?php
 								$product_id = $product_cart['product_id'];
 								$product = DB::table('product')->where('id',$product_id)->first();
+
+								$product_variation_id =  $product_cart['color'];
+								$color = DB::table('product_variation')->where('id',$product_variation_id)->first();
 							?>
 							<tr>
 								
@@ -98,6 +102,15 @@
 										<a class="product-name" href="#">
 											{{$product->title}}
 										</a>
+									</div>
+								</td>
+								<td>
+									<div class="unit-price">
+										@if(!empty($color))
+											{{$color->title}}
+										@else
+											N/A
+										@endif
 									</div>
 								</td>
 								<td>
@@ -124,10 +137,9 @@
 							<?php $count++;?>
 						@endforeach
 							<tr class="sub-total-tr">
-								<td>
-									&nbsp;</td>
-								<td>
-								</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
 								<td>Total:</td>
 								<td class="text-align-right">${{$total_value}}</td>
 								

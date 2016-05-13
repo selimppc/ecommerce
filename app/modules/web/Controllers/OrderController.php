@@ -17,31 +17,60 @@ use Session;
 use Input;
 use Mail;
 
+use Excel;
+
 class OrderController extends Controller
 {
 
     public function test(Request $request){
 
-        $email = 'mithun.cse521@gmail.com';
-        $invoice_id = '11111';
-
-        $product_cart = $request->session()->get('product_cart');
-
         $user_id = $request->session()->get('billing_id');
-        $deliver_id = $request->session()->get('deliver_id');
+       // $users = DB::table('customer')->where('id',$user_id)->first();
+      
 
-        $user_data = DB::table('customer')->where('id',$user_id)->first();
-        $delivery_data = DB::table('deliverydetails')->where('id',$deliver_id)->orderBy('id', 'desc')->first();
+        $users = Customer::all();
+        Excel::create('users', function($excel) use($users) {
+            $excel->sheet('Sheet 1', function($sheet) use($users) {
+                $sheet->fromArray($users);
+            });
+        })->download('xls');
 
-        Mail::send('web::cart.mail_template', array('user_data' =>$user_data,'delivery_data'=>$delivery_data,'product_cart_r' => $product_cart),
-        function($message) use ($email,$invoice_id)
-        {
-            $message->from('test@edutechsolutionsbd.com', 'Purchase product | OFF THE WALL');
-            $message->to($email);
-            $message->cc('mithun.cse521@gmail.com', 'Purchase product | OFF THE WALL');
-            // $message->replyTo('tanintjt.1990@gmail.com','User Signup Request');
-            $message->subject('Your Order No is ' .$invoice_id );
-        });
+
+
+
+// or
+
+
+        // Excel::create('users', function($excel) use($users) {
+        //     $excel->sheet('Sheet 1', function($sheet) use($users) {
+        //         $sheet->fromArray($users);
+        //     });
+        // })->export('xls');
+
+        // $email = 'mithun.cse521@gmail.com';
+        // $invoice_id = '11111';
+
+        // $product_cart = $request->session()->get('product_cart');
+
+        // $user_id = $request->session()->get('billing_id');
+        // $deliver_id = $request->session()->get('deliver_id');
+
+        // $user_data = DB::table('customer')->where('id',$user_id)->first();
+        // $delivery_data = DB::table('deliverydetails')->where('id',$deliver_id)->orderBy('id', 'desc')->first();
+
+        // Mail::send('web::cart.mail_template', array('user_data' =>$user_data,'delivery_data'=>$delivery_data,'product_cart_r' => $product_cart),
+        // function($message) use ($email,$invoice_id)
+        // {
+        //     $message->from('test@edutechsolutionsbd.com', 'Purchase product | OFF THE WALL');
+        //     $message->to($email);
+        //     $message->cc('mithun.cse521@gmail.com', 'Purchase product | OFF THE WALL');
+        //     // $message->replyTo('tanintjt.1990@gmail.com','User Signup Request');
+        //     $message->subject('Your Order No is ' .$invoice_id );
+        // });
+
+
+
+
         // $paypal_email = 'offthewallframing@gmail.com';
         // $return_url = '';
         // $cancel_url = '';
@@ -87,10 +116,17 @@ class OrderController extends Controller
 	public function add_to_cart(Request $request){
 
 		if(isset($_POST)){
-
+            
 			$product_id = (int) $_POST['product_id'];
 			$product_qty = (int) $_POST['quantity'];
 			$product_price = (int) $_POST['price'];
+
+            if(isset($_POST['color'])){
+                $color = (int) $_POST['color'];
+            }else{
+                $color = 0;
+            }
+            
 			
 
 			$product_cart1 = $request->session()->get('product_cart');
@@ -98,7 +134,8 @@ class OrderController extends Controller
 			$product_cart_2 = array( 
 	                array('product_id' => $product_id,
 	                        'product_qty' => $product_qty,
-	                        'product_price' => $product_price
+	                        'product_price' => $product_price,
+                            'color' => $color
 	                ) 
 	            );
 
@@ -135,6 +172,13 @@ class OrderController extends Controller
 			$product_quantity= (int) $_POST['product_quantity'];
 			$product_id= (int) $_POST['product_id'];
 			$product_price= (int) $_POST['product_price'];
+            
+            if(isset($_POST['color'])){
+                $color = (int) $_POST['color'];
+            }else{
+                $color = 0;
+            }
+            
 			$product_index= (int) $_POST['product_index'];
 
 			$product_cart1 = $request->session()->get('product_cart');
@@ -143,7 +187,8 @@ class OrderController extends Controller
 			$product_cart_2 = array( 
 	                array('product_id' => $product_id,
 	                        'product_qty' => $product_quantity,
-	                        'product_price' => $product_price
+	                        'product_price' => $product_price,
+                            'color' => $color
 	                ) 
 	            );
 
@@ -297,6 +342,7 @@ class OrderController extends Controller
                 $deliver_modal->product_id =$product_cart['product_id'];
                 $deliver_modal->qty = $product_cart['product_qty'];
                 $deliver_modal->price = $product_cart['product_price'];
+                $deliver_modal->product_variation_id = $product_cart['color'];
                 $deliver_modal->status= 0;
 
                 $deliver_modal->save();

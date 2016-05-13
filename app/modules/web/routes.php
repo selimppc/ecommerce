@@ -19,7 +19,40 @@ Route::any('web', [
     'uses' => 'WebController@web_index'
 ]);
 
+Route::any('apps',[
+		'as' => 'apps',
+		'uses' => 'WwwController@apps'
+	]);
 
+Route::any('apps/photo-upload',[
+		'as' => 'apps-photo-upload',
+		'uses' => 'WwwController@apps_photo_upload'
+	]);
+
+Route::any("apps/photo-store", [
+    "as"   => "apps-photos-store",
+    "uses" => "WwwController@phototempstore"
+]);
+
+Route::any("apps/photo-edit", [
+    "as"   => "apps-photo-edit",
+    "uses" => "WwwController@photoedit"
+]);
+
+Route::any("apps/custom-size", [
+    "as"   => "apps-custom-size",
+    "uses" => "WwwController@customsize"
+]);
+
+Route::any("apps/photo_upload", [
+    "as"   => "apps-photo-resize",
+    "uses" => "WwwController@photoresize"
+]);
+
+Route::any("apps/frame_photo", [
+    "as"   => "apps-photo-frame",
+    "uses" => "WwwController@photoframe"
+]);
 
 Route::any('/', [
     'as' => 'home-page',

@@ -13,7 +13,9 @@ class ProductSubgroups extends Model
         'title',
         'slug',
         'sort_order',
-        'status'
+        'status',
+        'image',
+        'thumb'
     ];
 
     public function relGroup(){

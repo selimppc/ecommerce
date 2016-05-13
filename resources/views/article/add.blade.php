@@ -98,7 +98,10 @@
                                         <a href="#" class="btn btn-danger fileupload-exists" data-dismiss="fileupload"><i class="icon-trash"></i> Remove</a>
                                 </div>
                             </div>
-
+                            <span class="label label-danger">NOTE!</span>
+                             <span>
+                             Image size should be less than 200KB & resolution is width:900px and height:250px
+                             </span>
                         </div>
                     </div>
 

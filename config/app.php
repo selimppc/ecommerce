@@ -138,6 +138,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
         #Illuminate\Html\HtmlServiceProvider::class,
         #Intervention\Image\ImageServiceProvider::class,
 
@@ -209,6 +211,7 @@ return [
         'HTML'      => Illuminate\Html\HtmlFacade::class,
         'Image'     => Intervention\Image\Facades\Image::class,
         'ImageResize'     => App\Helpers\ImageResize::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class
 
     ],
 

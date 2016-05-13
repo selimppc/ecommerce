@@ -18,6 +18,8 @@ class ProductController extends Controller
 		$product = DB::table('product')->where('slug',$product_slug)->where('status','active')->first();
 		$related_product_r = DB::table('product')->where('product_subgroup_id',$product->product_subgroup_id)->whereNotIn('id',[$product->id])->get();
 
+		$product_variation = DB::table('product_variation')->where('product_id',$product->id)->where('status','active')->get();
+
 		if($product->meta_title != ''){
 			$title =$product->meta_title ." | ";
 		}else{
@@ -28,8 +30,8 @@ class ProductController extends Controller
 			return view('web::product.details',[
                 'title' => $title,
                 'product' => $product,
-                'related_product_r' => $related_product_r
-                
+                'related_product_r' => $related_product_r,
+                'product_variation_r' => $product_variation
             ]);
 
 	}

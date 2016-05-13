@@ -12,10 +12,10 @@
 						ENLARGE
 				</a>
 
-				<a href="#" class="image_gallery_container">
+				<!-- <a href="#" class="image_gallery_container">
 					<img alt="{{$product->meta_title}}" title="{{$product->title}}" src="{{URL::to('')}}/web/images/print.png"><br/>
 						PRINT
-				</a>
+				</a> -->
 
 				<a href="#" class="image_gallery_container">
 					<img alt="{{$product->meta_title}}" title="{{$product->title}}" src="{{URL::to('')}}/web/images/ask.png">
@@ -83,16 +83,17 @@
 					<form method="post" action="{{URL::to('/')}}/order/add_to_cart">
 
 					<div class="price_container">
+
 						@if($product->product_group_id == 10)
 
 							<div class="price">
-								<input checked id="price1" type="radio" name="price" value="{{$product->sell_rate}}">
+								<input id="price1" type="radio" name="price" value="{{$product->sell_rate}}">
 								<label for="price1">Pick up<br/> ${{$product->sell_rate}}</label>
 							</div>
 
 							@if(!empty($product->cost_price))
 								<div class="price">
-									<input id="price2" type="radio" name="price" value="{{$product->cost_price}}">
+									<input checked id="price2" type="radio" name="price" value="{{$product->cost_price}}">
 									<label for="price2">Delivered<br/> ${{$product->cost_price}}</label>
 								</div>
 							@endif
@@ -101,13 +102,13 @@
 
 							@if(!empty($product->before_price))
 								<div class="price">
-									<input checked id="price1" type="radio" name="price" value="{{$product->before_price}}">
+									<input  id="price1" type="radio" name="price" value="{{$product->before_price}}">
 									<label for="price1">Before<br/> ${{$product->before_price}}</label>
 								</div>
 							@endif
 
 							<div class="price">
-								<input id="price1" type="radio" name="price" value="{{$product->sell_rate}}">
+								<input checked id="price1" type="radio" name="price" value="{{$product->sell_rate}}">
 								<label for="price1">Now<br/> ${{$product->sell_rate}}</label>
 							</div>
 
@@ -136,6 +137,23 @@
 							?>
 						</select>
 					</div>
+					
+						
+					@if(!empty($product_variation_r))
+						<div class="quantity float-right">
+							<div class="width50">
+								<label>Matt Colour</label>
+								<select name="color">
+									@foreach($product_variation_r as $product_variation)
+										<option value="{{$product_variation->id}}">{{$product_variation->title}}</option>
+									@endforeach
+									
+								</select>
+							</div>
+						</div>
+					@endif
+
+					
 
 					<div class="buy_now_button">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">

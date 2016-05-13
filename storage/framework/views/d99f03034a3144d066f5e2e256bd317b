@@ -72,7 +72,7 @@
                 <h4 class="modal-title">Add Product Subgroup</h4>
             </div>
             <div class="modal-body">
-                <?php echo Form::open(['route' => 'product-subgroup-store']); ?>
+                <?php echo Form::open(['route' => 'product-subgroup-store','files'=>'true']); ?>
 
                    <?php echo $__env->make('product_subgroup._form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
                 <?php echo Form::close(); ?>

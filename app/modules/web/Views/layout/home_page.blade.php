@@ -7,7 +7,7 @@
 		<div class="home-banner margin-top-30">
 			<div class="camera_wrap camera_azure_skin" id="camera_wrap_1">
 
-				@if(!empty($slider_data)):
+				@if(!empty($slider_data))
 					@foreach($slider_data as $slider)
 
 						<div data-src="{{URL::to('/')}}/{{$slider->image}}">
@@ -25,9 +25,11 @@
 </div>
 	
 <div class="col-md-12">
-	@include('web::layout.web_sidemenu')
+	<div class="margin-top-30">
+		@include('web::layout.web_sidemenu')
+	</div>
 
-	<div class="col-md-9 col-sm-12 col-xs-12 row-right-0 margin-top-30">
+	<div class="col-md-9 col-sm-12 col-xs-12 row-right-0 padding-left-0-m margin-top-10-m">
 		<div class="border-top-2 border-bottom-2">
 			<div class="header">
 				Featured Products
@@ -36,7 +38,7 @@
 
 		<div class="row">
 
-			@if(!empty($featured_product_data)):
+			@if(!empty($featured_product_data))
 				@foreach($featured_product_data as $featured_product)
 
 					<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
@@ -67,19 +69,21 @@
 </div>
 
 <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
-	<div class="home-text-container home-text-bg">
-		<div class="col-md-3 col-sm-3 col-xs-3 row-left-0">
-			<div class="home-header">
-				<span>OFF THE WALL</span><br /><br />
-				Latest & interactive mirrors shop in sydney.
+	<div class="row">
+		<div class="home-text-container home-text-bg">
+			<div class="col-md-3 col-sm-12 col-xs-12 row-left-0">
+				<div class="home-header">
+					<span>OFF THE WALL</span><br /><br />
+					Latest & interactive mirrors shop in sydney.
+				</div>
 			</div>
-		</div>
 
-		<div class="col-md-9 col-sm-9 col-xs-9">
-			<div class="home-body-text">
-				<?php
-					echo $data->desc;
-				?>
+			<div class="col-md-9 col-sm-12 col-xs-12">
+				<div class="home-body-text">
+					<?php
+						echo $data->desc;
+					?>
+				</div>
 			</div>
 		</div>
 	</div>

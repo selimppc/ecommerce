@@ -23,6 +23,15 @@
                         <th> Status </th>
                         <td>{{$data->status}}</td>
                     </tr>
+                    <tr>
+                        <th>Image</th>
+                        <td>
+                            @if(!empty($data->image))
+                                <img style="width:20%;" src="{{URL::to('')}}/{{$data->image}}">
+                            @endif
+                        </td>
+                    </tr>
+
             	</table>
             </div>
         </div>

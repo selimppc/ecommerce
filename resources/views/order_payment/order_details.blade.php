@@ -54,7 +54,7 @@
 						<thead>
 							<tr>
 								<th>Product Name</th>
-								<th>Color</th>
+								<th>Matt Colour</th>
 								<th>Qty</th>								
 								<th class="text-right">price</th>
 								<th class="text-right">Total</th>
@@ -67,10 +67,11 @@
 								<?php $total = 0; ?>
 								@foreach($order_data[0]->relOrderDetail as $orderdetails)
 								<?php
+
 									$product_id = $orderdetails->product_id;
 									$product = DB::table('product')->where('id',$product_id)->first();
 
-									$color_id = $orderdetails->color;
+									$color_id = $orderdetails->product_variation_id;
 									$product_variation = DB::table('product_variation')->where('id',$color_id)->first();
 								?>
 									<tr>
@@ -78,7 +79,11 @@
 											{{$product->title}}
 										</td>
 										<td>
-											{{@$product_variation->title}}
+											@if(!empty($product_variation))
+												{{$product_variation->title}}
+											@else
+												N/A
+											@endif
 										</td>
 										<td>
 											{{@$orderdetails->qty}}

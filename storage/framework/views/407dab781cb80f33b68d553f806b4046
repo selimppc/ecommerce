@@ -1,9 +1,10 @@
-<div id="all_prods_cont" class="col-md-3 col-sm-12 col-xs-12 row-left-0 margin-top-30">
+<div id="all_prods_cont" class="col-md-3 col-sm-12 col-xs-12 row-left-0 margin-top-10-m margin-bottom-10-m padding-right-0-m">
 	<div class="border-top-2-resp border-bottom-2-resp">
-		<div class="header">
-			<i class="fa fa-2x fa-bars"></i>
-			<span>All products</span>
-		</div>								
+			<div class="header">
+				<span>All Product</span>
+			</div>
+			<span class="mobile_menu">=</span>
+									
 	</div>
 
 	<div id="home_product_list" class="home-product-list left-sidebar">
@@ -107,3 +108,9 @@
 	</div>
 	
 </div>
+
+<script>
+	$(".mobile_menu").click(function(){
+	    $("#home_product_list").toggle();
+	});
+</script>

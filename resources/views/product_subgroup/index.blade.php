@@ -73,7 +73,7 @@
                 <h4 class="modal-title">Add Product Subgroup</h4>
             </div>
             <div class="modal-body">
-                {!! Form::open(['route' => 'product-subgroup-store']) !!}
+                {!! Form::open(['route' => 'product-subgroup-store','files'=>'true']) !!}
                    @include('product_subgroup._form')
                 {!! Form::close() !!}
 

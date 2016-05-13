@@ -71,6 +71,7 @@
 					<thead>
 						<tr>
 							<td>Item</td>
+							<td>Matt Colour</td>
 							<td>Qty</td>
 							<td>Unit Price</td>
 							<td class="text-align-right">Line Total</td>
@@ -88,6 +89,9 @@
 							<?php
 								$product_id = $product_cart['product_id'];
 								$product = DB::table('product')->where('id',$product_id)->first();
+
+								$product_variation_id =  $product_cart['color'];
+								$color = DB::table('product_variation')->where('id',$product_variation_id)->first();
 							?>
 							<tr>
 								<form method="post" action="{{URL::to('/')}}/order/update_cart">
@@ -99,6 +103,15 @@
 										<a class="product-name" href="#">
 											{{$product->title}}
 										</a>
+									</div>
+								</td>
+								<td>
+									<div class="unit-price">
+										@if(!empty($color))
+											{{$color->title}}
+										@else
+											N/A
+										@endif
 									</div>
 								</td>
 								<td>
@@ -123,12 +136,13 @@
 								<td>
 									<div class="delete_product">
 										<input type="hidden" name="product_id" value="{{$product_id}}">
+										<input type="hidden" name="color" value="{{$product_cart['color']}}">
 										<input type="hidden" name="product_price" value="{{$product_cart['product_price']}}">
 										<input type="hidden" name="_token" value="{{ csrf_token() }}">
 										<input type="hidden" name="product_index" value="{{$count}}">
 										<input type="submit" name="update_product" class="product_update" value="">
 									</form>
-										<form method="post" action="{{URL::to('/')}}/order/remove_cart">
+										<form method="post" action="{{URL::to('/')}}/order/remove_cart" style="float:left;">
 											<input type="hidden" name="_token" value="{{ csrf_token() }}">
 											<input type="hidden" name="product_index" value="{{$count}}">
 											<input type="submit" name="remove_product" class="product_remove_cross" value="">
@@ -140,10 +154,9 @@
 							<?php $count++;?>
 						@endforeach
 							<tr class="sub-total-tr">
-								<td>
-									&nbsp;</td>
-								<td>
-								</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
 								<td>Total:</td>
 								<td class="text-align-right">${{$total_value}}</td>
 								<td></td>

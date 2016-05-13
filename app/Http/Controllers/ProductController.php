@@ -23,18 +23,48 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+       $input = $request->all();
+
+       if(!empty($input)){
+        
+
+        if(isset($input['product_group_id'])){
+            $product_group_id = $input['product_group_id'];
+            if($product_group_id == 'all'){
+                $data = Product::orderBy('id', 'DESC')->paginate(20);
+            }else{
+                $data = Product::where('product_group_id',$product_group_id)->orderBy('id', 'DESC')->paginate(50);    
+            }
+
+        }else{
+             $data = Product::orderBy('id', 'DESC')->paginate(20);
+        }
+        
+
+        if(isset($input['product_subgroup_id'])){
+            $product_subgroup_id = $input['product_subgroup_id'];
+            $data = Product::where('product_group_id',$product_group_id)->where('product_subgroup_id',$product_subgroup_id)->orderBy('id', 'DESC')->paginate(50);    
+        }
+        
+        
+       }else{
+            $data = Product::orderBy('id', 'DESC')->paginate(20);
+       }
        $pageTitle = "Product";
        $product_group_id = [''=>'Please select group']+ ProductGroup::lists('title','id')->all();
+
+       $product_group_id_search = ['all'=>'All']+ ProductGroup::lists('title','id')->all();
        $cat_product_id = ProductCategory::lists('title','id');
 
-       $data = Product::orderBy('id', 'DESC')->paginate(20);
+       
         return view('product.index',[
                 'pageTitle' => $pageTitle,
                 'cat_product_id' => $cat_product_id,
                 'data' => $data,
-                'product_group_id' => $product_group_id
+                'product_group_id' => $product_group_id,
+                'product_group_id_search' => $product_group_id_search
             ]);
     }
 

@@ -6,6 +6,7 @@
 				<thead style="background: #546f7a;color: #fff;">
 					<tr>
 						<td style="padding:8px;">Item</td>
+						<td style="padding:8px;text-align:center;">Color</td>
 						<td style="padding:8px;text-align:center;">Qty</td>
 						<td style="padding:8px;text-align:right;">Unit Price</td>
 						<td style="padding:8px;text-align:right;" class="text-align-right">Line Total</td>
@@ -22,6 +23,9 @@
 						<?php
 							$product_id = $product_cart['product_id'];
 							$product = DB::table('product')->where('id',$product_id)->first();
+
+							$product_variation_id =  $product_cart['color'];
+							$color = DB::table('product_variation')->where('id',$product_variation_id)->first();
 						?>
 						<tr>
 							
@@ -30,6 +34,16 @@
 								<?php echo e($product->title); ?>
 
 								
+							</td>
+							<td>
+								<div class="unit-price">
+									<?php if(!empty($color)): ?>
+										<?php echo e($color->title); ?>
+
+									<?php else: ?>
+										N/A
+									<?php endif; ?>
+								</div>
 							</td>
 							<td style="padding: 8px;outline: none;width: 50px;text-align: center;">
 								<?php echo e($product_cart['product_qty']); ?>
@@ -54,10 +68,9 @@
 						<?php $count++;?>
 					<?php endforeach; ?>
 						<tr style="background-color: #f1f1f1;">
-							<td>
-								&nbsp;</td>
-							<td>
-							</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
 							<td style="padding:8px;text-align:right;">Total:</td>
 							<td style="padding:8px;text-align:right;">$<?php echo e($total_value); ?></td>
 							

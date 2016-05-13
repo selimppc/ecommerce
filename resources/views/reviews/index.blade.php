@@ -73,6 +73,7 @@
                                     <td>
                                         
                                         <a href="{{ route('reviews-confirm', $values->id) }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to Confirm?')" title="Confirm"><i class="icon-check"></i></a>
+                                        <a href="{{ route('reviews-delete', $values->id) }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to Delete?')" title="Delete"><i class="icon-trash"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

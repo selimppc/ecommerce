@@ -22,3 +22,8 @@ Route::any("reviews/confirm/{id}", [
     "as"   => "reviews-confirm",
     "uses" => "ReviewsController@confirm"
 ]);
+
+Route::any("reviews/delete/{id}", [
+    "as"   => "reviews-delete",
+    "uses" => "ReviewsController@delete"
+]);

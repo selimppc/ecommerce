@@ -3,8 +3,8 @@
 @section('content')
 	<div class="col-md-12">
 		@include('web::layout.web_sidemenu')
-		<div class="col-md-9 col-sm-12 col-xs-12 row-right-0">
-			<div class="inner_banner margin-top-50 margin-bottom-50">
+		<div class="col-md-9 col-sm-12 col-xs-12 row-right-0 padding-left-0-m">
+			<div class="inner_banner margin-top-20 padding-left-0-m margin-top-10-m margin-bottom-10-m margin-bottom-30">
 				@if(!empty($data->featured_image))
 					<img src="<?=$data->featured_image?>">
 				@else
