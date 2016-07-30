@@ -51,6 +51,8 @@
                                         </td>
                                      </tr>
                                 <?php endforeach; ?>
+                                <?php echo $data->render(); ?>
+
                             <?php endif; ?>
                         </table>
                        

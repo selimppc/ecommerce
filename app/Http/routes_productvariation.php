@@ -25,7 +25,7 @@ Route::any("productvariation/update/{slug}", [
     "uses" => "ProductvariationController@update"
 ]);
 
-Route::any("productvariation/delete/{slug}", [
+Route::any("productvariation/delete/{id}", [
     "as"   => "productvariation-delete",
     "uses" => "ProductvariationController@delete"
 ]);

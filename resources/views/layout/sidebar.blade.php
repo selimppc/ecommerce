@@ -38,6 +38,14 @@
 </li>
 
 <li class="sub-menu">
+    <a href="{{URL::to('order_paid/generate_excel')}}">
+        <i class="icon-bookmark"></i>
+        <span>Generate Excel</span>
+    </a>
+  
+</li>
+
+<li class="sub-menu">
     <a href="{{URL::to('cat_slider/index')}}">
         <i class="icon-book"></i>
         <span>Slider</span>
@@ -48,7 +56,7 @@
     </ul>
 </li>
 
-<li class="sub-menu">
+<!-- <li class="sub-menu">
     <a href="{{URL::to('menu/index')}}">
         <i class="icon-sitemap"></i>
         <span>Menu</span>
@@ -57,7 +65,7 @@
         <li><a  href={{URL::to('menu_type/index')}}>Menu Type</a></li>
         <li><a  href={{URL::to('menu/index')}}>Menu</a></li>
     </ul>
-</li>
+</li> -->
 
 {{--<li class="sub-menu">--}}
     {{--<a href={{URL::to('team/index')}}>--}}
@@ -111,7 +119,7 @@
     {{--</a>--}}
 {{--</li>--}}
 
-<li class="sub-menu">
+<!-- <li class="sub-menu">
     <a href="{{URL::to('user/profile-info')}}">
         <i class="icon-info"></i>
         <span>Profile</span>
@@ -121,17 +129,17 @@
         <li><a  href={{URL::to('user/profile-picture-view')}}>Profile Picture</a></li>
         <li><a  href={{URL::to('user/change-user-password-view')}}>Password Change</a></li>
     </ul>
-</li>
+</li> -->
 
 
 @if(Session::has('user_type'))
     @if(Session::get('user_type')=='admin')
-        <li class="sub-menu">
+        <!-- <li class="sub-menu">
             <a href={{URL::to('user/user-list')}}>
                 <i class="icon-user-md"></i>
                 <span>User List</span>
             </a>
-        </li>
+        </li> -->
 
         <li class="sub-menu">
             <a href={{URL::to('reviews/all-list')}}>
@@ -149,7 +157,7 @@
 @endif
 
 
-<li class="sub-menu">
+<!-- <li class="sub-menu">
     <a href="javascript:;" >
         <i class="icon-book"></i>
         <span>Settings</span>
@@ -163,7 +171,7 @@
     </ul>
 </li>
 
-
+ -->
 <li class="sub-menu">
     &nbsp;
 </li>

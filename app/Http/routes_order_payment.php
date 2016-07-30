@@ -1,5 +1,25 @@
 <?php
 
+Route::any("order_paid/generate_excel", [
+    "as"   => "order-paid-generate_excel",
+    "uses" => "OrderPaymentController@order_paid_generate_excel"
+]);
+
+Route::any("order_paid/generate_excel_current", [
+    "as"   => "generate_excel_current",
+    "uses" => "OrderPaymentController@generate_excel_current"
+]);
+
+Route::any("order_paid/generate_excel_approved", [
+    "as"   => "generate_excel_approved",
+    "uses" => "OrderPaymentController@generate_excel_approved"
+]);
+
+Route::any("order_paid/generate_excel_delivered", [
+    "as"   => "generate_excel_delivered",
+    "uses" => "OrderPaymentController@generate_excel_delivered"
+]);
+
 Route::any("order_paid/index", [
     "as"   => "order-paid-index",
     "uses" => "OrderPaymentController@order_paid_index"

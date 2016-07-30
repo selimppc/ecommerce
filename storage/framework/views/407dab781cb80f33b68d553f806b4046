@@ -3,7 +3,7 @@
 			<div class="header">
 				<span>All Product</span>
 			</div>
-			<span class="mobile_menu">=</span>
+			<span class="mobile_menu open_mobile_menu">=</span>
 									
 	</div>
 

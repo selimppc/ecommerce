@@ -14,7 +14,7 @@
 
             <small class="required">(Required)</small>
             <?php if(count($product_group_id)>0): ?>
-                <?php echo Form::select('product_group_id', $product_group_id,Input::old('product_group_id'),['class' => 'form-control','id'=>'product_group_id','required']); ?>
+                <?php echo Form::select('product_group_id', $product_group_id,Input::old('product_group_id'),['class' => 'form-control','id'=>'product_group_id_add','required']); ?>
 
             <?php else: ?>
                 <?php echo Form::text('product_group_id', 'No Category ID available',['id'=>'product_group_id','class' => 'form-control','required','disabled']); ?>
@@ -25,7 +25,7 @@
         <div class="form-group">
             <label for="product_subgroup_id" class="control-label">Product SubGroup:</label>
             <small class="required">(Required)</small>
-            <select class='form-control' required="required" id="product_subgroup_id" name="product_subgroup_id">
+            <select class='form-control' required="required" id="product_subgroup_id_add" name="product_subgroup_id">
                 <?php if(isset($data->relSubGroup->title)): ?>:
                     <option value="<?php echo e($data->relSubGroup->id); ?>"><?php echo e($data->relSubGroup->title); ?></option>
                 <?php endif; ?>;
@@ -224,9 +224,9 @@
 <script>
     $(function(){
 
-        $("#product_group_id").on('change',function(e){
+        $("#product_group_id_add").on('change',function(e){
 
-            var product_group_id = $("#product_group_id").val();
+            var product_group_id = $("#product_group_id_add").val();
             var site_url = $('#site_url').attr("href");
             $.ajax({
                 url: site_url+'/product_category/cat_product_group_ajax',
@@ -235,7 +235,7 @@
                 data: {_token: '<?php echo csrf_token(); ?>',product_group_id:product_group_id,},
                 success: function(response)
                 {
-                    $("#product_subgroup_id").html(response.message);
+                    $("#product_subgroup_id_add").html(response.message);
                 }
             });
 
@@ -243,9 +243,9 @@
             return false;
         });
 
-        $("#product_subgroup_id").on('change',function(e){
+        $("#product_subgroup_id_add").on('change',function(e){
 
-            var product_subgroup_id = $("#product_subgroup_id").val();
+            var product_subgroup_id = $("#product_subgroup_id_add").val();
             var site_url = $('#site_url').attr("href");
             $.ajax({
                 url: site_url+'/product_category/cat_product_category_ajax',

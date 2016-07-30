@@ -47,7 +47,7 @@
                                         <td>
                                             <a href="{{ route('productvariation-show', $values->slug) }}" data-toggle="modal" data-target="#etsbModal" class="btn btn-info btn-xs" title="View"><i class="icon-eye-open"></i></a>
                                             <a href="{{ route('productvariation-edit', $values->slug) }}" target="_blank" data-toggle="modal" data-target="#etsbModal" class="btn btn-primary btn-xs" title="Edit"><i class="icon-edit"></i></a>
-                                            <a href="{{ route('productvariation-delete', $values->slug) }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to Delete?')" title="Delete"><i class="icon-trash"></i></a>
+                                            <a href="{{ route('productvariation-delete', $values->id) }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to Delete?')" title="Delete"><i class="icon-trash"></i></a>
                                         </td>
                                      </tr>
                                 @endforeach

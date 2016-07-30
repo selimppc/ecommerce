@@ -159,11 +159,11 @@ class ProductvariationController extends Controller
         //
     }
 
-    public function delete($slug){
+    public function delete($id){
 
         DB::beginTransaction();
         try {
-            $model = Productvariation::where('slug',$slug)->first();
+            $model = Productvariation::where('id',$id)->first();
             if ($model->delete()) {
 
                 DB::commit();               

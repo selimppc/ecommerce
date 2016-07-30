@@ -12,6 +12,7 @@
         <script type='text/javascript' src="<?php echo e(URL::asset('web/scripts/bootstrap.min.js')); ?>"></script> 
         <script type='text/javascript' src="<?php echo e(URL::asset('web/scripts/jquery.elevatezoom.js')); ?>"></script> 
         
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     <body>
 
         <div class="container-fluid">
@@ -69,10 +70,23 @@
                                         </div>
 
                                         <div class="header_address">
-                                            <p>425 Princess Highway, Rockdale NW 2216</p>
+                                            <p>425 Princess Highway, Rockdale NSW 2216</p>
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="mobile-hotline">
+
+                                    <div class="hot_line">
+                                        02-95672422
+                                    </div>
+
+                                </div>
+
+                                <div class="mobile-address">                                    
+                                    <p>425 Princess Highway, Rockdale NSW 2216</p>
+                                </div>
+
                             </div>
                         </div>
 

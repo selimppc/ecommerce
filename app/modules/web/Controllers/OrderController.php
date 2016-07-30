@@ -16,6 +16,7 @@ use DB;
 use Session;
 use Input;
 use Mail;
+use App\Helpers\SendMailer;
 
 use Excel;
 
@@ -28,10 +29,15 @@ class OrderController extends Controller
        // $users = DB::table('customer')->where('id',$user_id)->first();
       
 
-        $users = Customer::all();
-        Excel::create('users', function($excel) use($users) {
-            $excel->sheet('Sheet 1', function($sheet) use($users) {
-                $sheet->fromArray($users);
+        $all_order = Orderoverhead::join('customer', 'customer.id', '=', 'order_overhead.user_id')
+                        ->select('order_overhead.id as oid','customer.id as cid')
+                        ->get();
+        //$all_order = DB::table('order_overhead')->all()->toArray();
+       
+       
+        Excel::create('users', function($excel) use($all_order) {
+            $excel->sheet('Sheet 1', function($sheet) use($all_order) {
+                $sheet->fromArray($all_order);
             });
         })->download('xls');
 
@@ -299,9 +305,27 @@ class OrderController extends Controller
             ]);
     }
 
-    public function thankyou(){
+    public function thankyou(Request $request){
 
         $title = 'Thank you';
+
+        
+        
+
+        $to_email = 'mithun.cse521@gmail.com';
+        $to_name = 'Mithun';
+        $subject = "Order";
+        $body = "Product";
+
+        try{
+            SendMailer::send_mail_by_php_mailer($to_email, $to_name, $subject, $body);
+
+            echo 'hello';
+            exit();
+        }catch(Exception $e){
+            print_r($e->getMessage());
+        }
+        
 
         return View('web::cart.thankyou',[
                 'title' => $title
@@ -365,15 +389,15 @@ class OrderController extends Controller
 
             $email = $user_data->email;
 
-            Mail::send('web::cart.mail_template', array('user_data' =>$user_data,'delivery_data'=>$delivery_data,'product_cart_r' => $product_cart_r),
-            function($message) use ($email,$invoice_id)
-            {
-                $message->from('offthewallframing@gmail.com', 'Purchase product | OFF THE WALL');
-                $message->to($email);
-                $message->cc('offthewallframing@gmail.com', 'Purchase product | OFF THE WALL');
-                // $message->replyTo('tanintjt.1990@gmail.com','User Signup Request');
-                $message->subject('Your Order No is ' .$invoice_id );
-            });
+            // Mail::send('web::cart.mail_template', array('user_data' =>$user_data,'delivery_data'=>$delivery_data,'product_cart_r' => $product_cart_r),
+            // function($message) use ($email,$invoice_id)
+            // {
+            //     $message->from('offthewallframing@gmail.com', 'Purchase product | OFF THE WALL');
+            //     $message->to($email);
+            //     $message->cc('offthewallframing@gmail.com', 'Purchase product | OFF THE WALL');
+            //     // $message->replyTo('tanintjt.1990@gmail.com','User Signup Request');
+            //     $message->subject('Your Order No is ' .$invoice_id );
+            // });
 
             $ajax_response_data = array(
                 'status' => "1",

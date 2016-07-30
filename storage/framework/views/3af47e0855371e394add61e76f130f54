@@ -107,8 +107,13 @@
 									<li>
 										<a href="#">
 											<span id="mats_color">
-								<input class='show-color sp-disabled' disabled="disabled" type='color' name='color' value='#ffffff' />
-							</span>
+								Top:<span id="mats_color">
+													<input class='show-color sp-disabled' disabled="disabled" type='color' name='color' value='#ffffff' />
+												&nbsp;
+												Bottom:
+													<input class='show-color sp-disabled' disabled="disabled" type='color' name='color' value='#ffffff' />
+												</span>
+							
 										</a>
 									</li>
 								</ul>
@@ -171,32 +176,33 @@
 					<div  class="col-lg-12 col-md-12 col-sm-12" id="app-index">
 						<div class="col-lg-12 col-md-12 col-sm-12">
 							<!-- Trigger the modal with a button -->
-							<!-- <button type="button" id="roomViewButton" class="btn btn-info btn-sm" data-toggle="modal" data-target="#roomView">Room View</button> -->
+							<button type="button" id="roomViewButton" class="btn btn-info btn-sm" data-toggle="modal" data-target="#roomView" style="    float: right;
+    margin-top: 10px;">Room View</button>
 
 							<!-- Modal -->
 							<div id="roomView" class="modal fade" role="dialog">
-							  <div class="modal-dialog">
+									  <div class="modal-dialog">
 
-							    <!-- Modal content-->
-							    <div class="modal-content">
-							      <div class="modal-header">
-							        <button type="button" class="close" data-dismiss="modal">&times;</button>
-							        <h4 class="modal-title">Modal Header</h4>
-							      </div>
-							      <div class="modal-body row">
-							        <div class="col-lg-12 col-md-12 col-sm-12" id="wall">
-							        	<div id="frameCanvas"></div>
-							        	<canvas id="roomViewCanvas"></canvas>
-							        </div>
-							        <div class="col-lg-12 col-md-12 col-sm-12" id="wall-index"></div>
-							      </div>
-							      <div class="modal-footer">
-							        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							      </div>
-							    </div>
+									    <!-- Modal content-->
+									    <div class="modal-content">
+									      <div class="modal-header">
+									        <button type="button" class="close" data-dismiss="modal">&times;</button>
+									        <h4 class="modal-title">Room View</h4>
+									      </div>
+									      <div class="modal-body row">
+									        <div class="col-lg-12 col-md-12 col-sm-12" id="wall">
+									        	<div id="frameCanvas"></div>
+									        	<div id="photoZoom">
+									        		<input type='range' min='50' max='150' value='70' class="rangeZoom"></input>
+									        	</div>
+									        </div>
+									        <div class="col-lg-12 col-md-12 col-sm-12" id="wall-index"></div>
+									      </div>
+									      
+									    </div>
 
-							  </div>
-							</div>
+									  </div>
+									</div>
 							<!-- <div class="container"> -->
 								<ul class="nav nav-tabs" id="index-tab" style="margin-top: 10px">
 								  <li class="active"><a data-target="#index-frames" data-toggle="tab">Frame</a></li>
@@ -207,47 +213,92 @@
 
 
 								<div class="tab-container">
-									<div id="index-frames" class='tab-pane active'></div>
+									<div id="index-frames" class='tab-pane active'>
+										<div class="row">
+											<div class="col-lg-3 tab-bar"></div>
+											<div class="col-lg-9 tab-bar tab-bar-left"></div>
+										</div>
+									</div>
+									
 									<div id="index-mats" class='tab-pane'>
-										<div class = "col-lg-4 col-md-4 col-sm-2">
-											<form class="form-inline" style='padding-top:15px'>
-												<div class="form-group">
-												  <label for="mats-width">Mats Width:</label>
-												  <select class="form-control" id="mats-width">
-												    <option value="0">0 cm</option>
-												    <option value="0.5">0.5 cm</option>
-												    <option value="1">1 cm</option>
-												    <option value='1.5'>1.5 cm</option>
-												    <option value='2'>2 cm</option>
-												    <option value='2.5'>2.5 cm</option>
-												    <option value="3">3 cm</option>
-												    <option value='3.5'>3.5 cm</option>
-												    <option value='4'>4 cm</option>
-												    <option value='4.5'>4.5 cm</option>
-												    <option value='5'>5 cm</option>
-												    <option value='5.5'>5.5 cm</option>
-												    <option value="6">6 cm</option>
-												    <option value="6.5">6.5 cm</option>
-												    <option value="7">7 cm</option>
-												    <option value='7.5'>7.5 cm</option>
-												    <option value='8'>8 cm</option>
-												    <option value='8.5'>8.5 cm</option>
-												    <option value="9">9 cm</option>
-												    <option value='9.5'>9.5 cm</option>
-												    <option value='10'>10 cm</option>
-												    <option value='10.5'>10.5 cm</option>
-												    <option value='11'>11 cm</option>
-												  </select>
-												</div>
-											</form>
-										</div>
-										<div class = "col-lg-8 col-md-8 col-sm-10" >
-											<input type='text' id="matColor"/>
-										</div>
+										
+										<div class = "col-lg-4 col-md-4 col-sm-2 tab-bar">
+												<form class="form-inline" style='padding-top:15px'>
+													<div class="form-group">
+													  <label for="mats-width-bottom">Top:</label>
+													  <select class="form-control" id="mats-width-bottom">
+														<option value="0">0 cm</option>
+														<option value="0.5">0.5 cm</option>
+														<option value="1">1 cm</option>
+														<option value='1.5'>1.5 cm</option>
+														<option value='2'>2 cm</option>
+														<option value='2.5'>2.5 cm</option>
+														<option value="3">3 cm</option>
+														<option value='3.5'>3.5 cm</option>
+														<option value='4'>4 cm</option>
+														<option value='4.5'>4.5 cm</option>
+														<option value='5'>5 cm</option>
+														<option value='5.5'>5.5 cm</option>
+														<option value="6">6 cm</option>
+														<option value="6.5">6.5 cm</option>
+														<option value="7">7 cm</option>
+														<option value='7.5'>7.5 cm</option>
+														<option value='8'>8 cm</option>
+														<option value='8.5'>8.5 cm</option>
+														<option value="9">9 cm</option>
+														<option value='9.5'>9.5 cm</option>
+														<option value='10'>10 cm</option>
+														<option value='10.5'>10.5 cm</option>
+														<option value='11'>11 cm</option>
+													  </select>
+													   <input type="radio" id="bottomMat"name="mats" value="bottom" checked="checked"> 
+													   <span id="bottom_mat_color">
+															<input class='bottom-color sp-disabled' disabled="disabled" type='color' name='color' value='#ffffff' />
+														</span>									
+													</div>
+													<br><br>
+													<div class="form-group">
+													  <label for="mats-width-top">Bottom:</label>
+													  <select class="form-control" id="mats-width-top">
+														<option value="0">0 cm</option>
+														<option value="0.5">0.5 cm</option>
+														<option value="1">1 cm</option>
+														<option value='1.5'>1.5 cm</option>
+														<option value='2'>2 cm</option>
+														<option value='2.5'>2.5 cm</option>
+														<option value="3">3 cm</option>
+														<option value='3.5'>3.5 cm</option>
+														<option value='4'>4 cm</option>
+														<option value='4.5'>4.5 cm</option>
+														<option value='5'>5 cm</option>
+														<option value='5.5'>5.5 cm</option>
+														<option value="6">6 cm</option>
+														<option value="6.5">6.5 cm</option>
+														<option value="7">7 cm</option>
+														<option value='7.5'>7.5 cm</option>
+														<option value='8'>8 cm</option>
+														<option value='8.5'>8.5 cm</option>
+														<option value="9">9 cm</option>
+														<option value='9.5'>9.5 cm</option>
+														<option value='10'>10 cm</option>
+														<option value='10.5'>10.5 cm</option>
+														<option value='11'>11 cm</option>
+													  </select>
+													   <input type="radio" id="topMat" name="mats" value="top"> 
+													   <span id="top_mat_color">
+															<input class='top-color sp-disabled' disabled="disabled" type='color' name='color' value='#ffffff' />
+														</span>									
+													   </div>
+												</form>
+											</div>
+											<div class = "col-lg-8 col-md-8 col-sm-10 tab-bar" >
+												<input type='text' id="matColor"/>
+											</div>
+											
 									</div>
-									<div id="index-color" class='tab-pane'>
-										<input type="text" id="wallColor"> 
-									</div>
+								
+								<div id="index-color" class='tab-pane tab-bar'>
+									<input type="text" id="wallColor"> 
 								</div>
 							<!-- </div> -->
 						</div>
@@ -263,5 +314,10 @@
 
 </div>
 
+<style type="text/css">
+.modal-dialog{
+	width: 70%;
+}
+</style>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('web::layout.web_master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -6,7 +6,7 @@
 		<div class="col-md-9 col-sm-12 col-xs-12 row-right-0">
 			<div class="inner_banner margin-top-20 margin-bottom-30">
 				@if(!empty($productcategory->featured_image))
-					<img src="<?=$productcategory->featured_image?>">
+					<img src="{{URL::to('')}}/<?=$productcategory->featured_image?>">
 				@else
 					<img src="{{URL::to('')}}/web/images/inner-banner.png">
 				@endif
@@ -29,7 +29,7 @@
 								<div class="image_container">
 
 									<div class="product-thum-image">
-										<a href="{{URL::to('')}}/{{$product_data->image}}" class="fancybox">
+										<a href="{{URL::to('')}}/{{$product_data->image}}" class="fancybox" >
 											<img alt="{{@$product_data->meta_title}}" title="{{$product_data->title}}" src="{{URL::to('')}}/{{$product_data->image}}">												
 										</a>
 										

@@ -19,6 +19,7 @@
 				</div>								
 			</div>
 
+			
 			<div class="margin-top-30 margin-bottom-30" id="dvApp">
 
 				<div id="appFrame">
@@ -64,6 +65,10 @@
 		</div>
 	</div>
 </div>
+
+<div class="loading" style="display:none;color: #fff;position: absolute;    margin-left: 30%;
+    top: 40%;width: 50%;text-align: center;background: #ff7722;padding: 40px;z-index: 9;">Please wait a moment.</div>
+
 <a href="{{Url::to('')}}" id="site_url">&nbsp;</a>
 <script type="text/javascript">
 	
@@ -109,7 +114,9 @@
 
 		}
 		else if (childId == "#save"){
-			console.log("hi");
+			
+			$(".application_container").hide();
+			$(".loading").show();
 			// $('#dvApp').append
 			setTimeout(function(){
 				var canvas = document.getElementById('imgCanvas');
@@ -143,5 +150,23 @@
 	});
 });
 
+$("#dvApp").hide();
+$(".loading").show();
+setTimeout(function(){
+	$("#dvApp").show();
+	$(".loading").hide();
+}, 30000);
 </script>
+
+<style>
+	
+	.form-inline .form-control{
+		background: transparent;
+	    color: #fff;
+	    border: none;
+	    box-shadow: none;
+	    margin-top: -5px;
+	}
+
+</style>
 @stop

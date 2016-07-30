@@ -52,6 +52,7 @@
                                         </td>
                                      </tr>
                                 @endforeach
+                                {!! $data->render() !!}
                             @endif
                         </table>
                        

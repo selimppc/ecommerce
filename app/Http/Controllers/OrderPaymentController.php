@@ -4,10 +4,12 @@ use Illuminate\Http\Request;
 use DB;
 use Session;
 use Input;
+use Excel;
 
 use App\Customer;
 use App\DeliveryDetails;
 use App\Orderoverhead;
+use App\Orderdetails;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -126,6 +128,103 @@ class OrderPaymentController extends Controller{
         } catch(\Exception $e) {
             Session::flash('flash_message_error',$e->getMessage() );
             return redirect()->back();
+        }
+    }
+
+    public function order_paid_generate_excel(){
+
+        $title = 'Generate excel';
+
+        return view('generateexcel.index',[
+            'title' => $title      
+        ]);
+    }
+
+    public function generate_excel_current(){
+
+        
+        $all_order = Orderdetails::join('order_overhead','order_overhead.id','=','order_details.order_head_id')
+                    ->join('product','product.id','=','order_details.product_id')
+                    ->leftjoin('product_variation','product_variation.id','=','order_details.product_variation_id')
+                    ->join('customer','customer.id','=','order_overhead.user_id')
+                    ->select('product.title as Product_name','product_variation.title as Color','order_details.qty as Quantity','order_details.price as Price','customer.first_name as First_name','customer.last_name as Last_name','customer.suburb as Suburb','customer.postcode as Postcode','customer.state as State','customer.telephone as Telephone')
+                    ->where('order_overhead.status','open')
+                    ->orderBy('order_details.id','desc')
+                    ->get();
+        
+        $success = Excel::create('current_order', function($excel) use($all_order) {
+            $excel->sheet('Sheet 1', function($sheet) use($all_order) {
+                $sheet->fromArray($all_order);
+            });
+        })->download('xls');
+
+        $title = 'Generate excel';
+
+        if($success){
+
+            return view('generateexcel.index',[
+                'title' => $title      
+            ]);
+
+        }
+        
+    }
+
+    public function generate_excel_approved(){
+
+       
+        $all_order = Orderdetails::join('order_overhead','order_overhead.id','=','order_details.order_head_id')
+                    ->join('product','product.id','=','order_details.product_id')
+                    ->leftjoin('product_variation','product_variation.id','=','order_details.product_variation_id')
+                    ->join('customer','customer.id','=','order_overhead.user_id')
+                    ->select('product.title as Product_name','product_variation.title as Color','order_details.qty as Quantity','order_details.price as Price','customer.first_name as First_name','customer.last_name as Last_name','customer.suburb as Suburb','customer.postcode as Postcode','customer.state as State','customer.telephone as Telephone')
+                    ->where('order_overhead.status','approved')
+                    ->orderBy('order_details.id','desc')
+                    ->get();
+        
+        $success = Excel::create('approved_order', function($excel) use($all_order) {
+            $excel->sheet('Sheet 1', function($sheet) use($all_order) {
+                $sheet->fromArray($all_order);
+            });
+        })->download('xls');
+
+        $title = 'Generate excel';
+
+        if($success){
+
+            return view('generateexcel.index',[
+                'title' => $title      
+            ]);
+
+        }
+    }
+
+
+    public function generate_excel_delivered(){
+
+        $all_order = Orderdetails::join('order_overhead','order_overhead.id','=','order_details.order_head_id')
+                    ->join('product','product.id','=','order_details.product_id')
+                    ->leftjoin('product_variation','product_variation.id','=','order_details.product_variation_id')
+                    ->join('customer','customer.id','=','order_overhead.user_id')
+                    ->select('product.title as Product_name','product_variation.title as Color','order_details.qty as Quantity','order_details.price as Price','customer.first_name as First_name','customer.last_name as Last_name','customer.suburb as Suburb','customer.postcode as Postcode','customer.state as State','customer.telephone as Telephone')
+                    ->where('order_overhead.status','delivered')
+                    ->orderBy('order_details.id','desc')
+                    ->get();
+        
+        $success = Excel::create('delivered_order', function($excel) use($all_order) {
+            $excel->sheet('Sheet 1', function($sheet) use($all_order) {
+                $sheet->fromArray($all_order);
+            });
+        })->download('xls');
+
+        $title = 'Generate excel';
+
+        if($success){
+
+            return view('generateexcel.index',[
+                'title' => $title      
+            ]);
+
         }
     }
 

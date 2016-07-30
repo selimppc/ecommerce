@@ -27,31 +27,45 @@ class ProductController extends Controller
     {
        $input = $request->all();
 
-       if(!empty($input)){
-        
+       //set null id(s)
+       $id_product_group = null;
+       $id_product_subgroup = null;
+       $product_subgroup_lists = null;
 
-        if(isset($input['product_group_id'])){
-            $product_group_id = $input['product_group_id'];
-            if($product_group_id == 'all'){
-                $data = Product::orderBy('id', 'DESC')->paginate(20);
-            }else{
-                $data = Product::where('product_group_id',$product_group_id)->orderBy('id', 'DESC')->paginate(50);    
+       //if post method
+       if($_POST){        
+            //declare model
+            $model = Product::with('relGetproductgroup');
+
+            // if product_group_id
+            if($pg_id = $request->get('product_group_id'))
+            {
+                
+                if($pg_id == 'all'){
+                    //do nothing 
+                }else{
+                    $model = $model->where('product_group_id', $pg_id);
+                }
+                $id_product_group = $pg_id;
+               
             }
+            //if product_subgroup_id
+            if($ps_id = $request->get('product_subgroup_id'))
+            {
+                $model = $model->where('product_subgroup_id', $ps_id);
+                $id_product_subgroup = $ps_id;
 
-        }else{
-             $data = Product::orderBy('id', 'DESC')->paginate(20);
-        }
-        
+                $product_subgroup_lists = [''=>'Please select sub group']+ ProductSubgroups::where('product_group_id',$pg_id)->lists('title','id')->all();
+            }
+            //get data 
+            $data = $model->paginate(20);
 
-        if(isset($input['product_subgroup_id'])){
-            $product_subgroup_id = $input['product_subgroup_id'];
-            $data = Product::where('product_group_id',$product_group_id)->where('product_subgroup_id',$product_subgroup_id)->orderBy('id', 'DESC')->paginate(50);    
-        }
-        
-        
        }else{
+        //get data
             $data = Product::orderBy('id', 'DESC')->paginate(20);
        }
+
+
        $pageTitle = "Product";
        $product_group_id = [''=>'Please select group']+ ProductGroup::lists('title','id')->all();
 
@@ -64,7 +78,10 @@ class ProductController extends Controller
                 'cat_product_id' => $cat_product_id,
                 'data' => $data,
                 'product_group_id' => $product_group_id,
-                'product_group_id_search' => $product_group_id_search
+                'product_group_id_search' => $product_group_id_search,
+                'id_product_group' => $id_product_group,
+                'id_product_subgroup'=>$id_product_subgroup,
+                'product_subgroup_lists' => $product_subgroup_lists
             ]);
     }
 

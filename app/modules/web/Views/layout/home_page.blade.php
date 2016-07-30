@@ -25,7 +25,7 @@
 </div>
 	
 <div class="col-md-12">
-	<div class="margin-top-30">
+	<div class="margin-top-30 mobile-menu-480">
 		@include('web::layout.web_sidemenu')
 	</div>
 

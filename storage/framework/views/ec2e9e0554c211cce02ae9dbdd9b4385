@@ -38,6 +38,14 @@
 </li>
 
 <li class="sub-menu">
+    <a href="<?php echo e(URL::to('order_paid/generate_excel')); ?>">
+        <i class="icon-bookmark"></i>
+        <span>Generate Excel</span>
+    </a>
+  
+</li>
+
+<li class="sub-menu">
     <a href="<?php echo e(URL::to('cat_slider/index')); ?>">
         <i class="icon-book"></i>
         <span>Slider</span>
@@ -48,7 +56,7 @@
     </ul>
 </li>
 
-<li class="sub-menu">
+<!-- <li class="sub-menu">
     <a href="<?php echo e(URL::to('menu/index')); ?>">
         <i class="icon-sitemap"></i>
         <span>Menu</span>
@@ -57,7 +65,7 @@
         <li><a  href=<?php echo e(URL::to('menu_type/index')); ?>>Menu Type</a></li>
         <li><a  href=<?php echo e(URL::to('menu/index')); ?>>Menu</a></li>
     </ul>
-</li>
+</li> -->
 
 <?php /*<li class="sub-menu">*/ ?>
     <?php /*<a href=<?php echo e(URL::to('team/index')); ?>>*/ ?>
@@ -111,7 +119,7 @@
     <?php /*</a>*/ ?>
 <?php /*</li>*/ ?>
 
-<li class="sub-menu">
+<!-- <li class="sub-menu">
     <a href="<?php echo e(URL::to('user/profile-info')); ?>">
         <i class="icon-info"></i>
         <span>Profile</span>
@@ -121,17 +129,17 @@
         <li><a  href=<?php echo e(URL::to('user/profile-picture-view')); ?>>Profile Picture</a></li>
         <li><a  href=<?php echo e(URL::to('user/change-user-password-view')); ?>>Password Change</a></li>
     </ul>
-</li>
+</li> -->
 
 
 <?php if(Session::has('user_type')): ?>
     <?php if(Session::get('user_type')=='admin'): ?>
-        <li class="sub-menu">
+        <!-- <li class="sub-menu">
             <a href=<?php echo e(URL::to('user/user-list')); ?>>
                 <i class="icon-user-md"></i>
                 <span>User List</span>
             </a>
-        </li>
+        </li> -->
 
         <li class="sub-menu">
             <a href=<?php echo e(URL::to('reviews/all-list')); ?>>
@@ -149,7 +157,7 @@
 <?php endif; ?>
 
 
-<li class="sub-menu">
+<!-- <li class="sub-menu">
     <a href="javascript:;" >
         <i class="icon-book"></i>
         <span>Settings</span>
@@ -163,7 +171,7 @@
     </ul>
 </li>
 
-
+ -->
 <li class="sub-menu">
     &nbsp;
 </li>

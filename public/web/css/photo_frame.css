@@ -96,21 +96,45 @@
 }
 #info-bar {
 }
+
+.tab-bar{
+	padding-bottom: 25px;
+    padding-top: 15px;
+}
+
+.frame-option{
+	border-bottom: 1px solid rgba(168,124,79,.2);
+    margin-left: 10px;
+}
+
+.frame-option a{
+	    color: #ff7722;
+    font-size: 13px;
+	cursor: pointer;
+}
+
+#navigation{
+	    width: 100px;
+}
+
+.tab-bar-left{
+	border-left: 1px solid rgba(168,124,79,.3);
+}
+
 .fram-thumbnail {
-  margin-top: 20px;
-  margin-left: 20px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  width: 21%;
-  background-color: #fff;
-  border: 40px solid transparent;
-  border-image-slice: 48%;
-  border-image-repeat: repeat;
+    margin-top: 10px;
+    margin-right: 10px;
+	margin-bottom:15px;
+    background-color: #fff;
+    border: 36px solid transparent;
+    border-image-slice: 48%;
+    border-image-repeat: repeat;
+    width: 23%;
 }
 .fram-thumbnail:hover {
   outline-color: purple;
   outline-style: solid;
-  outline-width: 15px;
+  outline-width: 8px;
 }
 
 .nav-tabs > li > a{  
@@ -122,10 +146,25 @@
 }
 .tab-container {
   background: #ccc;
+  width:100%;
+  float:left;
   border-radius: 0;
-  height: 220px;
-  overflow: auto;
 }
+.form-group label{
+	color: #ff7722;
+    font-size: 13px;
+	font-weight:normal;
+}
+
+#index-mats .form-group label{
+	    width: 60px;
+}
+
+#index-mats .form-inline .form-control{
+	width:90px;
+	margin-right:15px;
+}
+
 #app-window #frame-window {
   position: relative;
   height: 100%;
@@ -135,18 +174,7 @@
   position: relative;
   margin: auto;
 }
-#image-window img#originalImage {
-  position: relative;
-  box-sizing: content-box;
-  border: 20px solid transparent;
-  border-image-source: url('../images/photo_frames/thick@4cm.png');
-  border-image-slice: 38%;
-  border-image-repeat: repeat;
-  background-color: #fff;
-  float: none;
-  margin-bottom: 20px;
-  margin-right: 20px;
-}
+
 #image-window img#imageString {
   position: relative;
   height: 50px;
@@ -220,9 +248,9 @@
 }
 /*--roomview--*/
 #wall {
-  height: 370px;
+  height: 450px;
   background-color: #464646;
-  margin-bottom: 10px;
+  
 }
 #wall-index {
   height: 100px;
@@ -249,3 +277,70 @@
   width: 100%;
 }
 
+#framed-image{
+   position: relative;
+  box-sizing: content-box;
+  border: 20px solid red;
+  border-image-source: url('../images/photo_frames/thick@4cm.png');
+  border-image-slice: 38%;
+  border-image-repeat: /*stretched*/ round;
+  background-color: #fff;
+  float: none;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  box-shadow: 1px 1px 1px 1px black inset;
+
+}
+img#originalImage {
+  position: relative;
+  box-sizing: content-box;
+  /*border: 20px solid red;*/
+  /*border-image-source: url('../images/photo_frames/thick@4cm.png');*/
+  /*border-image-slice: 38%;*/
+  /*border-image-repeat: /*stretched*/ round;*/
+  background-color: #fff;
+  float: none;
+  /*margin-bottom: 20px;*/
+  /*margin-right: 20px;*/
+}
+#frameCanvas {
+  position: relative;
+}
+#frameCanvas #framed-image {
+  position: absolute;
+  top: 50px;
+  left: 200px;
+  transition: left 0.5s ease-in, top 0.5s ease-in;
+}
+#navigation {
+  position: absolute;
+  bottom: 10px;
+  left: 0px;
+  border-radius: 10px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.modal-header {
+    padding: 8px;
+    background: #ff7722;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.modal-title{
+	font-size:14px;
+}
+
+.modal-body{
+	padding:0px 15px 0px 15px;
+}
+
+#navigation .navigationbutton{
+
+}
+
+.tab-bar{
+  
+   overflow: auto;
+}

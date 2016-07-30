@@ -38,14 +38,25 @@
                                 Search by
                             </div>
                             <div class="col-md-3">
-                               Product Group  <?php echo Form::select('product_group_id', $product_group_id_search,Input::old('product_group_id'),['class' => 'form-control','id'=>'product_group_id','required']); ?>
+                               Product Group  <?php echo Form::select('product_group_id', $product_group_id_search, isset($id_product_group) ? $id_product_group : Input::old('product_group_id'),['class' => 'form-control','id'=>'product_group_id','required']); ?>
 
                             </div>
                             <div class="col-md-3">
                                 Product Subgroup
-                                <select class='form-control' id="product_subgroup_id" name="product_subgroup_id">
-                                    
-                                </select>
+
+                                <?php if(isset($id_product_subgroup)): ?>
+
+                                    <?php echo Form::select('product_subgroup_id', $product_subgroup_lists, isset($id_product_subgroup) ? $id_product_subgroup : Input::old('product_group_id'),['class' => 'form-control','id'=>'product_subgroup_id','']); ?>
+
+
+                                <?php else: ?>
+
+                                    <select class='form-control' id="product_subgroup_id" name="product_subgroup_id">
+                                    </select>
+
+                                <?php endif; ?>
+
+                               
                             </div>
                             <div class="col-md-3">
                                 <br/>
