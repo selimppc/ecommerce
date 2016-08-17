@@ -86,13 +86,13 @@
 						<?php if($product->product_group_id == 10): ?>
 
 							<div class="price">
-								<input id="price1" type="radio" name="price" value="<?php echo e($product->sell_rate); ?>">
+								<input checked id="price1" type="radio" name="price" value="<?php echo e($product->sell_rate); ?>">
 								<label for="price1">Pick up<br/> $<?php echo e($product->sell_rate); ?></label>
 							</div>
 
 							<?php if(!empty($product->cost_price)): ?>
 								<div class="price">
-									<input checked id="price2" type="radio" name="price" value="<?php echo e($product->cost_price); ?>">
+									<input id="price2" type="radio" name="price" value="<?php echo e($product->cost_price); ?>">
 									<label for="price2">Delivered<br/> $<?php echo e($product->cost_price); ?></label>
 								</div>
 							<?php endif; ?>
@@ -107,7 +107,7 @@
 							<?php endif; ?>
 
 							<div class="price">
-								<input checked id="price1" type="radio" name="price" value="<?php echo e($product->sell_rate); ?>">
+								<input  checked id="price1" type="radio" name="price" value="<?php echo e($product->sell_rate); ?>">
 								<label for="price1">Now<br/> $<?php echo e($product->sell_rate); ?></label>
 							</div>
 

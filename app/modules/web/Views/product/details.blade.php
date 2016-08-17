@@ -87,13 +87,13 @@
 						@if($product->product_group_id == 10)
 
 							<div class="price">
-								<input id="price1" type="radio" name="price" value="{{$product->sell_rate}}">
+								<input checked id="price1" type="radio" name="price" value="{{$product->sell_rate}}">
 								<label for="price1">Pick up<br/> ${{$product->sell_rate}}</label>
 							</div>
 
 							@if(!empty($product->cost_price))
 								<div class="price">
-									<input checked id="price2" type="radio" name="price" value="{{$product->cost_price}}">
+									<input id="price2" type="radio" name="price" value="{{$product->cost_price}}">
 									<label for="price2">Delivered<br/> ${{$product->cost_price}}</label>
 								</div>
 							@endif
@@ -108,7 +108,7 @@
 							@endif
 
 							<div class="price">
-								<input checked id="price1" type="radio" name="price" value="{{$product->sell_rate}}">
+								<input  checked id="price1" type="radio" name="price" value="{{$product->sell_rate}}">
 								<label for="price1">Now<br/> ${{$product->sell_rate}}</label>
 							</div>
 
