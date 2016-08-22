@@ -15,7 +15,7 @@
 			</div>
 
 			<div class="row">
-				<div class="col-xs-4">
+				<div class="col-xs-3">
 					<h4 class="text-light">Prepared by</h4>
 					<address>
 						<strong>OFF THE WALL</strong><br>
@@ -24,16 +24,31 @@
 						
 					</address>
 				</div><!--end .col -->
-				<div class="col-xs-4">
+				<div class="col-xs-3">
 					<h4 class="text-light">Prepared for</h4>
 					<address>
+						<strong>Billing Address</strong><br/><br/>
 						<strong>{{$customer_data->first_name}} {{$customer_data->last_name}}</strong><br>
 						{{$customer_data->suburb}}, {{$customer_data->postcode}}<br>
 						{{$customer_data->state}}, {{$customer_data->country}}<br>
-						<abbr title="Phone">P:</abbr> {{$customer_data->telephone}}
+						<abbr title="Phone">P:</abbr> {{$customer_data->telephone}}<br/>
+						{{$customer_data->address}}
 					</address>
 				</div><!--end .col -->
-				<div class="col-xs-4">
+				
+				<div class="col-xs-3">
+					<h4 class="text-light">Delivery Address</h4>
+					<address>
+						<strong>Delivery Address</strong><br/><br/>
+						<strong>{{$delivery_data->first_name}} {{$delivery_data->last_name}}</strong><br>
+						{{$delivery_data->suburb}}, {{$delivery_data->postcode}}<br>
+						{{$delivery_data->state}}, {{$delivery_data->country}}<br>
+						<abbr title="Phone">P:</abbr> {{$delivery_data->telephone}}<br/>
+						{{$delivery_data->address}}
+					</address>
+				</div><!--end .col -->
+				
+				<div class="col-xs-3">
 					<div class="well">
 						<div class="clearfix">
 							<div class="pull-left"> INVOICE NO : </div>
@@ -119,7 +134,7 @@
 								<td colspan="3" >
 									&nbsp;
 								</td>
-								<td class="text-right"><strong>Vat</strong></td>
+								<td class="text-right"><strong>GST</strong></td>
 								<td class="text-right">$ 0.00</td>
 							</tr>
 							<tr>

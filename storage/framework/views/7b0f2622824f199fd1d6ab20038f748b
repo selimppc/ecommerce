@@ -15,7 +15,7 @@
 			</div>
 
 			<div class="row">
-				<div class="col-xs-4">
+				<div class="col-xs-3">
 					<h4 class="text-light">Prepared by</h4>
 					<address>
 						<strong>OFF THE WALL</strong><br>
@@ -24,17 +24,33 @@
 						
 					</address>
 				</div><!--end .col -->
-				<div class="col-xs-4">
+				<div class="col-xs-3">
 					<h4 class="text-light">Prepared for</h4>
 					<address>
+						<strong>Billing Address</strong><br/><br/>
 						<strong><?php echo e($customer_data->first_name); ?> <?php echo e($customer_data->last_name); ?></strong><br>
 						<?php echo e($customer_data->suburb); ?>, <?php echo e($customer_data->postcode); ?><br>
 						<?php echo e($customer_data->state); ?>, <?php echo e($customer_data->country); ?><br>
-						<abbr title="Phone">P:</abbr> <?php echo e($customer_data->telephone); ?>
+						<abbr title="Phone">P:</abbr> <?php echo e($customer_data->telephone); ?><br/>
+						<?php echo e($customer_data->address); ?>
 
 					</address>
 				</div><!--end .col -->
-				<div class="col-xs-4">
+				
+				<div class="col-xs-3">
+					<h4 class="text-light">Delivery Address</h4>
+					<address>
+						<strong>Delivery Address</strong><br/><br/>
+						<strong><?php echo e($delivery_data->first_name); ?> <?php echo e($delivery_data->last_name); ?></strong><br>
+						<?php echo e($delivery_data->suburb); ?>, <?php echo e($delivery_data->postcode); ?><br>
+						<?php echo e($delivery_data->state); ?>, <?php echo e($delivery_data->country); ?><br>
+						<abbr title="Phone">P:</abbr> <?php echo e($delivery_data->telephone); ?><br/>
+						<?php echo e($delivery_data->address); ?>
+
+					</address>
+				</div><!--end .col -->
+				
+				<div class="col-xs-3">
 					<div class="well">
 						<div class="clearfix">
 							<div class="pull-left"> INVOICE NO : </div>
@@ -125,7 +141,7 @@
 								<td colspan="3" >
 									&nbsp;
 								</td>
-								<td class="text-right"><strong>Vat</strong></td>
+								<td class="text-right"><strong>GST</strong></td>
 								<td class="text-right">$ 0.00</td>
 							</tr>
 							<tr>

@@ -63,6 +63,8 @@ class OrderPaymentController extends Controller{
         $order = Orderoverhead::with('relOrderDetail')->where('id', $order_head_id)->get();
        
         $customer_data = Customer::where('id',$order[0]->user_id)->first();
+		
+		$delivery_data = DB::table('deliverydetails')->where('user_id',$order[0]->user_id )->orderBy('id','desc')->first();
 
         $title = 'Invoice Detail';
 
@@ -70,7 +72,8 @@ class OrderPaymentController extends Controller{
             'order_data' => $order,
             'title' => $title,         
             'order_head_id'=>$order_head_id,
-            'customer_data' => $customer_data
+            'customer_data' => $customer_data,
+			'delivery_data' => $delivery_data
         ]);
 
 
