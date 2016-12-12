@@ -48,7 +48,7 @@ class ZipPay
 
 
         #zipMoney\Configuration::$merchant_id  = 3075; //sandbox;
-        zipMoney\Configuration::$merchant_id  = 2485; //production;
+        zipMoney\Configuration::$merchant_id  = 1485; //production;
 
         #zipMoney\Configuration::$merchant_key = 'TRjrjwZSprkucEtpL9BNOZPpkjydDIAk0Rlh7iYYbc0='; //sandbox
         zipMoney\Configuration::$merchant_key = '3t50JGRyQZeg7X3/00emLUvZYVp4BRLq/j8ty3256ec='; // production
