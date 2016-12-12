@@ -660,84 +660,95 @@ class OrderController extends Controller
 
     public function payment_method_complete(Request $request)
     {
-
-        $request->session()->forget('product_cart');
-        
-        $title = "Complete the Payment ";
-        $input_data = $request->all();
-
-
-        if($input_data['payment_method']=='e_way')
-        {
-            $invoice_number = $input_data['invoice_number'];// $request->session()->get('invoice_no');
-            $order_head = OrderHead::where('invoice_no', $invoice_number)->first();
-
-            $customer = Customer::findOrFail($order_head['user_id']);
-
-            $user_id = $order_head['user_id']; //$request->session()->get('user_id');
-            $total_price = $order_head['net_amount']; //$request->session()->get('total_price');
-            $customer_data = $customer; // $request->session()->get('customer_data');
-            $freight_calculation = $order_head['freight_amount']; //$request->session()->get('freight_calculation');
-
-
-            // Update Invoice
-            DB::table('order_head')->where('invoice_no', $invoice_number)->update(['invoice_type' => 'eway']);
-
-           $request->session()->forget('product_cart');
-
-            return view('web::cart.e_way_payment',[
-                'title' => $title,
-                'invoice_number' => $invoice_number,
-                'user_id' => $user_id,
-                'eway_total_price_format' => $order_head['net_amount']*100, //($total_price+$freight_calculation)*100,
-                'total_price' => $order_head['net_amount'], //$total_price+$freight_calculation,
-                'customer_data' => $customer_data,
-            ]);
-
-        }
-        else if($input_data['payment_method']=='pre_order')
-        {
-            // Update Invoice
-            $invoice_number = $input_data['invoice_number']; //$request->session()->get('invoice_no');
-            DB::table('order_head')->where('invoice_no', $invoice_number)->update(['invoice_type' => 'pre-order']);
-            $order_head = OrderHead::where('invoice_no', $invoice_number)->first();
-
-            Session::flash('flash_message', "Successfully Added Pre-Order Process.");
-            return redirect()->route('details_of_pre_order', $order_head->id);
-        }
-        else if($input_data['payment_method']=='zip_pay')
-        {
-            $invoice_number = $input_data['invoice_number'];
-            $order_head = OrderHead::where('invoice_no', $invoice_number)->first();
-            $customer = Customer::findOrFail($order_head['user_id']);
-
-            $user_id = $order_head['user_id'];
-            $customer_data = $customer;
-
-            // Update Invoice
-            DB::table('order_head')->where('invoice_no', $invoice_number)->update(['invoice_type' => 'zip-pay']);
+        if($request){
 
             $request->session()->forget('product_cart');
 
-            return view('web::cart.zip_pay_page',[
-                'title' => $title,
-                'invoice_number' => $invoice_number,
-                'user_id' => $user_id,
-                'eway_total_price_format' => $order_head['net_amount']*100,
-                'total_price' => $order_head['net_amount'],
-                'customer_data' => $customer_data,
-            ]);
-        }
-        else
-        {
-            // Update Invoice
-            $invoice_number = $input_data['invoice_number']; //$request->session()->get('invoice_no');
-            DB::table('order_head')->where('invoice_no', $invoice_number)->update(['invoice_type' => 'layby']);
-            $order_head = OrderHead::where('invoice_no', $invoice_number)->first();
+            $title = "Complete the Payment ";
+            $input_data = $request->all();
 
-            Session::flash('flash_message', "Successfully Added Lay-by Process.");
-            return redirect()->route('details_of_lay_by', $order_head->id);
+            if(count($input_data)>0){
+                if($input_data['payment_method']=='e_way')
+                {
+                    $invoice_number = $input_data['invoice_number'];// $request->session()->get('invoice_no');
+                    $order_head = OrderHead::where('invoice_no', $invoice_number)->first();
+
+                    $customer = Customer::findOrFail($order_head['user_id']);
+
+                    $user_id = $order_head['user_id']; //$request->session()->get('user_id');
+                    $total_price = $order_head['net_amount']; //$request->session()->get('total_price');
+                    $customer_data = $customer; // $request->session()->get('customer_data');
+                    $freight_calculation = $order_head['freight_amount']; //$request->session()->get('freight_calculation');
+
+
+                    // Update Invoice
+                    DB::table('order_head')->where('invoice_no', $invoice_number)->update(['invoice_type' => 'eway']);
+
+                    $request->session()->forget('product_cart');
+
+                    return view('web::cart.e_way_payment',[
+                        'title' => $title,
+                        'invoice_number' => $invoice_number,
+                        'user_id' => $user_id,
+                        'eway_total_price_format' => $order_head['net_amount']*100, //($total_price+$freight_calculation)*100,
+                        'total_price' => $order_head['net_amount'], //$total_price+$freight_calculation,
+                        'customer_data' => $customer_data,
+                    ]);
+
+                }
+                else if($input_data['payment_method']=='pre_order')
+                {
+                    // Update Invoice
+                    $invoice_number = $input_data['invoice_number']; //$request->session()->get('invoice_no');
+                    DB::table('order_head')->where('invoice_no', $invoice_number)->update(['invoice_type' => 'pre-order']);
+                    $order_head = OrderHead::where('invoice_no', $invoice_number)->first();
+
+                    Session::flash('flash_message', "Successfully Added Pre-Order Process.");
+                    return redirect()->route('details_of_pre_order', $order_head->id);
+                }
+                else if($input_data['payment_method']=='zip_pay')
+                {
+                    $invoice_number = $input_data['invoice_number'];
+                    $order_head = OrderHead::where('invoice_no', $invoice_number)->first();
+                    $customer = Customer::findOrFail($order_head['user_id']);
+
+                    $user_id = $order_head['user_id'];
+                    $customer_data = $customer;
+
+                    // Update Invoice
+                    DB::table('order_head')->where('invoice_no', $invoice_number)->update(['invoice_type' => 'zip-pay']);
+
+                    $request->session()->forget('product_cart');
+
+                    return view('web::cart.zip_pay_page',[
+                        'title' => $title,
+                        'invoice_number' => $invoice_number,
+                        'user_id' => $user_id,
+                        'eway_total_price_format' => $order_head['net_amount']*100,
+                        'total_price' => $order_head['net_amount'],
+                        'customer_data' => $customer_data,
+                    ]);
+                }
+                else
+                {
+                    // Update Invoice
+                    $invoice_number = $input_data['invoice_number']; //$request->session()->get('invoice_no');
+                    DB::table('order_head')->where('invoice_no', $invoice_number)->update(['invoice_type' => 'layby']);
+                    $order_head = OrderHead::where('invoice_no', $invoice_number)->first();
+
+                    Session::flash('flash_message', "Successfully Added Lay-by Process.");
+                    return redirect()->route('details_of_lay_by', $order_head->id);
+                }
+            }else{
+                return redirect('mycart');
+            }
+
+
+        }else{
+            return redirect('mycart');
         }
+
+
 
 
     }

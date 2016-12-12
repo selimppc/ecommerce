@@ -41,20 +41,20 @@ class ZipPay
          */
 
         /*
-         *  Merchant ID: 3075
-            API Signature: TRjrjwZSprkucEtpL9BNOZPpkjydDIAk0Rlh7iYYbc0=
-            Unique Id: daef00bf-536f-41b2-9bc7-2f1a47fc1742
+         *  Merchant ID: 1485
+            API Key: 3t50JGRyQZeg7X3/00emLUvZYVp4BRLq/j8ty3256ec=
+            Public Key: 6cbda058-c152-489e-bc0b-c34875f2f39d
          */
 
 
-        zipMoney\Configuration::$merchant_id  = 3075; //sandbox;
-        #zipMoney\Configuration::$merchant_id  = 2485; //production;
+        #zipMoney\Configuration::$merchant_id  = 3075; //sandbox;
+        zipMoney\Configuration::$merchant_id  = 2485; //production;
 
-        zipMoney\Configuration::$merchant_key = 'TRjrjwZSprkucEtpL9BNOZPpkjydDIAk0Rlh7iYYbc0='; //sandbox
-        #zipMoney\Configuration::$merchant_key = '3t50JGRyQZeg7X3/00emLUvZYVp4BRLq/j8ty3256ec='; // production
+        #zipMoney\Configuration::$merchant_key = 'TRjrjwZSprkucEtpL9BNOZPpkjydDIAk0Rlh7iYYbc0='; //sandbox
+        zipMoney\Configuration::$merchant_key = '3t50JGRyQZeg7X3/00emLUvZYVp4BRLq/j8ty3256ec='; // production
 
-        zipMoney\Configuration::$environment  = 'sandbox'; //sandbox;
-        #zipMoney\Configuration::$environment  = 'production'; //production;
+        #zipMoney\Configuration::$environment  = 'sandbox'; //sandbox;
+        zipMoney\Configuration::$environment  = 'production'; //production;
 
 
         # Initialize the checkout

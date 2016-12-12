@@ -8,11 +8,13 @@
 vendor/
 .idea/
 .idea/workspace.xml
+.DS_Store/
+app/.DS_Store/
 
 config/database.php
-
 composer.lock
-
 public/uploads
+
 app/modules/user/logs/
 app/modules/accounts/logs/
+
