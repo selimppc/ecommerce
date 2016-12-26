@@ -4800,6 +4800,7 @@ left: -100%;
     padding: 2px 20px;
 	float: left;
 	width: 100%;
+    box-shadow: 0px 1px 5px #888888;
 }
 .pos-new-product { margin:30px 0 0;
 	/*background: #fff;*/
@@ -5179,6 +5180,7 @@ img.downa_arrow_btn{
 .home-text-container{
 	width: 100%;
 	float: left;
+    border-radius: 5px;
 }
 
 .home-text-container h4{
@@ -5191,6 +5193,7 @@ img.downa_arrow_btn{
     float: left;
     text-transform: uppercase;
 	width: 100%;
+    box-shadow: 0px 1px 5px #888888;
 }
 
 .home-text-container .description{
