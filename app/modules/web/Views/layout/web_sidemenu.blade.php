@@ -65,7 +65,18 @@
 			<div class="fb-page" data-href="https://www.facebook.com/Asims-Toys-Kids-Ride-On-Toys-869410779777184/" data-tabs="timeline" data-width="280" data-height="400" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>
 		</div>
 	</div>
+
+
+
+    <div>
+        <a href="{{URL::to('extra-accessories/number-plates')}}">
+        <h3 style="color: white">Number Plates</h3>
+        <amp-img  src="{{asset('images/number_plate_img.jpg')}}" width="20" height="20" layout="responsive" ></amp-img>
+        </a>
+    </div>
 </div>
+
+
 <script>
 	$(".mobile_menu").click(function(){
 	    $(".top-left-menu-container").toggle();
