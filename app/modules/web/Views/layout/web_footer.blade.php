@@ -48,7 +48,7 @@
                                                 <h4>Secure Payment </h4><br>
                                             </div>
 
-                                            <p class="secure-payment-info">All transactions are securely process and encrypted by the eWAY payment gateway platform. Credit Card information is never stored.</p>
+                                            <p class="secure-payment-info">All transactions are securely process and encrypted by the eWAY payment and ZipPay  Gateway. Credit Card information is never stored.</p>
                                             <amp-img src="{{URL::asset('/web/images/accept_credit_cards.jpg')}}" alt="Secure Payment" width="273"></amp-img>
                                         </div>
                                     </div>
