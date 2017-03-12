@@ -38,32 +38,52 @@ class WwwController extends Controller
 {
     public function home_page()
     {
-    	$title = "Welcome to the";
-    	$slider_data = SliderImage::where('cat_slider_id', 1)->where('status','active')->get();
-    	$featured_product_data = Product::where('is_featured','Yes')->where('status','active')->get();
+        $title = "Welcome to the";
+        $slider_data = SliderImage::where('cat_slider_id', 1)->where('status','active')->get();
+        $featured_product_data = Product::where('is_featured','Yes')->where('status','active')->get();
 
-    	$home_value = "off-the-wall";
-    	$data = Article::where('slug', $home_value)->where('status', 'active')->first();
+        $home_value = "off-the-wall";
+        $data = Article::where('slug', $home_value)->where('status', 'active')->first();
+
+        if(!empty($data->meta_title)){
+            $title = $data->meta_title; 
+        }else{
+            $title =$data->title;
+        }
+
+        $meta_keywords = $data->meta_keyword;
+        $meta_description = $data->meta_desc;
 
         return view('web::layout.home_page',[
-        		'title' => $title,
-        		'data' => $data,
-        		'slider_data'=>$slider_data,
-        		'featured_product_data' => $featured_product_data
-        	]);
+                'title' => $title,
+                'data' => $data,
+                'slider_data'=>$slider_data,
+                'featured_product_data' => $featured_product_data,
+                'meta_keywords' => $meta_keywords,
+                'meta_description' => $meta_description
+            ]);
     }
 
 
     public function about(){
-        $slug = 'about-us';
+        $slug = 'picture-framer';
 
         $data = Article::where('slug',$slug)->first();
 
-        $title =$data->title;
+        if(!empty($data->meta_title)){
+            $title = $data->meta_title; 
+        }else{
+            $title =$data->title;
+        }
+
+        $meta_keywords = $data->meta_keyword;
+        $meta_description = $data->meta_desc;
 
         return view('web::general.commonpage', [
             'title'=>$title,
-            'data'=>$data
+            'data'=>$data,
+                'meta_keywords' => $meta_keywords,
+                'meta_description' => $meta_description
         ]);
     }
 
@@ -72,11 +92,20 @@ class WwwController extends Controller
 
         $data = Article::where('slug',$slug)->first();
 
-        $title =$data->title;
+       if(!empty($data->meta_title)){
+            $title = $data->meta_title; 
+        }else{
+            $title =$data->title;
+        }
+
+        $meta_keywords = $data->meta_keyword;
+        $meta_description = $data->meta_desc;
 
         return view('web::general.commonpage', [
             'title'=>$title,
-            'data'=>$data
+            'data'=>$data,
+                'meta_keywords' => $meta_keywords,
+                'meta_description' => $meta_description
         ]);
     }
 
@@ -85,24 +114,42 @@ class WwwController extends Controller
 
         $data = Article::where('slug',$slug)->first();
 
-        $title =$data->title;
+        if(!empty($data->meta_title)){
+            $title = $data->meta_title; 
+        }else{
+            $title =$data->title;
+        }
+
+        $meta_keywords = $data->meta_keyword;
+        $meta_description = $data->meta_desc;
 
         return view('web::general.commonpage', [
             'title'=>$title,
-            'data'=>$data
+            'data'=>$data,
+                'meta_keywords' => $meta_keywords,
+                'meta_description' => $meta_description
         ]);
     }
 
     public function contact(){
-        $slug = 'contact-us';
+        $slug = 'picture-framing-rockdale';
 
         $data = Article::where('slug',$slug)->first();
 
-        $title =$data->title;
+        if(!empty($data->meta_title)){
+            $title = $data->meta_title; 
+        }else{
+            $title =$data->title;
+        }
+
+        $meta_keywords = $data->meta_keyword;
+        $meta_description = $data->meta_desc;
 
         return view('web::general.contact', [
             'title'=>$title,
-            'data'=>$data
+            'data'=>$data,
+                'meta_keywords' => $meta_keywords,
+                'meta_description' => $meta_description
         ]);
     }
     
@@ -112,11 +159,20 @@ class WwwController extends Controller
 
         $data = Article::where('slug',$slug)->first();
 
-        $title =$data->title;
+        if(!empty($data->meta_title)){
+            $title = $data->meta_title; 
+        }else{
+            $title =$data->title;
+        }
+
+        $meta_keywords = $data->meta_keyword;
+        $meta_description = $data->meta_desc;
 
         return view('web::general.commonpage', [
             'title'=>$title,
-            'data'=>$data
+            'data'=>$data,
+                'meta_keywords' => $meta_keywords,
+                'meta_description' => $meta_description
         ]);
     }
 
@@ -125,11 +181,20 @@ class WwwController extends Controller
 
         $data = Article::where('slug',$slug)->first();
 
-        $title =$data->title;
+       if(!empty($data->meta_title)){
+            $title = $data->meta_title; 
+        }else{
+            $title =$data->title;
+        }
+
+         $meta_keywords = $data->meta_keyword;
+        $meta_description = $data->meta_desc;
 
         return view('web::general.commonpage', [
             'title'=>$title,
-            'data'=>$data
+            'data'=>$data,
+                'meta_keywords' => $meta_keywords,
+                'meta_description' => $meta_description
         ]);
     }
 
@@ -138,11 +203,20 @@ class WwwController extends Controller
 
         $data = Article::where('slug',$slug)->first();
 
-        $title =$data->title;
+        if(!empty($data->meta_title)){
+            $title = $data->meta_title; 
+        }else{
+            $title =$data->title;
+        }
+
+        $meta_keywords = $data->meta_keyword;
+        $meta_description = $data->meta_desc;
 
         return view('web::general.commonpage', [
             'title'=>$title,
-            'data'=>$data
+            'data'=>$data,
+                'meta_keywords' => $meta_keywords,
+                'meta_description' => $meta_description
         ]);
     }
 

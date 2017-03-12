@@ -59,8 +59,8 @@ Route::any('/', [
     'uses' => 'WwwController@home_page'
 ]);
 
-Route::any('about-us',[
-	'as' => 'about-us',
+Route::any('picture-framer',[
+	'as' => 'picture-framer',
 	'uses' => 'WwwController@about'
 ]);
 
@@ -74,8 +74,8 @@ Route::any('privacy-security',[
 	'uses' => 'WwwController@privacy'
 ]);
 
-Route::any('contact-us',[
-	'as' => 'contact-us',
+Route::any('picture-framing-rockdale',[
+	'as' => 'picture-framing-rockdale',
 	'uses' => 'WwwController@contact'
 ]);
 

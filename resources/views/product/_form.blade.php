@@ -66,30 +66,33 @@
             {!! Form::label('Before Price', 'Before Price:', ['class' => 'control-label']) !!}
             {!! Form::text('before_price', null, ['id'=>'before_price', 'class' => 'form-control']) !!}
         </div>
-
-        
-
-        
-        <div class="form-group">
-            {!! Form::label('Sort Order', 'Sort Order:', ['class' => 'control-label']) !!}
-            {!! Form::text('sort_order', null, ['id'=>'sort_order', 'class' => 'form-control']) !!}
-        </div>
-
-
-        <div class="form-group" >
-            {!! Form::label('is_featured', 'Is featured?', ['class' => 'control-label']) !!}
-            <small class="required">(Required)</small>
-            {!! Form::Select('is_featured',array('No'=>'No','Yes'=>'Yes'),Input::old('status'),['class'=>'form-control ','required']) !!}
-        </div>
        
+       <div class="form-group">
+            {!! Form::label('meta_keyword', 'Meta Keyword:', ['class' => 'control-label']) !!}
+            {!! Form::text('meta_keyword', null, ['id'=>'meta_keyword', 'class' => 'form-control']) !!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('meta_desc', 'Meta Desc:', ['class' => 'control-label']) !!}
+            {!! Form::textarea('meta_desc', null, ['id'=>'meta_desc', 'class' => 'form-control']) !!}
+        </div>
 
     </div>
 </div>
 
 <div class="col-md-6" style="padding-right: 0;">
 
-    
-    <div class="form-group">
+        <div class="form-group">
+            {!! Form::label('Sort Order', 'Sort Order:', ['class' => 'control-label']) !!}
+            {!! Form::text('sort_order', null, ['id'=>'sort_order', 'class' => 'form-control']) !!}
+        </div>
+
+        <div class="form-group" >
+            {!! Form::label('is_featured', 'Is featured?', ['class' => 'control-label']) !!}
+            <small class="required">(Required)</small>
+            {!! Form::Select('is_featured',array('No'=>'No','Yes'=>'Yes'),Input::old('status'),['class'=>'form-control ','required']) !!}
+        </div>
+
+        <div class="form-group">
             {!! Form::label('Product Code', 'Product Code:', ['class' => 'control-label']) !!}
             {!! Form::text('product_code', null, ['id'=>'product_code', 'class' => 'form-control']) !!}
         </div>
@@ -120,6 +123,8 @@
             <small class="required">(Required)</small>
             {!! Form::Select('status',array('active'=>'Active','inactive'=>'Inactive'),Input::old('status'),['class'=>'form-control ','required']) !!}
         </div>
+
+
 
 
     <div class="form-group">

@@ -1620,6 +1620,27 @@ input.submit-btn{
     }
 }
 
+@media screen and (max-width: 480px) {
+
+    .product_data_container .image_container {
+        height: auto;
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .product-thum-image img {
+        max-width: 100%;
+    }
+
+    .product_data_container .title{
+        width: 100%;
+    }
+
+    .product_data_container .description{
+        width: 100%;
+    }
+}
+
 .darkroom-toolbar .darkroom-button-group:last-child{
     float: left;
     width: 60px;

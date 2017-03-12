@@ -63,7 +63,7 @@
                                             <ul class="top_menu">
                                                                        
                                                 <li>
-                                                    <a href="{{URL::to('')}}/about-us">About us</a>
+                                                    <a href="{{URL::to('')}}/picture-framer">About us</a>
                                                 </li>
                                                 <li>
                                                     <a href="{{URL::to('')}}/picture-framing-rockdale">Contact us</a>

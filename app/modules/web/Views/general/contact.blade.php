@@ -38,7 +38,7 @@
 					<div class="col-md-6">
 
 						<div id="map"></div>
-					     <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+					     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBehGXKGJPBWLju8rBtkt-BWgUTfFGSb9Y&callback=initMap"
 					        async defer></script>
 					</div>
 
@@ -52,10 +52,18 @@
 				    <script>
 					  function initMap() {
 					    var mapDiv = document.getElementById('map');
+
+					    var uluru = {lat: -33.9495855, lng: 151.1367293};
 					    var map = new google.maps.Map(mapDiv, {
 					      center: {lat: -33.9495855, lng: 151.1367293},
-					      zoom: 16
+					      zoom: 16,
+					      center: uluru
 					    });
+					    var marker = new google.maps.Marker({
+				          position: uluru,
+				          map: map,
+				          title: '425 Princess Highway, Rockdale NSW 2216'
+				        });
 					  }
 					</script>
 				</div>

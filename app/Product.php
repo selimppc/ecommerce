@@ -37,7 +37,9 @@ class Product extends Model
         'size',
         'other_size',
         'meta_title',
-        'delivery_info'
+        'delivery_info',
+        'meta_keyword',
+        'meta_desc'
         
     ];
 

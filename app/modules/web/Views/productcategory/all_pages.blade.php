@@ -37,7 +37,7 @@
 
 								</div>
 								<div class="title">{{$product_data->title}}</div>
-								<div class="description">{{$product_data->desc}}</div>
+								<div class="description"><?php echo $product_data->desc;?></div>
 							</div>
 						@endforeach
 					@else
