@@ -13,10 +13,19 @@
 		</div>
 
 		<div class="col-md-9 col-sm-12 col-xs-12 row-right-0">
-			<div class="general-page-header">
-				<?php echo e($productcategory->title); ?>
+		
+			<div class="width100 floatleft border-top-2 border-bottom-2">
+				<div class="product-listing-header">
+					<h2><?php echo e($productcategory->title); ?></h2>
+					<?php if(!empty($productcategory->desc)): ?>
+						<div class="short_descsription">
+							<?php echo e($productcategory->desc); ?>
 
+						</div>
+					<?php endif; ?>
+				</div>
 			</div>
+				
 
 			<div class="row">
 
@@ -28,15 +37,15 @@
 								<div class="image_container">
 
 									<div class="product-thum-image">
-										<a href="<?php echo e(URL::to('')); ?>/<?php echo e($product_data->image); ?>" class="fancybox" style="background-image:url('<?php echo e(URL::to('')); ?>/<?php echo e($product_data->image); ?>')">
-											<img alt="<?php echo e(@$product_data->meta_title); ?>" title="<?php echo e($product_data->title); ?>" src="<?php echo e(URL::to('')); ?>/<?php echo e($product_data->image); ?>" style="display:none;">												
+										<a href="<?php echo e(URL::to('')); ?>/<?php echo e($product_data->image); ?>" class="fancybox" >
+											<img alt="<?php echo e(@$product_data->meta_title); ?>" title="<?php echo e($product_data->title); ?>" src="<?php echo e(URL::to('')); ?>/<?php echo e($product_data->image); ?>">												
 										</a>
 										
 									</div>
 
 								</div>
 								<div class="title"><?php echo e($product_data->title); ?></div>
-								<div class="description"><?php echo e($product_data->desc); ?></div>
+								<div class="description"><?php echo $product_data->desc;?></div>
 							</div>
 						<?php endforeach; ?>
 					<?php else: ?>

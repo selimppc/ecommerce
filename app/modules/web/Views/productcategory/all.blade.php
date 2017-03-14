@@ -22,6 +22,11 @@
 		<div class="width100 floatleft border-top-2 border-bottom-2">
 			<div class="product-listing-header">
 				<h2>{{$product_subgroup->title}}</h2>
+				@if(!empty($product_subgroup->short_desc))
+					<div class="short_descsription">
+						{{$product_subgroup->short_desc}}
+					</div>
+				@endif
 			</div>
 		</div>
 

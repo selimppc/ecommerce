@@ -16,6 +16,7 @@ return array(
     'AddFieldCustomerReviewTable' => $baseDir . '/database/migrations/2016_03_30_115927_add_field_customer_review_table.php',
     'AddFieldInproductTable' => $baseDir . '/database/migrations/2016_03_28_115908_add_field_inproduct_table.php',
     'AddFieldPageParent' => $baseDir . '/database/migrations/2016_03_12_111638_add_field_page_parent.php',
+    'AddFieldProductSubgroupTable' => $baseDir . '/database/migrations/2017_03_14_132810_add_field_product_subgroup_table.php',
     'AddImageIntoProductSubGroup' => $baseDir . '/database/migrations/2016_05_03_111245_add_image_into_product_sub_group.php',
     'AddImagesToProductTable' => $baseDir . '/database/migrations/2016_01_19_102310_add_images_to_product_table.php',
     'AddIsFeaturedToProductCategoryTable' => $baseDir . '/database/migrations/2016_01_11_104935_add_is_featured_to_product_category_table.php',

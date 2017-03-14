@@ -33,27 +33,46 @@ class ProductCategoryController extends Controller
 								->where('status','active')
 								->orderBy('sort_order','asc')
 								->get();
-					
-				$title =$product_subgroup->title . ' | ';
+									
+				if($product_subgroup->meta_title != ''){
+					$title =$product_subgroup->meta_title;
+				}else{
+					$title =$product_subgroup->title;
+				}
+				
+				$meta_keywords = $product_subgroup->meta_keyword;
+				$meta_description = $product_subgroup->meta_desc;
 
 				return view('web::productcategory.all',[
 		            'title' => $title,
 		            'productdata' => $productdata,
-		            'product_subgroup' => $product_subgroup            
+		            'product_subgroup' => $product_subgroup,
+					'meta_keywords' => $meta_keywords,
+					'meta_description' => $meta_description
 		        ]);
 
 
 		}else{
 
 			$productcategory = DB::table('article')->where('slug',$sub_slug)->first();
-			$title =$productcategory->title . ' | ';
+			
+			if($productcategory->meta_title != ''){
+				$title =$productcategory->meta_title;
+			}else{
+				$title =$productcategory->title;
+			}
+			
+			$meta_keywords = $productcategory->meta_keyword;
+			$meta_description = $productcategory->meta_desc;
 
 			$product_content = DB::table('article_sub')->where('article_id',$productcategory->id)->get();
 
 			return view('web::productcategory.all_pages',[
 	            'title' => $title,
 	            'productcategory' => $productcategory,
-	            'product_content' => $product_content          
+	            'product_content' => $product_content,
+				'meta_keywords' => $meta_keywords,
+				'meta_description' => $meta_description
 	        ]);
 		}
 		

@@ -20,6 +20,12 @@
 		<div class="width100 floatleft border-top-2 border-bottom-2">
 			<div class="product-listing-header">
 				<h2><?php echo e($product_subgroup->title); ?></h2>
+				<?php if(!empty($product_subgroup->short_desc)): ?>
+					<div class="short_descsription">
+						<?php echo e($product_subgroup->short_desc); ?>
+
+					</div>
+				<?php endif; ?>
 			</div>
 		</div>
 

@@ -15,9 +15,18 @@
 		</div>
 
 		<div class="col-md-9 col-sm-12 col-xs-12 row-right-0">
-			<div class="general-page-header">
-				{{$productcategory->title}}
+		
+			<div class="width100 floatleft border-top-2 border-bottom-2">
+				<div class="product-listing-header">
+					<h2>{{$productcategory->title}}</h2>
+					@if(!empty($productcategory->desc))
+						<div class="short_descsription">
+							{{$productcategory->desc}}
+						</div>
+					@endif
+				</div>
 			</div>
+				
 
 			<div class="row">
 

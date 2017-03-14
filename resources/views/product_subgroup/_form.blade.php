@@ -70,6 +70,36 @@
          </span>
         </div>
     </div>
+	
+	<div class="col-md-6">
+		
+		<div class="form-group">
+			{!! Form::label('Meta Title', 'Meta Title:', ['class' => 'control-label']) !!}
+			{!! Form::text('meta_title', null, ['id'=>'meta_title', 'class' => 'form-control']) !!}
+		</div>
+
+		<div class="form-group">
+			{!! Form::label('Meta Desc', 'Meta Desc:', ['class' => 'control-label']) !!}
+			{!! Form::textarea('meta_desc', null, ['id'=>'meta_desc', 'class' => 'form-control']) !!}		
+		</div>
+		
+	</div>
+	
+	<div class="col-md-6">
+		
+		<div class="form-group">
+			{!! Form::label('Meta Keywords', 'Meta Keywords:', ['class' => 'control-label']) !!}
+			{!! Form::text('meta_keyword', null, ['id'=>'meta_keyword', 'class' => 'form-control']) !!}
+		</div>
+
+		<div class="form-group">
+			{!! Form::label('Short Desc', 'Short Desc:', ['class' => 'control-label']) !!}
+			{!! Form::textarea('short_desc', null, ['id'=>'short_desc', 'class' => 'form-control']) !!}			
+		</div>
+		
+	</div>
+	
+	
 
 <a href="{{ route('product-subgroup-index') }}" class="btn btn-default" type="button"> Close </a>
 {!! Form::submit('Submit', ['class' => 'btn btn-success']) !!}

@@ -635,10 +635,19 @@ a.buy_now_btn:hover{
     font-size: 15px;
     padding-left: 15px;
     text-transform: uppercase;
+	margin-bottom:15px;
 }
 
 .product-listing-header{
     
+}
+
+.product-listing-header .short_descsription{
+	width: 100%;
+    color: #fff;
+    display: inline-block;
+    padding-bottom: 10px;
+    padding-left: 15px;
 }
 
 .product-listing-header  .selectbar{
