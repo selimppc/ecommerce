@@ -33,19 +33,70 @@
 
 						</div>
 					</div>
-					
 
 					<div class="col-md-6">
 
-						<div id="map"></div>
-					     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBehGXKGJPBWLju8rBtkt-BWgUTfFGSb9Y&callback=initMap"
+						{!! Form::open(['route' => 'contactsubmit','class' => 'contact-form']) !!}
+
+							<div class="form-group">
+								<label>Name</label>
+								{!! Form::text('name', null, ['id'=>'name', 'class' => '','required']) !!}
+							</div>
+							<div class="form-group">
+								<label>Email</label>
+								{!! Form::email('email', null, ['id'=>'email', 'class' => '','required']) !!}
+							</div>
+							<div class="form-group">
+								<label>Phone</label>
+								{!! Form::text('phone', null, ['id'=>'phone', 'class' => '','required']) !!}
+							</div>
+							<div class="form-group">
+								<label>Subject</label>
+								{!! Form::text('subject', null, ['id'=>'subject', 'class' => '','required']) !!}
+							</div>
+							<div class="form-group">
+								<label>Message</label>
+								{!! Form::textarea('message', null, ['id'=>'message', 'class' => '','required']) !!}
+							</div>
+							
+							<div class="form-group">
+								<input type="submit" name="submit" value="Send" class="submitbtn">
+							</div>
+							
+							<div class="form-group">
+								
+								@if(Session::has('flash_message_success'))
+									<div class="btn btn-success pull-right" style="width:100%;">
+										{!!Session::get('flash_message_success')!!}
+									</div>
+								@endif
+								
+								@if(Session::has('flash_message_error'))
+									<div class="btn btn-danger pull-right" style="width:100%;">
+										{!!Session::get('flash_message_error')!!}
+									</div>
+								@endif
+							</div>
+								
+						{!! Form::close() !!}
+
+					</div>
+					
+
+					<div class="col-md-12">
+						<div class="row">
+
+							<div id="map"></div>
+					    	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBehGXKGJPBWLju8rBtkt-BWgUTfFGSb9Y&callback=initMap"
 					        async defer></script>
+
+					    </div>
 					</div>
 
 					<style>
 				      #map {
 				        width: 100%;
-				        height: 400px;
+				        height: 300px;
 				      }
 				    </style>
 

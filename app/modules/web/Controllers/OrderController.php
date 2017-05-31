@@ -306,26 +306,52 @@ class OrderController extends Controller
     }
 
     public function thankyou(Request $request){
+       
+        $product_cart = $request->session()->get('product_cart');
+        $user_id = $request->session()->get('billing_id');
+        $deliver_id = $request->session()->get('deliver_id');
 
+        $user_data = DB::table('customer')->where('id',$user_id)->first();
+        $delivery_data = DB::table('deliverydetails')->where('id',$deliver_id)->orderBy('id', 'desc')->first();
+        
         $title = 'Thank you';
 
         
-        
-
-        $to_email = 'mithun.cse521@gmail.com';
-        $to_name = 'Mithun';
-        $subject = "Order";
-        $body = "Product";
+        // $to_email = 'mithun.cse521@gmail.com';
+        // $to_name = 'Mithun';
+        // $subject = "Order";
+        // $body = "Product";
 
         try{
-            SendMailer::send_mail_by_php_mailer($to_email, $to_name, $subject, $body);
+            // SendMailer::send_mail_by_php_mailer($to_email, $to_name, $subject, $body);
 
-            echo 'hello';
-            exit();
+            // echo 'hello';
+            // exit();
+
+            $body = view('web::cart.mail_template',[
+                'product_cart_r' => $product_cart,
+                'user_data' => $user_data,
+                'delivery_data' => $delivery_data
+            ]);
+            
+
+            $to = $user_data->email;
+            $subject = "Off The Wall";
+            // Always set content-type when sending HTML email
+            $headers = "MIME-Version: 1.0" . "\r\n";
+            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+            // More headers
+            $headers .= 'From: <info@offthewallframing.com.au>' . "\r\n";
+
+            mail($to,$subject,$body,$headers);
         }catch(Exception $e){
             print_r($e->getMessage());
         }
         
+        $request->session()->forget('product_cart');
+        $request->session()->forget('billing_id');
+        $request->session()->forget('deliver_id');
 
         return View('web::cart.thankyou',[
                 'title' => $title

@@ -1,6 +1,7 @@
 <div class="modal-dialog"  style="width: 75%;">
 	<div class="modal-content" style="float: left;width: 100%;" >
-	    <button style="padding: 10px;position: relative;z-index: 99;" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	    <!-- <button style="padding: 10px;position: relative;z-index: 99;" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> -->
+	    <a href="" class="btn" type="button" style="float:right;position:relative;z-index:99;cursor:pointerl"> X </a>
 	    <div class="modal-body">
 	      	<div clas"row">
 		      	<div class="col-xs-8">

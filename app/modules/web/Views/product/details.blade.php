@@ -109,7 +109,7 @@
 
 							<div class="price">
 								<input  checked id="price1" type="radio" name="price" value="{{$product->sell_rate}}">
-								<label for="price1">Now<br/> ${{$product->sell_rate}}</label>
+								<label for="price1">Pick up<br/> ${{$product->sell_rate}}</label>
 							</div>
 
 							@if(!empty($product->cost_price))

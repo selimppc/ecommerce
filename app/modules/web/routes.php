@@ -94,6 +94,11 @@ Route::any('splashbacks',[
 	'uses' => 'WwwController@splashbacks'
 ]);
 
+Route::any('contactsubmit',[
+		'as' => 'contactsubmit',
+		'uses' => 'WwwController@contactsubmit'
+	]);
+
 Route::any('mycart',[
 		'as' => 'mycart',
 		'uses' => 'CartController@mycart'

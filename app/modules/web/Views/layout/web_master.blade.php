@@ -122,7 +122,7 @@
                                 <div class="col-md-9 col-sm-9 col-xs-12">
                                     <ul class="footer_menu">
                                         <li>
-                                            <a href="https://www.facebook.com/Off-the-wall-framing-PTY-Ltd-1180736021961295/" target="_blank"><img src="{{URL::to('')}}/images/facebook.png"></a>
+                                            <a href="https://www.facebook.com/offthewallframing/" target="_blank"><img src="{{URL::to('')}}/images/facebook.png"></a>
                                             <a href="https://www.instagram.com/offthewallframing/" target="_blank"><img src="{{URL::to('')}}/images/instagram.png"></a>
                                             <a href="https://plus.google.com/u/0/109347086873122701317/about" target="_blank"><img src="{{URL::to('')}}/images/google-plus.png"></a>
                                         </li>

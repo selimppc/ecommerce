@@ -152,6 +152,39 @@ class WwwController extends Controller
                 'meta_description' => $meta_description
         ]);
     }
+
+    public function contactsubmit(Request $request){
+        
+        $input = $request->all();
+        
+        
+        $name = Input::get('name');
+        $email = Input::get('email');
+        $subject = Input::get('subject');
+        $message = Input::get('message');
+        $phone = Input::get('phone');              
+        
+        
+        $mail_data = "Name ".$name. "<br/><br/>Email ".$email. "<br/><br/>Subject".$subject. "<br/><br/> Phone".$phone. "<br/><br/> Message".$message;
+        
+        $to = 'mithun.cse521@gmail.com';
+        $subject = 'Off The Wall Framing | Contact';
+        // Always set content-type when sending HTML email
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+        // More headers
+        $headers .= 'From: <info@offthewallframing.com.au>' . "\r\n";
+
+        if(mail($to,$subject,$mail_data,$headers)){
+            Session::flash('flash_message_success', "Thank you for contacting with us.<br/> We will contact as soon as possible");
+        }else{
+            Session::flash('flash_message_error', "Your message not send");
+        }
+        
+        return redirect('picture-framing-rockdale');
+        
+    }
     
 
      public function delivery(){

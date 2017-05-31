@@ -71,7 +71,7 @@
 							<div class="panel-body">
 								
 								<?php
-									$product_subgroup_data = DB::table('product_subgroup')->where('product_group_id',$productgrop->id)->orderBy('sort_order','asc')->get();
+									$product_subgroup_data = DB::table('product_subgroup')->where('status','active')->where('product_group_id',$productgrop->id)->orderBy('sort_order','asc')->get();
 								?>								
 								@if(!empty($product_subgroup_data))
 										<ul>

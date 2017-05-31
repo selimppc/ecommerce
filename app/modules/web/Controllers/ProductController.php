@@ -16,7 +16,7 @@ class ProductController extends Controller
 	public function index($product_slug){
 
 		$product = DB::table('product')->where('slug',$product_slug)->where('status','active')->first();
-		$related_product_r = DB::table('product')->where('product_subgroup_id',$product->product_subgroup_id)->whereNotIn('id',[$product->id])->get();
+		$related_product_r = DB::table('product')->where('status','active')->where('product_subgroup_id',$product->product_subgroup_id)->whereNotIn('id',[$product->id])->get();
 
 		$product_variation = DB::table('product_variation')->where('product_id',$product->id)->where('status','active')->get();
 
