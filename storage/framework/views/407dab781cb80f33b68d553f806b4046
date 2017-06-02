@@ -1,0 +1,126 @@
+<div id="all_prods_cont" class="col-md-3 col-sm-12 col-xs-12 row-left-0 margin-top-10-m margin-bottom-10-m padding-right-0-m">
+	<div class="border-top-2-resp border-bottom-2-resp">
+			<div class="header">
+				<span>All Product</span>
+			</div>
+			<span class="mobile_menu open_mobile_menu">=</span>
+									
+	</div>
+
+	<div id="home_product_list" class="home-product-list left-sidebar">
+		
+
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+		 
+			
+
+			<?php
+				$product_page_type = DB::table('page_parent')->whereNotIn('id',['3'])->orderBy('sort_order','asc')->get();
+			?>
+			<?php if(!empty($product_page_type)): ?>
+				<?php foreach($product_page_type as $product_page): ?>
+					<div class="panel panel-default">
+						<div class="panel-heading" role="tab" id="headingOne">
+					      <h4 class="panel-title">
+					        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#product_page_<?php echo e($product_page->id); ?>" aria-expanded="true" aria-controls="collapseOne">
+					          <?php echo e($product_page->title); ?>
+
+					        </a>
+					      </h4>
+					    </div>
+
+					    <div id="product_page_<?php echo e($product_page->id); ?>" class="panel-collapse collapse <?php if(Request::segment(1) ==$product_page->slug ){echo 'in';}?>" role="tabpanel" aria-labelledby="headingOne">
+		      				<div class="panel-body">
+		      					<?php
+		      						$sub_child_pages = DB::table('article')->where('type',$product_page->id)->Where('sub_page_id',NULL)->get();
+		      					?>
+		      					<?php if(!empty($sub_child_pages)): ?>
+		      						<ul>
+		      							<?php foreach($sub_child_pages as $sub_child): ?>
+		      								<li>
+		      									<a href="<?php echo e(URL::to('')); ?>/<?php echo e($product_page->slug); ?>/<?php echo e($sub_child->slug); ?>" >
+		      										<?php echo e($sub_child->title); ?>
+
+		      									</a>
+		      								</li>
+		      							<?php endforeach; ?>
+		      						</ul>
+		      					<?php endif; ?>
+		      				</div>
+		      			</div>
+					</div>
+				<?php endforeach; ?>
+			<?php endif; ?>
+
+
+			<?php
+				$product_group_data = DB::table('groups')->orderBy('sortorder','asc')->get();
+				$count = 1;
+			?>
+
+			<?php if(!empty($product_group_data)): ?>
+				<?php foreach($product_group_data as $productgrop): ?>
+					<div class="panel panel-default <?php if($productgrop->id == '11'){echo 'special';} ?>">
+						<div class="panel-heading" role="tab" id="headingOne">
+							<h4 class="panel-title">
+						        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#product_group_<?php echo e($productgrop->id); ?>" aria-expanded="true" aria-controls="collapseOne">
+						          <?php echo e($productgrop->title); ?>
+
+						        </a>
+						    </h4>
+						</div>
+
+						<div id="product_group_<?php echo e($productgrop->id); ?>" class="panel-collapse collapse <?php if(Request::segment(1) ==$productgrop->slug ){echo 'in';}?>" role="tabpanel" aria-labelledby="headingOne">
+							<div class="panel-body">
+								
+								<?php
+									$product_subgroup_data = DB::table('product_subgroup')->where('status','active')->where('product_group_id',$productgrop->id)->orderBy('sort_order','asc')->get();
+								?>								
+								<?php if(!empty($product_subgroup_data)): ?>
+										<ul>
+											<?php foreach($product_subgroup_data as $product_subgroup): ?>
+												<li>
+													<a href="<?php echo e(URL::to('')); ?>/<?php echo e($productgrop->slug); ?>/<?php echo e($product_subgroup->slug); ?>"><?php echo e($product_subgroup->title); ?></a>
+												</li>
+											<?php endforeach; ?>
+										</ul>
+									<?php endif; ?>	
+								
+							</div>
+						</div>
+					</div>
+					<?php $count++;?>
+				<?php endforeach; ?>
+			<?php endif; ?>
+		 
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingOne">
+					<h4 class="panel-title">
+				        <a role="button" href="<?php echo e(URL::to('')); ?>/customer-reviews">
+				         Customer reviews
+				        </a>
+				    </h4>
+				</div>
+			</div>
+			
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="headingOne">
+					<h4 class="panel-title">
+				        <a style="font-size:15px;" role="button" href="http://mithun.visionads.com.au/otw/public/apps">
+				         upload & customise your own
+				        </a>
+				    </h4>
+				</div>
+			</div>
+
+		</div>
+		
+	</div>
+	
+</div>
+
+<script>
+	$(".mobile_menu").click(function(){
+	    $("#home_product_list").toggle();
+	});
+</script>

@@ -105,6 +105,17 @@
     </ul>
 </li>
 
+<li class="sub-menu">
+    <a href="#">
+        <i class="icon-inbox"></i>
+        <span>Photo Frame</span>
+    </a>
+    <ul class="sub">
+        <li><a  href={{URL::to('admin_photo_frame/index')}}>Image Size</a></li>
+        
+    </ul>
+</li>
+
 {{--<li class="sub-menu">--}}
     {{--<a href={{URL::to('media/index')}}>--}}
         {{--<i class="icon-camera"></i>--}}

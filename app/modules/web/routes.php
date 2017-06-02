@@ -19,6 +19,11 @@ Route::any('web', [
     'uses' => 'WebController@web_index'
 ]);
 
+Route::any('photo-frame',[
+		'as' => 'photo-frame',
+		'uses' => 'PhotoFrameController@photo_frame'
+	]);
+
 Route::any('apps',[
 		'as' => 'apps',
 		'uses' => 'WwwController@apps'

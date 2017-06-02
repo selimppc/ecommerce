@@ -33,7 +33,7 @@ class ProductController extends Controller
        $product_subgroup_lists = null;
 
        //if post method
-       if($_POST){        
+       if($_GET){        
             //declare model
             $model = Product::with('relGetproductgroup');
 
@@ -58,11 +58,11 @@ class ProductController extends Controller
                 $product_subgroup_lists = [''=>'Please select sub group']+ ProductSubgroups::where('product_group_id',$pg_id)->lists('title','id')->all();
             }
             //get data 
-            $data = $model->paginate(20);
+            $data = $model->paginate(3);
 
        }else{
         //get data
-            $data = Product::orderBy('id', 'DESC')->paginate(20);
+            $data = Product::orderBy('id', 'DESC')->paginate(3);
        }
 
 

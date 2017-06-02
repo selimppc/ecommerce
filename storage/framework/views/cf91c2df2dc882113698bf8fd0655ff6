@@ -1,0 +1,17 @@
+<?php $__env->startSection('sidebar'); ?>
+    @parent
+    <?php echo $__env->make('layout.sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    
+    <div class="product_category_update_section">
+           <?php echo Form::model($data, ['files'=>'true','method' => 'PATCH', 'route'=> ['product-update', $data->slug]]); ?>
+
+               <?php echo $__env->make('product._form', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+            <?php echo Form::close(); ?>
+
+    </div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

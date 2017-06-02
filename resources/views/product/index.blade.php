@@ -31,7 +31,7 @@
                 <div class="row">
                     <div class="sort_by_container">
 
-                        {!! Form::open(['route' => 'product-index']) !!}
+                        {!! Form::open(['route' => 'product-index','method' => 'GET']) !!}
 
                             <div class="col-md-2">
                                 <br/>
@@ -95,7 +95,9 @@
                                         </td>
                                      </tr>
                                 @endforeach
-                                {!! $data->render() !!}
+
+                                {!! $data->appends(array('product_group_id' => Input::get('product_group_id'),'product_subgroup_id' => Input::get('product_subgroup_id')))->render() !!}
+
                             @endif
                         </table>
                        
