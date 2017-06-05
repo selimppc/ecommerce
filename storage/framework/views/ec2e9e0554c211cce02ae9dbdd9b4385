@@ -113,6 +113,9 @@
     <ul class="sub">
         <li><a  href=<?php echo e(URL::to('admin_photo_frame/index')); ?>>Image Size</a></li>
         
+        <li><a  href=<?php echo e(URL::to('admin_frame_category/index')); ?>>Frame Category</a></li>
+
+        <li><a  href=<?php echo e(URL::to('admin_frame/index')); ?>>Frame</a></li>
     </ul>
 </li>
 

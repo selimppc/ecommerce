@@ -35,16 +35,13 @@
 	</div>
 	<div id="frame-category-tabs">
 		<ul class="card-tab-list" id="frame-category-tab-list">
-			<li><a href="#frame-tab-Aluminium">Aluminium</a></li>
-			<li><a href="#frame-tab-Blacks">Blacks</a></li>
-			<li><a href="#frame-tab-Golds">Golds</a></li>
-			<li><a href="#frame-tab-Silvers">Silvers</a></li>
-			<li><a href="#frame-tab-Stains">Stains</a></li>
-			<li><a href="#frame-tab-FloatforCanvas">Float for Canvas</a></li>
-			<li><a href="#frame-tab-Colourful">Colourful</a></li>
-			<li><a href="#frame-tab-Whites">Whites</a></li>
-			<li><a href="#frame-tab-RawTimber">Raw Timber</a></li>
-			<li><a href="#frame-tab-filter-results">Filter Results</a></li>
+			@if(!empty($frame_category))
+				@foreach($frame_category as $category)
+					<li>
+						<a href="#frame-tab-{{$category->title}}">{{$category->title}}</a>
+					</li>
+				@endforeach
+			@endif
 		</ul>
 		<div class="row" id="float-frame-warning" style="display:none;">
 			<div class="col-xs-12">

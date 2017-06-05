@@ -3,6 +3,7 @@ namespace App\Modules\Web\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\ImageSize;
+use App\FrameCategory;
 
 class PhotoFrameController extends Controller{
 
@@ -10,11 +11,14 @@ class PhotoFrameController extends Controller{
 
 		$title = "Photo Frame";
 
-		$data = ImageSize::orderBy('sort_order', 'ASC')->get();
+		$data = ImageSize::where('status','active')->orderBy('sort_order', 'ASC')->get();
+
+		$frame_category = FrameCategory::where('status','active')->orderBy('sort_order','ASC')->get();
 
         return view('web::photo_frame.main',[
                 'title' => $title,
-                'data'  => $data
+                'data'  => $data,
+                'frame_category' => $frame_category
             ]);
 
 	}
