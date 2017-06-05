@@ -51,7 +51,6 @@
                                     <th> Frame Rate </th>
                                     <th> Frame Min Width </th>
                                     <th> Frame Max Width </th>
-                                    <th> Price</th>
                                     <th> Status</th>
                                     <th> Action </th>
                                 </tr>
@@ -85,9 +84,7 @@
                                         	<td>
                                         		{{$values->frame_max}}
                                         	</td>
-                                        	<td>
-                                        		{{$values->price}}
-                                        	</td>
+                                        	
                                         	<td>
                                         		{{$values->status}}
                                         	</td>

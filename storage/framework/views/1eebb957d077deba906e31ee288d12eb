@@ -51,7 +51,6 @@
                                     <th> Frame Rate </th>
                                     <th> Frame Min Width </th>
                                     <th> Frame Max Width </th>
-                                    <th> Price</th>
                                     <th> Status</th>
                                     <th> Action </th>
                                 </tr>
@@ -93,10 +92,7 @@
                                         		<?php echo e($values->frame_max); ?>
 
                                         	</td>
-                                        	<td>
-                                        		<?php echo e($values->price); ?>
-
-                                        	</td>
+                                        	
                                         	<td>
                                         		<?php echo e($values->status); ?>
 

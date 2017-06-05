@@ -32,7 +32,6 @@ class PhotoFrameRequest extends Request{
             'frame_rate' => 'required',
             'frame_min' => 'required',
             'frame_max' => 'required',
-            'price' => 'required',
             'sort_order' => 'required',
             'status' => 'required'
         ];

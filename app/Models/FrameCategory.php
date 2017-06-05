@@ -19,4 +19,9 @@ class FrameCategory extends Model
         'sort_order',
         'status'
     ];
+
+     public function relFrame()
+    {
+        return $this->HasMany('App\PhotoFrame', 'frame_category_id');
+    }
 }

@@ -48,11 +48,6 @@
                     </tr>
 
                     <tr>
-                        <th class="col-lg-4">Price</th>
-                        <td>{{ isset($data->price)?$data->price:'' }}</td>
-                    </tr>
-
-                    <tr>
                         <th class="col-lg-4">Sort Order</th>
                         <td>{{ isset($data->sort_order)?$data->sort_order:'' }}</td>
                     </tr>

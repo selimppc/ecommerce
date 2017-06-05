@@ -16,6 +16,11 @@ Route::any("admin_photo_frame/show/{id}", [
     "uses" => "AdminPhotoFrameController@show"
 ]);
 
+Route::any('admin_photo_frame/image-show/{id}', [
+    'as' => 'admin-photo-frame.imageview',
+    'uses' => 'AdminPhotoFrameController@image_show'
+]);
+
 Route::any("admin_photo_frame/edit/{id}", [
     "as"   => "admin-photo-frame-edit",
     "uses" => "AdminPhotoFrameController@edit"
