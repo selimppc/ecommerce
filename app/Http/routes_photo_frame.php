@@ -103,3 +103,37 @@ Route::any("admin_frame/delete/{id}", [
     "as"   => "admin-frame-delete",
     "uses" => "AdminFrameController@delete"
 ]);
+
+
+/*Mat*/
+
+Route::any("admin_mat/index", [
+    "as"   => "admin-mat-index",
+    "uses" => "AdminMatController@index"
+]);
+
+Route::any("admin_mat/store", [
+    "as"   => "admin-mat-store",
+    "uses" => "AdminMatController@store"
+]);
+
+
+Route::any("admin_mat/show/{id}", [
+    "as"   => "admin-mat-show",
+    "uses" => "AdminMatController@show"
+]);
+
+Route::any("admin_mat/edit/{id}", [
+    "as"   => "admin-mat-edit",
+    "uses" => "AdminMatController@edit"
+]);
+
+Route::any("admin_mat/update/{id}", [
+    "as"   => "admin-mat-update",
+    "uses" => "AdminMatController@update"
+]);
+
+Route::any("admin_mat/delete/{id}", [
+    "as"   => "admin-mat-delete",
+    "uses" => "AdminMatController@delete"
+]);

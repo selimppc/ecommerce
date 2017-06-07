@@ -116,6 +116,8 @@
         <li><a  href={{URL::to('admin_frame_category/index')}}>Frame Category</a></li>
 
         <li><a  href={{URL::to('admin_frame/index')}}>Frame</a></li>
+
+        <li><a  href={{URL::to('admin_mat/index')}}>Mat</a></li>
     </ul>
 </li>
 
