@@ -118,6 +118,8 @@
         <li><a  href=<?php echo e(URL::to('admin_frame/index')); ?>>Frame</a></li>
 
         <li><a  href=<?php echo e(URL::to('admin_mat/index')); ?>>Mat</a></li>
+
+        <li><a  href=<?php echo e(URL::to('admin_glass_backing/index')); ?>>Glass & Backing</a></li>
     </ul>
 </li>
 

@@ -112,7 +112,7 @@ return array(
     'App\\Http\\Requests\\CustomerRequest' => $baseDir . '/app/Http/Requests/CustomerRequest.php',
     'App\\Http\\Requests\\FrameCategoryRequest' => $baseDir . '/app/Http/Requests/FrameCategoryRequest.php',
     'App\\Http\\Requests\\GalImageRequest' => $baseDir . '/app/Http/Requests/GalImageRequest.php',
-    'App\\Http\\Requests\\GlassBackingRequest' => $baseDir . '/app/Http/Requests/GlassBacking.php',
+    'App\\Http\\Requests\\GlassBackingRequest' => $baseDir . '/app/Http/Requests/GlassBackingRequest.php',
     'App\\Http\\Requests\\ImageSizeRequest' => $baseDir . '/app/Http/Requests/ImageSizeRequest.php',
     'App\\Http\\Requests\\MatRequest' => $baseDir . '/app/Http/Requests/MatRequest.php',
     'App\\Http\\Requests\\MediaRequest' => $baseDir . '/app/Http/Requests/MediaRequest.php',

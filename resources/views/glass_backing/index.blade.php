@@ -13,7 +13,7 @@
             	<header class="panel-heading">
                     {{ $pageTitle }}
                     <a class="btn-sm btn-info pull-right" data-toggle="modal" href="#addData" title="Add">
-                        <strong>Add Mat</strong>
+                        <strong>Add Glass & Backing</strong>
                     </a>
                 </header>
 
@@ -44,9 +44,9 @@
 
                         	<thead>
                         		<tr>
-                                    <th> Color </th>
-                                    <th> Name </th>
-                                    <th> Code </th>
+                                    <th> Type </th>
+                                    <th> Title </th>
+                                    <th> Slug </th>
                                     <th> Status</th>
                                     <th> Action </th>
                                 </tr>
@@ -56,14 +56,14 @@
                         		@if(isset($data))
                                     @foreach($data as $values)
                                         <tr class="gradeX">
-                                        	<td>{{$values->color}}</td>
-                                        	<td>{{$values->name}}</td>
-                                        	<td>{{$values->code}}</td>
+                                        	<td>{{$values->type}}</td>
+                                        	<td>{{$values->title}}</td>
+                                        	<td>{{$values->slug}}</td>
                                         	<td>{{$values->status}}</td>
                                         	<td>
-                                        		<a href="{{ route('admin-mat-show', $values->id) }}" class="btn btn-info btn-xs" data-toggle="modal" data-target="#etsbModal" title="View"><i class="icon-eye-open"></i></a>
-                                                <a href="{{ route('admin-mat-edit', $values->id) }}" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#etsbModal" title="Edit"><i class="icon-edit"></i></a>
-                                        <a href="{{ route('admin-mat-delete', $values->id) }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to Delete?')" title="Delete"><i class="icon-trash"></i></a>
+                                        		<a href="{{ route('admin-glass-backing-show', $values->id) }}" class="btn btn-info btn-xs" data-toggle="modal" data-target="#etsbModal" title="View"><i class="icon-eye-open"></i></a>
+                                                <a href="{{ route('admin-glass-backing-edit', $values->id) }}" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#etsbModal" title="Edit"><i class="icon-edit"></i></a>
+                                        <a href="{{ route('admin-glass-backing-delete', $values->id) }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to Delete?')" title="Delete"><i class="icon-trash"></i></a>
                                         	</td>
                                         </tr>
                                     @endforeach
@@ -92,8 +92,8 @@
                     <h4 class="modal-title">Add </h4>
                 </div>
                 <div class="modal-body">
-                    {!! Form::open(['route' => 'admin-mat-store','files'=>'true']) !!}
-                       @include('mat._form')
+                    {!! Form::open(['route' => 'admin-glass-backing-store','files'=>'true']) !!}
+                       @include('glass_backing._form')
                     {!! Form::close() !!}
 
                 </div>

@@ -137,3 +137,36 @@ Route::any("admin_mat/delete/{id}", [
     "as"   => "admin-mat-delete",
     "uses" => "AdminMatController@delete"
 ]);
+
+/*Glass & Backing*/
+
+Route::any("admin_glass_backing/index", [
+    "as"   => "admin-glass-backing-index",
+    "uses" => "AdminGlassBackingController@index"
+]);
+
+Route::any("admin_glass_backing/store", [
+    "as"   => "admin-glass-backing-store",
+    "uses" => "AdminGlassBackingController@store"
+]);
+
+
+Route::any("admin_glass_backing/show/{id}", [
+    "as"   => "admin-glass-backing-show",
+    "uses" => "AdminGlassBackingController@show"
+]);
+
+Route::any("admin_glass_backing/edit/{id}", [
+    "as"   => "admin-glass-backing-edit",
+    "uses" => "AdminGlassBackingController@edit"
+]);
+
+Route::any("admin_glass_backing/update/{id}", [
+    "as"   => "admin-glass-backing-update",
+    "uses" => "AdminGlassBackingController@update"
+]);
+
+Route::any("admin_glass_backing/delete/{id}", [
+    "as"   => "admin-glass-backing-delete",
+    "uses" => "AdminGlassBackingController@delete"
+]);

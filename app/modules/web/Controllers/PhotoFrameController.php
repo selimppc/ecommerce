@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\ImageSize;
 use App\FrameCategory;
 use App\Mat;
+use App\GlassBacking;
 
 class PhotoFrameController extends Controller{
 
@@ -18,11 +19,14 @@ class PhotoFrameController extends Controller{
 
 		$mat_data = Mat::where('status','active')->get();
 
+		$glass_backing_data = GlassBacking::where('status','active')->get();
+
         return view('web::photo_frame.main',[
                 'title' => $title,
                 'data'  => $data,
                 'frame_category' => $frame_category,
-                'mat_data' => $mat_data
+                'mat_data' => $mat_data,
+                'glass_backing_data' => $glass_backing_data
             ]);
 
 	}

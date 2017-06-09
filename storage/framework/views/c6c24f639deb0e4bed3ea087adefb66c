@@ -14,7 +14,7 @@
 	        <?php echo Form::label('color', 'Color:', ['class' => 'control-label']); ?>
 
 	        <small class="required">(Required)</small>
-	        <?php echo Form::text('color', NULL, ['id'=>'color', 'class' => 'form-control jscolor','required']); ?>
+	        <?php echo Form::text('color', NULL, ['id'=>'color', 'class' => 'form-control','required']); ?>
 
 	    </div>
 
@@ -56,6 +56,4 @@
 <a href=""  class="btn btn-default" type="button"> Close </a>
 
 <?php echo Form::submit('Submit', ['class' => 'btn btn-success']); ?>
-
-
 
