@@ -7,4 +7,14 @@ use Illuminate\Http\Request;
 
 class Printing extends Model{
 
+	protected $table = 'printing';
+
+    protected $fillable = [
+        'type',
+        'title',
+        'slug',
+        'description',
+        'status'
+    ];
+    
 }

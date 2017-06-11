@@ -170,3 +170,36 @@ Route::any("admin_glass_backing/delete/{id}", [
     "as"   => "admin-glass-backing-delete",
     "uses" => "AdminGlassBackingController@delete"
 ]);
+
+/*Printing*/
+
+Route::any("admin_printing/index", [
+    "as"   => "admin-printing-index",
+    "uses" => "AdminPrintingController@index"
+]);
+
+Route::any("admin_printing/store", [
+    "as"   => "admin-printing-store",
+    "uses" => "AdminPrintingController@store"
+]);
+
+
+Route::any("admin_printing/show/{id}", [
+    "as"   => "admin-printing-show",
+    "uses" => "AdminPrintingController@show"
+]);
+
+Route::any("admin_printing/edit/{id}", [
+    "as"   => "admin-printing-edit",
+    "uses" => "AdminPrintingController@edit"
+]);
+
+Route::any("admin_printing/update/{id}", [
+    "as"   => "admin-printing-update",
+    "uses" => "AdminPrintingController@update"
+]);
+
+Route::any("admin_printing/delete/{id}", [
+    "as"   => "admin-printing-delete",
+    "uses" => "AdminPrintingController@delete"
+]);
