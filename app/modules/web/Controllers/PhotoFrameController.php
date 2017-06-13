@@ -7,6 +7,7 @@ use App\FrameCategory;
 use App\Mat;
 use App\GlassBacking;
 use App\Printing;
+use App\Article;
 
 class PhotoFrameController extends Controller{
 
@@ -24,13 +25,22 @@ class PhotoFrameController extends Controller{
 
 		$printing_data = Printing::where('status','active')->get();
 
+		$product_description = Article::where('status','active')->where('slug','product-description')->first();
+
+		$how_to_order = Article::where('status','active')->where('slug','how-to-order')->first();
+
+		$shipping_rule = Article::where('status','active')->where('slug','shipping-returns')->first();
+
         return view('web::photo_frame.main',[
                 'title' => $title,
                 'data'  => $data,
                 'frame_category' => $frame_category,
                 'mat_data' => $mat_data,
                 'glass_backing_data' => $glass_backing_data,
-                'printing_data' => $printing_data
+                'printing_data' => $printing_data,
+                'product_description' => $product_description,
+                'how_to_order' => $how_to_order,
+                'shipping_rule' => $shipping_rule
             ]);
 
 	}
