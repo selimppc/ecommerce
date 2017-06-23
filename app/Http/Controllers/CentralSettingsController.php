@@ -122,6 +122,41 @@ class CentralSettingsController extends Controller
         return redirect()->back();
     }
 
+    public function discounts()
+    {
+        $id = '2';
+
+        $pageTitle = "Discounts";
+
+        $data = CentralSettings::findOrFail($id);
+        return view('settings.discounts', ['data' => $data,'pageTitle' => $pageTitle]);
+    }
+
+    public function discounts_update(Request $request, $id)
+    {
+        $model = CentralSettings::findOrFail($id);        
+        $input = $request->all();
+        $model->status = 'no';
+        $model->value = $input['value'];
+
+        /* Transaction Start Here */
+        DB::beginTransaction();
+        try {
+           
+
+            $model->save(); // store / update / code here
+            
+            //commit the changes
+            DB::commit();
+            Session::flash('flash_message', 'Successfully Edited!');
+        }catch (\Exception $e) {
+            //If there are any exceptions, rollback the transaction`
+            DB::rollback();
+            Session::flash('flash_message_error', "Invalid Request" );
+        }
+        return redirect()->back();
+    }
+
 
     /**
      * Remove the specified resource from storage.

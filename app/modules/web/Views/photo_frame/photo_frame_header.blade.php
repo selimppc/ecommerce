@@ -53,4 +53,6 @@
 
 		<link href="{{ URL::asset('web/photo_frame/static/css/flaticon/flaticon.css') }}" rel="stylesheet" type="text/css" media="all" />
 
+		<link href="{{ URL::asset('web/photo_frame/static/css/custom.css') }}" rel="stylesheet" type="text/css" media="all" />
+
 		<body>

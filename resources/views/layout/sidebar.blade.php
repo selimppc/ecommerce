@@ -124,6 +124,8 @@
         <li><a  href={{URL::to('admin_glass_backing/index')}}>Glass & Backing</a></li>
 
         <li><a  href={{URL::to('admin_printing/index')}}>Printing</a></li>
+
+         <li><a  href="{{URL::to('discounts')}}">Settings</a></li>
     </ul>
 </li>
 

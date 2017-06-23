@@ -10,6 +10,7 @@ use App\Mat;
 use App\GlassBacking;
 use App\Printing;
 use App\Article;
+use App\CentralSettings;
 
 class PhotoFrameController extends Controller{
 
@@ -33,6 +34,8 @@ class PhotoFrameController extends Controller{
 
 		$shipping_rule = Article::where('status','active')->where('slug','shipping-returns')->first();
 
+		$discounts_value = CentralSettings::where('id','2')->first();
+
         return view('web::photo_frame.main',[
                 'title' => $title,
                 'data'  => $data,
@@ -42,7 +45,8 @@ class PhotoFrameController extends Controller{
                 'printing_data' => $printing_data,
                 'product_description' => $product_description,
                 'how_to_order' => $how_to_order,
-                'shipping_rule' => $shipping_rule
+                'shipping_rule' => $shipping_rule,
+                'discounts_value' => $discounts_value
             ]);
 
 	}

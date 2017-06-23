@@ -99,7 +99,7 @@
 					</tr>
 					<tr id="row-summary-discount">
                         <td><strong>Less:</strong> Discount</td>
-                        <td id="row-summary-discount-percent" data-discount-percentage="3">
+                        <td id="row-summary-discount-percent" data-discount-percentage="{{$discounts_value->value}}">
 <!--                            <input type="hidden"  name="row-summary-discount-percentage" id="row-summary-discount-percentage" value="3">-->
                             0 %
                         </td>

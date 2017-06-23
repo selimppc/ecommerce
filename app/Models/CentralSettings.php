@@ -18,6 +18,6 @@ class CentralSettings extends Model
     protected $table = 'central_settings';
 
     protected $fillable = [
-        'title','status','user_type'
+        'title','status','user_type','value'
     ];
 }

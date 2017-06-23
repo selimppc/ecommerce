@@ -262,6 +262,15 @@ Route::any('central-settings',
     ['as'=>'central-settings',
     'uses'=>'CentralSettingsController@central_settings']);
 
+Route::any('discounts',
+    ['as'=>'discounts',
+    'uses'=>'CentralSettingsController@discounts']);
+
+Route::any('discounts/update/{id}', [
+'as' => 'discounts.update',
+'uses' => 'CentralSettingsController@discounts_update'
+]);
+
 Route::any('central-settings/edit/{id}', [
 'as' => 'central-settings.edit',
 'uses' => 'CentralSettingsController@edit'
