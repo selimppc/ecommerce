@@ -52,7 +52,7 @@
 							<div title="Print and frame your images or just preview them! (Optional)" class="button upload-button">
 								
 								<i class="fa fa-upload"></i>
-								<span id="upload-text"><span style="display: block;">Upload Image</span>(Optional)</span>
+								<span class="upload-text"><span style="display: block;">Upload Image</span>(Optional)</span>
 								
 								<input type="file" id="upload-input-2"  class="upload-input-inside-btn">
 							</div>

@@ -2,6 +2,8 @@
 namespace App\Modules\Web\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\Http\Requests;
 use App\ImageSize;
 use App\FrameCategory;
 use App\Mat;
@@ -43,6 +45,14 @@ class PhotoFrameController extends Controller{
                 'shipping_rule' => $shipping_rule
             ]);
 
+	}
+
+	public function add_to_cart(Request $request){
+
+		if(isset($_POST)){
+			$request->session()->set('photo_frame_cart', $_POST);
+		}
+		
 	}
 
 }

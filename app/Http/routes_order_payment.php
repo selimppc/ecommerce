@@ -25,9 +25,14 @@ Route::any("order_paid/index", [
     "uses" => "OrderPaymentController@order_paid_index"
 ]);
 
-Route::any("order_paid/approved", [
-    "as"   => "order-paid-approved",
-    "uses" => "OrderPaymentController@order_paid_approved"
+Route::any("order_paid/index", [
+    "as"   => "order-paid-index",
+    "uses" => "OrderPaymentController@order_paid_index"
+]);
+
+Route::any("order_paid/photo-frame", [
+    "as"   => "order-paid-photo-frame",
+    "uses" => "OrderPaymentController@order_paid_photo_frame"
 ]);
 
 Route::any("order_paid/delivered", [
@@ -38,6 +43,11 @@ Route::any("order_paid/delivered", [
 Route::any("order_paid/show/{id}", [
     "as"   => "order-paid-show",
     "uses" => "OrderPaymentController@order_show"
+]);
+
+Route::any("order_paid/show_photo_frame/{id}", [
+    "as"   => "order-paid-show-photo-frame",
+    "uses" => "OrderPaymentController@order_show_photo_frame"
 ]);
 
 Route::any("order_paid/approve/{id}", [

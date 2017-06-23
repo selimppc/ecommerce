@@ -1,0 +1,239 @@
+<div class="modal-dialog"  style="width: 75%;">
+	<div class="modal-content" style="float: left;width: 100%;" >
+
+		<a href="" class="btn" type="button" style="float:right;position:relative;z-index:99;cursor:pointerl"> X </a>
+
+		<div class="modal-body">
+
+			<div class="row">
+		      	<div class="col-xs-8">
+					<a href="<?php echo e(URL::to('')); ?>" id="header_logo">
+						<h2 class="text-light text-default-light">OFF THE WALL</h2>
+
+					</a>
+				</div>
+				<div class="col-xs-4 text-right" style="margin-bottom:20px;">
+					<h1 class="text-light text-default-light">Invoice</h1>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-3">
+					<h4 class="text-light">Prepared by</h4>
+					<address>
+						<strong>OFF THE WALL</strong><br>
+						Sydney<br>
+						Australia<br>
+						
+					</address>
+				</div><!--end .col -->
+				<div class="col-xs-3">
+					<h4 class="text-light">Prepared for</h4>
+					<address>
+						<strong>Billing Address</strong><br/><br/>
+						<strong><?php echo e($customer_data->first_name); ?> <?php echo e($customer_data->last_name); ?></strong>
+						<br/>
+						<?php echo e($customer_data->address); ?><br>
+						<?php echo e($customer_data->suburb); ?><br>
+						<?php echo e($customer_data->state); ?>, <?php echo e($customer_data->postcode); ?><br>
+						<?php echo e($customer_data->country); ?><br/>
+						<abbr title="Phone">P:</abbr> <?php echo e($customer_data->telephone); ?><br/>
+						<?php echo e($customer_data->email); ?>
+
+					</address>
+				</div><!--end .col -->
+				
+				<div class="col-xs-3">
+					<h4 class="text-light">Delivery Address</h4>
+					<address>
+						<strong>Delivery Address</strong><br/><br/>
+						<strong><?php echo e($delivery_data->first_name); ?> <?php echo e($delivery_data->last_name); ?></strong><br/>
+						<?php echo e($delivery_data->address); ?><br>
+						<?php echo e($delivery_data->suburb); ?><br>
+						<?php echo e($delivery_data->state); ?>, <?php echo e($delivery_data->postcode); ?> <br>
+						<?php echo e($delivery_data->country); ?><br/>
+						<abbr title="Phone">P:</abbr> <?php echo e($delivery_data->telephone); ?><br/>
+						<?php echo e($delivery_data->email); ?>
+
+					</address>
+				</div><!--end .col -->
+				
+				<div class="col-xs-3">
+					<div class="well">
+						<div class="clearfix">
+							<div class="pull-left"> INVOICE NO : </div>
+							<div class="pull-right"> <?php echo e($order_data[0]->invoice_id); ?> </div>
+						</div>
+						<div class="clearfix">
+							<div class="pull-left"> INVOICE DATE : </div>
+							<div class="pull-right"> <?php echo e(date_format($order_data[0]->created_at, 'd/m/Y')); ?> </div>
+						</div>
+					</div>
+				</div><!--end .col -->
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+
+					<table class="table">
+						<thead>
+
+							<tr>
+								<th>Image Size</th>
+								<th>Frame</th>
+								<th>Mat</th>
+								<th>Glass & Backing</th>
+								<th>Printing</th>
+								<th>Quantity</th>
+								<th>Total Price</th>
+							</tr>
+
+						</thead>
+
+						<tbody>
+
+							<?php if(!empty($order_data[0]->relOrderDetail)): ?>
+
+								<?php foreach($order_data[0]->relOrderDetail as $orderdetails): ?>
+
+									<?php	
+										$order_details_data = explode("===",$orderdetails->details);
+									?>
+
+									<tr>
+										<td>
+											<?php echo e($order_details_data['0']); ?> cm<br/>
+											<?php echo e($order_details_data['1']); ?> cm
+										</td>
+
+										<td>	
+											<?php echo e($order_details_data['8']); ?>
+
+											<br/>
+											<?php echo e($order_details_data['9']); ?>
+
+											<br/>
+											<?php echo e($order_details_data['10']); ?>
+
+											<br/>
+											<?php echo e($order_details_data['11']); ?>
+
+											<br/>
+											<?php echo e($order_details_data['12']); ?>
+
+											<br/>
+											<?php echo e($order_details_data['13']); ?>
+
+											<br/>
+											<?php echo e($order_details_data['14']); ?>
+
+											<br/>
+											<?php echo e($order_details_data['15']); ?>
+
+											<br/>
+											<?php echo e($order_details_data['37']); ?>
+
+										</td>
+										<td>
+										
+											<?php echo e($order_details_data['18']); ?>
+
+											<br/>
+											<?php echo e($order_details_data['19']); ?>
+
+											<br/>
+											<?php echo e($order_details_data['20']); ?>
+
+											<br/>
+											<?php echo e($order_details_data['21']); ?>
+
+											<br/>
+											<?php echo e($order_details_data['22']); ?>
+
+											<br/>
+											<?php echo e($order_details_data['23']); ?>
+
+											<br/>
+											<?php echo e($order_details_data['24']); ?>
+
+											<br/>
+											<?php echo e($order_details_data['25']); ?>
+
+											<br/><br/>
+
+											<?php echo e($order_details_data['26']); ?>
+
+											<br/>
+											<?php echo e($order_details_data['27']); ?>
+
+											<br/>
+											<?php echo e($order_details_data['28']); ?>
+
+											<br/>
+											<?php echo e($order_details_data['29']); ?>
+
+											<br/>
+											<?php echo e($order_details_data['30']); ?>
+
+											<br/>
+											<?php echo e($order_details_data['31']); ?>
+
+											<br/>
+											<?php echo e($order_details_data['32']); ?>
+
+											<br/>
+											<?php echo e($order_details_data['33']); ?>
+
+
+										</td>
+										<td>			
+											<?php echo e($order_details_data['38']); ?>
+
+											<br/>
+											<?php echo e($order_details_data['39']); ?>
+
+										</td>
+										<td>			
+											<?php echo e($order_details_data['2']); ?>
+
+										</td>
+										<td>			
+											<?php echo e($order_details_data['40']); ?>
+
+										</td>
+										<td class="text-right">			
+											AUD <?php echo e($order_details_data['34']); ?>
+
+										</td>
+									</tr>
+
+									<tr>
+										<td colspan="5" >
+											&nbsp;
+										</td>
+										<td class="text-right"><strong>Discunt</strong></td>
+										<td class="text-right">AUD <?php echo e($order_details_data['35']); ?></td>
+									</tr>
+
+									<tr>
+										<td colspan="5" >
+											&nbsp;
+										</td>
+										<td class="text-right"><strong>Price</strong></td>
+										<td class="text-right">AUD <?php echo e($order_details_data['36']); ?></td>
+									</tr>
+
+								<?php endforeach; ?>
+
+							<?php endif; ?>
+
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</div>

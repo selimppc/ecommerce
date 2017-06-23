@@ -2,7 +2,11 @@
 	<div class="col-xs-12 text-right col-align-mid">
 		<div class="row">
 			<div id="quantity-container" class="text-center col-xs-5 col-sm-4 flat-input"><label id="quantity-label" for="fs-product-quantity">Quantity:</label> <input type="number" value="1" step="1" min="1" id="fs-product-quantity" name="fs-product-quantity" data-calc-product class="text-center"/></div>
-			<div class="text-center col-xs-5 col-sm-4 flat-input" id="checkout-total"><span id="label-total">Total:</span> <span id="total-quantity-price" data-price-subscriber>$0.00</span></div>
+			<div class="text-center col-xs-5 col-sm-4 flat-input" id="checkout-total">
+			<div class="row">
+				<span id="label-total">Total:</span> <span id="total-quantity-price" data-price-subscriber>AUD 0.00</span>
+			</div>
+			</div>
 			<div class="col-xs-12 col-sm-4">
 				<button id="fs-addToCartButton" class="button fat-button add-to-cart-button" data-disabled="false"><i class="fa fa-shopping-cart"></i> Add to
 					cart
@@ -92,6 +96,14 @@
 						<td><a href="#" data-toggle="modal" data-target="#hanging-info-modal">More
 								Info</a></td>
 						<td>---</td>
+					</tr>
+					<tr id="row-summary-discount">
+                        <td><strong>Less:</strong> Discount</td>
+                        <td id="row-summary-discount-percent" data-discount-percentage="3">
+<!--                            <input type="hidden"  name="row-summary-discount-percentage" id="row-summary-discount-percentage" value="3">-->
+                            0 %
+                        </td>
+                        <td id="row-summary-discount-value">---</td>
 					</tr>
 				</tbody>
 			</table>

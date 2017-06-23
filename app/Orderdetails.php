@@ -14,7 +14,8 @@ class Orderdetails extends Model
         'product_variation_id',
         'qty',
         'price',
-        'status'
+        'status',
+        'details'
         
     ];
 }

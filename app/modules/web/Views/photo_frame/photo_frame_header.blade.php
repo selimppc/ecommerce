@@ -6,7 +6,7 @@
 		<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=kPPlxk2lY8">
 		<meta name="theme-color" content="#e2e4ff">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-		<meta name="csrf_token" content="eea31454-58d5-4fc8-9805-449c6ce59317">
+		<meta id="csrf_token_id" name="csrf-token" content="{{ csrf_token() }}">
 		<title>Custom Picture Frames Online</title>
 		<meta name="description" content="Online custom picture framing with a live view of your designs! Create and order professionally made frames for your photos and art online."/>
 

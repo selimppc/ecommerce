@@ -17,7 +17,8 @@ class Orderoverhead extends Model
         'total_discount_price',
         'vat',
         'net_amount',
-        'status'
+        'status',
+        'type'
         
     ];
 

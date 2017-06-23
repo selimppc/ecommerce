@@ -24,6 +24,11 @@ Route::any('photo-frame',[
 		'uses' => 'PhotoFrameController@photo_frame'
 	]);
 
+Route::any('photo-frame-add-to-cart',[
+		'as' => 'photo-frame-add-to-cart',
+		'uses' => 'PhotoFrameController@add_to_cart'
+	]);
+
 Route::any('apps',[
 		'as' => 'apps',
 		'uses' => 'WwwController@apps'

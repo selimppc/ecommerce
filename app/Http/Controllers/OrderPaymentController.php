@@ -23,11 +23,27 @@ class OrderPaymentController extends Controller{
 
         $data = Orderoverhead::with('relCustomer')
             ->where('status', 'open')
+            ->where('type','product')
             ->orderBy('order_overhead.id','desc')
             ->get();
 
 
         return view('order_payment.order_paid_index',['pageTitle' => $pageTitle,'data' => $data]);
+    }
+
+    public function order_paid_photo_frame()
+    {
+
+        $pageTitle = "Order";
+
+        $data = Orderoverhead::with('relCustomer')
+            ->where('status', 'open')
+            ->where('type','frame')
+            ->orderBy('order_overhead.id','desc')
+            ->get();
+
+
+        return view('order_payment.order_paid_photo_frame',['pageTitle' => $pageTitle,'data' => $data]);
     }
 
     public function order_paid_approved()
@@ -74,6 +90,27 @@ class OrderPaymentController extends Controller{
             'order_head_id'=>$order_head_id,
             'customer_data' => $customer_data,
 			'delivery_data' => $delivery_data
+        ]);
+
+
+    }
+
+    public function order_show_photo_frame($order_head_id){
+
+        $order = Orderoverhead::with('relOrderDetail')->where('id', $order_head_id)->get();
+       
+        $customer_data = Customer::where('id',$order[0]->user_id)->first();
+        
+        $delivery_data = DB::table('deliverydetails')->where('user_id',$order[0]->user_id )->orderBy('id','desc')->first();
+
+        $title = 'Invoice Detail';
+
+        return view('order_payment.order_details_photo_frame',[
+            'order_data' => $order,
+            'title' => $title,         
+            'order_head_id'=>$order_head_id,
+            'customer_data' => $customer_data,
+            'delivery_data' => $delivery_data
         ]);
 
 

@@ -297,11 +297,14 @@ class OrderController extends Controller
         $user_data = DB::table('customer')->where('id',$user_id)->first();
         $delivery_data = DB::table('deliverydetails')->where('id',$deliver_id)->orderBy('id', 'desc')->first();
 
+        $photo_frame_cart = $request->session()->get('photo_frame_cart');
+
         return view('web::cart.finalcart',[
                 'title' => $title,
                 'product_cart_r' => $product_cart,
                 'user_data' => $user_data,
-                'delivery_data' => $delivery_data
+                'delivery_data' => $delivery_data,
+                'photo_frame_cart' => $photo_frame_cart
             ]);
     }
 
@@ -381,28 +384,55 @@ class OrderController extends Controller
             $modal->invoice_id = 'INV-'.$invoice_number;
             $modal->user_id = $user_id;
             $modal->status ='open';
+            $modal->type = 'frame';
 
             $modal->save();
 
-            foreach($product_cart_r as $product_cart){
+            if(!empty($product_cart_r)){
 
-                $deliver_modal = new Orderdetails();
+                foreach($product_cart_r as $product_cart){
 
-                $deliver_modal->order_head_id =$modal->id;
-                $deliver_modal->product_id =$product_cart['product_id'];
-                $deliver_modal->qty = $product_cart['product_qty'];
-                $deliver_modal->price = $product_cart['product_price'];
-                $deliver_modal->product_variation_id = $product_cart['color'];
-                $deliver_modal->status= 0;
+                    $deliver_modal = new Orderdetails();
 
-                $deliver_modal->save();
+                    $deliver_modal->order_head_id =$modal->id;
+                    $deliver_modal->product_id =$product_cart['product_id'];
+                    $deliver_modal->qty = $product_cart['product_qty'];
+                    $deliver_modal->price = $product_cart['product_price'];
+                    $deliver_modal->product_variation_id = $product_cart['color'];
+                    $deliver_modal->status= 0;
 
-                $product_remove =  Product::where('id',$product_cart['product_id'])->first();
 
-                $product_remove->stock_unit_quantity = $product_remove->stock_unit_quantity - $product_cart['product_qty'];
+                    $deliver_modal->save();
 
-                $product_remove->save();
+                    $product_remove =  Product::where('id',$product_cart['product_id'])->first();
+
+                    $product_remove->stock_unit_quantity = $product_remove->stock_unit_quantity - $product_cart['product_qty'];
+
+                    $product_remove->save();
+                }
+
+            }else{
+
+                $photo_frame_cart = $request->session()->get('photo_frame_cart');
+
+                if(!empty($photo_frame_cart)){
+
+                
+                    $details_message = 'Image Width: '.$photo_frame_cart['product']['imageWidth'].'===Image Height: '.$photo_frame_cart['product']['imageHeight'].'===Printing Paper: '.$photo_frame_cart['product']['printing']['paper'].'===innerWidth:'.$photo_frame_cart['product']['innerWidth'].'===innerHeight:'.$photo_frame_cart['product']['innerHeight'].'===outerWidth:'.$photo_frame_cart['product']['outerWidth'].'===outerHeight'.$photo_frame_cart['product']['outerHeight'].'===Frame Title: '.$photo_frame_cart['product']['frame']['frameTile'].'===Frame Max: '.$photo_frame_cart['product']['frame']['frameMax'].'===Frame Min: '.$photo_frame_cart['product']['frame']['frameMin'].'===Frame Rate:'.$photo_frame_cart['product']['frame']['frameRate'].'===Frame Rebate: '.$photo_frame_cart['product']['frame']['frameRebate'].'===Frame Depth: '.$photo_frame_cart['product']['frame']['frameDepth'].'===Frame Width: '.$photo_frame_cart['product']['frame']['frameWidth'].'===Frame Material: '.$photo_frame_cart['product']['frame']['frameMaterial'].'===Frame Code: '.$photo_frame_cart['product']['frame']['frameCode'].'===Glass: '.$photo_frame_cart['product']['glass'].'===Backing: '.$photo_frame_cart['product']['backing'].'===Mat 1 Color Code: '.@$photo_frame_cart['product']['matboards']['mat1']['colorCode'].'===Top: '.@$photo_frame_cart['product']['matboards']['mat1']['top'].'===Left: '.@$photo_frame_cart['product']['matboards']['mat1']['left'].'===Right: '.@$photo_frame_cart['product']['matboards']['mat1']['right'].'===Bottom: '.@$photo_frame_cart['product']['mat1']['matboards']['bottom'].'===Mat Code: '.@$photo_frame_cart['product']['matboards']['mat1']['matCode'].'===Mat Name: '.@$photo_frame_cart['product']['matboards']['mat1']['matName'].'===Price: '.@$photo_frame_cart['product']['matboards']['mat1']['price'].'===Mat 2 Color Code: '.@$photo_frame_cart['product']['matboards']['mat2']['colorCode'].'===Top: '.@$photo_frame_cart['product']['matboards']['mat2']['top'].'===Left: '.@$photo_frame_cart['product']['matboards']['mat2']['left'].'===Right: '.@$photo_frame_cart['product']['matboards']['mat2']['right'].'===Bottom: '.@$photo_frame_cart['product']['mat2']['matboards']['bottom'].'===Mat Code: '.@$photo_frame_cart['product']['matboards']['mat2']['matCode'].'===Mat Name: '.@$photo_frame_cart['product']['matboards']['mat2']['matName'].'===Price: '.@$photo_frame_cart['product']['matboards']['mat2']['price'].'==='.$photo_frame_cart['product']['price'].'==='.$photo_frame_cart['product']['discountedPrice'].'=== '.$photo_frame_cart['product']['newDiscountedPrice'].'===Frame Price: '.$photo_frame_cart['product']['framePrice'].'===Glass Price: '.$photo_frame_cart['product']['glassPrice'].'===Backing Price: '.$photo_frame_cart['product']['backingPrice'].'==='.$photo_frame_cart['product']['quantity'];
+
+                    $deliver_modal = new Orderdetails();
+
+                    $deliver_modal->order_head_id =$modal->id;
+                    $deliver_modal->qty = $photo_frame_cart['product']['quantity'];
+                    $deliver_modal->price = $photo_frame_cart['product']['framePrice'];
+                    $deliver_modal->details = $details_message;
+                    $deliver_modal->status= 0;
+
+                    $deliver_modal->save();
+
+                }
             }
+            
             
              
 

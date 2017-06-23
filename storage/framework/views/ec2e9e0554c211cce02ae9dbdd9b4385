@@ -34,6 +34,8 @@
         <li><a  href=<?php echo e(URL::to('order_paid/index')); ?>>Current Order</a></li>
         <li><a  href=<?php echo e(URL::to('order_paid/approved')); ?>>Approved order</a></li>
         <li><a  href=<?php echo e(URL::to('order_paid/delivered')); ?>>Delivered order</a></li>
+
+        <li><a  href=<?php echo e(URL::to('order_paid/photo-frame')); ?>>Photo Frame Order order</a></li>
     </ul>
 </li>
 

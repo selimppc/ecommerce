@@ -18,11 +18,13 @@ class CartController extends Controller
 		$title ="mycart";
 
         $product_cart = $request->session()->get('product_cart');
-        
+
+        $photo_frame_cart = $request->session()->get('photo_frame_cart');
 
         return view('web::cart.cart1',[
                 'title' => $title,
-                'product_cart_r' => $product_cart
+                'product_cart_r' => $product_cart,
+                'photo_frame_cart' => $photo_frame_cart
             ]);
 	}
 }
