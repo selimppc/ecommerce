@@ -96,6 +96,7 @@
 
                                         </tr>
                                     @endforeach
+                                     {!! $data->render() !!}
                                 @endif
                             </tbody>    
 

@@ -105,6 +105,8 @@
 
                                         </tr>
                                     <?php endforeach; ?>
+                                     <?php echo $data->render(); ?>
+
                                 <?php endif; ?>
                             </tbody>    
 

@@ -20,9 +20,9 @@ Route::any("order_paid/generate_excel_delivered", [
     "uses" => "OrderPaymentController@generate_excel_delivered"
 ]);
 
-Route::any("order_paid/index", [
-    "as"   => "order-paid-index",
-    "uses" => "OrderPaymentController@order_paid_index"
+Route::any("order_paid/approved", [
+    "as"   => "order-paid-approved",
+    "uses" => "OrderPaymentController@order_paid_approved"
 ]);
 
 Route::any("order_paid/index", [

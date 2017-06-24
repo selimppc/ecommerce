@@ -384,7 +384,13 @@ class OrderController extends Controller
             $modal->invoice_id = 'INV-'.$invoice_number;
             $modal->user_id = $user_id;
             $modal->status ='open';
-            $modal->type = 'frame';
+
+            if(!empty($product_cart_r)){
+                $modal->type = 'product';
+            }else{
+                $modal->type = 'frame';
+            }
+            
 
             $modal->save();
 
