@@ -1,9 +1,7 @@
 body{
 	background: #2b2b2b;
 }
-ol,ul{
-    color: #fff;
-}
+
 .position-relative{
 	position: relative;
 }
@@ -174,9 +172,7 @@ ul.top_menu li:first-child a {
     margin-right: 20px;
 }
 
-p{
-	color: #fff;
-}
+
 
 .footer_container {
     border-top: 1px solid rgba(168, 124, 79, .2);
