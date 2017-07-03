@@ -5,21 +5,21 @@
 		<li role="presentation"><a href="#shipping-tab" aria-controls="shipping-tab" role="tab" data-toggle="tab">Shipping & Returns</a></li>
 	</ul>
 	<div class="tab-content">
-		<div style="color: #fff;" role="tabpanel" class="tab-pane fade in active" id="product-description-tab">
+		<div style="color: #000;" role="tabpanel" class="tab-pane fade in active" id="product-description-tab">
 			
 			@if(!empty($product_description))
 				{!! $product_description->desc !!}
 			@endif
 			
 		</div>
-		<div style="color: #fff;" role="tabpanel" class="tab-pane fade" id="faq-tab">
+		<div style="color: #000;" role="tabpanel" class="tab-pane fade" id="faq-tab">
 			
 			@if(!empty($how_to_order))
 				{!! $how_to_order->desc !!}
 			@endif
 
 		</div>
-		<div style="color: #fff;" role="tabpanel" class="tab-pane fade" id="shipping-tab">
+		<div style="color: #000;" role="tabpanel" class="tab-pane fade" id="shipping-tab">
 			
 			@if(!empty($shipping_rule))
 				{!! $shipping_rule->desc !!}

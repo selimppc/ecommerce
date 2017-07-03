@@ -5,7 +5,7 @@
 		<li role="presentation"><a href="#shipping-tab" aria-controls="shipping-tab" role="tab" data-toggle="tab">Shipping & Returns</a></li>
 	</ul>
 	<div class="tab-content">
-		<div style="color: #fff;" role="tabpanel" class="tab-pane fade in active" id="product-description-tab">
+		<div style="color: #000;" role="tabpanel" class="tab-pane fade in active" id="product-description-tab">
 			
 			<?php if(!empty($product_description)): ?>
 				<?php echo $product_description->desc; ?>
@@ -13,7 +13,7 @@
 			<?php endif; ?>
 			
 		</div>
-		<div style="color: #fff;" role="tabpanel" class="tab-pane fade" id="faq-tab">
+		<div style="color: #000;" role="tabpanel" class="tab-pane fade" id="faq-tab">
 			
 			<?php if(!empty($how_to_order)): ?>
 				<?php echo $how_to_order->desc; ?>
@@ -21,7 +21,7 @@
 			<?php endif; ?>
 
 		</div>
-		<div style="color: #fff;" role="tabpanel" class="tab-pane fade" id="shipping-tab">
+		<div style="color: #000;" role="tabpanel" class="tab-pane fade" id="shipping-tab">
 			
 			<?php if(!empty($shipping_rule)): ?>
 				<?php echo $shipping_rule->desc; ?>

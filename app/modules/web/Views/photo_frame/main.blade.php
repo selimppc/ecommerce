@@ -2,96 +2,111 @@
 
 		<div id="body-flex-wrapper" class="body-flex-wrapper-style position-relative">
 
-			<div class="corners top_left"></div>
-            <div class="corners top_right"></div>
-            <div class="corners bottom_left"></div>
-            <div class="corners bottom_right"></div>
-            <div class="top_border"></div>
-            <div class="bottom_border"></div>
-            <div class="border-left"></div>
-            <div class="border-right"></div>
-
-			<div id="body-wrapper" class="container-fluid body-wrapper-style">
 			
-				<div class="container-fluid text-sleek">
+
+			<div id="body-wrapper" class="body-wrapper-style">
+			
 					<div class="row" id="custom-framing-wrapper">
-						<div class="col-xs-12" id="bg-wrapper">
+						<div class="container-fluid" id="bg-wrapper">
 
 							
 
 							<div id="canvas-lightcase" style="display:none;"></div>
-							<div class="col-xs-12">
+							<div class="">
 								<div class="row" id="product-focus">
+								
+		                            <div class="header_container">
+		                                <div class="col-md-6 col-sm-6 col-xs-12">
+		                                    <div class="row">
+		                                        <div class="logo_container">
+		                                            <a href="{{URL::to('')}}">
+		                                                <img src="{{URL::to('')}}/web/images/logo.png">
+		                                            </a>
+		                                        </div>
+		                                        <div class="hot_line">
+	                                                <a href="tel:02-95672422">02-95672422</a>
+
+	                                                <div class="header_address">
+			                                            425 Princess Highway<br/>ROCKDALE NSW 2216
+			                                        </div>
+	                                            </div>
+		                                    </div>
+		                                </div>
+		                                <div class="col-md-6 col-sm-6 col-xs-12">
+		                                    <div class="row">
+		                                        <div class="upper_section">
+		                                            
+		                                            <ul class="top_menu">
+		                                                                       
+		                                                <li>
+		                                                    <a href="{{URL::to('')}}">Home</a>
+		                                                </li>
+		                                                <li>
+		                                                    <a href="{{URL::to('')}}/picture-framing-rockdale">Contact us</a>
+		                                                </li>
+		                                            </ul>
+		                                            <div class="my_bag_container">
+		                                                <a href="{{URL::to('')}}/mycart">
+		                                                    <span class="text">Cart</span>
+		                                                    <span class="wishlist_amount">(
+		                                                        @if(Session::has('product_cart'))
+		                                                            {{count(Session::get('product_cart'))}}
+		                                                        @else
+		                                                            0
+		                                                        @endif
+		                                                        )</span>
+		                                                </a>
+		                                            </div>
+		                                        </div>
+
+		                                        
+		                                    </div>
+		                                </div>
 
 
-									<div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="header_container">
-                                <div class="col-md-4 col-sm-4 col-xs-12">
-                                    <div class="row">
-                                        <div class="logo_container">
-                                            <a href="{{URL::to('')}}">
-                                                <img src="{{URL::to('')}}/web/images/logo.png">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-8 col-sm-8 col-xs-12">
-                                    <div class="row">
-                                        <div class="upper_section">
-                                            <div class="hot_line">
-                                                <a href="tel:02-95672422">02-95672422</a>
-                                            </div>
-                                            <ul class="top_menu">
-                                                                       
-                                                <li>
-                                                    <a href="{{URL::to('')}}/picture-framer">About us</a>
-                                                </li>
-                                                <li>
-                                                    <a href="{{URL::to('')}}/picture-framing-rockdale">Contact us</a>
-                                                </li>
-                                            </ul>
-                                            <div class="my_bag_container">
-                                                <a href="{{URL::to('')}}/mycart">
-                                                    <span class="text">Cart</span>
-                                                    <span class="wishlist_amount">(
-                                                        @if(Session::has('product_cart'))
-                                                            {{count(Session::get('product_cart'))}}
-                                                        @else
-                                                            0
-                                                        @endif
-                                                        )</span>
-                                                </a>
-                                            </div>
-                                        </div>
+		                            </div>
 
-                                        <div class="header_address">
-                                            <p>425 Princess Highway, Rockdale NSW 2216</p>
-                                        </div>
-                                    </div>
-                                </div>
+		                            <div class="col-sm-11 col-sm-offset-1">
+		                            	<div class="row">
+			                            	<ul class="main-menu">
+			                            		<li>
+			                            			<a class="active" href="#">Picture Framing</a>
+			                            		</li>
+			                            		<li>
+			                            			<a href="#">Canvas Prints</a>
+			                            		</li>
+			                            		<li>
+			                            			<a href="#">Framed Plain Mirrors</a>
+			                            		</li>
+			                            		<li>
+			                            			<a href="#">Photo Frame</a>
+			                            		</li>
+			                            	</ul>
+		                            	</div>
+		                            </div>                        			
 
 
-                            </div>
-                        </div>
+		                            <div class="main-container">
 
-
-									<div class="col-xs-12 col-sm-4   col-sm-push-7" id="stick-wrapper">
-										<div id="canvas-container">
-											<canvas id="canvas" width="500" height="500" data-rel="lightcase" href="#canvas-lightcase" style="cursor:zoom-in;">This text is displayed if your
-												browser does
-												not
-												support
-												canvas. Please update your browser to the latest version.
-											</canvas>						
+										<div class="col-xs-12 col-sm-4   col-sm-push-7" id="stick-wrapper">
+											<div id="canvas-container">
+												<canvas id="canvas" width="500" height="500" data-rel="lightcase" href="#canvas-lightcase" style="cursor:zoom-in;">This text is displayed if your
+													browser does
+													not
+													support
+													canvas. Please update your browser to the latest version.
+												</canvas>						
+											</div>
 										</div>
-									</div>
 
-									<div id="fs-info-container-b" class="col-xs-12 col-sm-6 col-sm-pull-3">
-										@include('web::photo_frame.dimension')
+										<div id="fs-info-container-b" class="col-xs-12 col-sm-6 col-sm-pull-3">
+											@include('web::photo_frame.dimension')
 
-										@include('web::photo_frame.other_step')
+											@include('web::photo_frame.other_step')
 
-										@include('web::photo_frame.add_to_cart')
+											@include('web::photo_frame.add_to_cart')
+										</div>
+
 									</div>
 
 									
@@ -126,51 +141,45 @@
 						@include('web::photo_frame.bottom_description')
 
 
-						<div class="col-md-12">
+						<div style="background-color: #2b2b2b;" class="col-md-12">
+							<div class="row">
 
-			                            <div class="footer_container">
+	                            <div class="footer_container">
 
-			                                <div class="col-md-3 col-sm-3 col-xs-3 row-left-0">
-			                                    <div class="footer_logo">
-			                                        <a href="#">
-			                                            <img src="{{URL::to('')}}/web/images/footer_logo.png">
-			                                        </a>
-			                                    </div>
-			                                </div>
+	                                <div class="col-md-3 col-sm-3 col-xs-3 row-left-0">
+	                                    <div class="footer_logo">
+	                                        <a href="{{URL::to('')}}">
+	                                            <img src="{{URL::to('')}}/web/images/footer_logo.png">
+	                                        </a>
+	                                    </div>
+	                                </div>
 
-			                                <div class="col-md-9 col-sm-9 col-xs-9">
-			                                    <ul class="footer_menu">
-			                                        <li>
-			                                            <a href="https://www.facebook.com/Off-the-wall-framing-PTY-Ltd-1180736021961295/" target="_blank"><img src="{{URL::to('')}}/images/facebook.png"></a>
-			                                            <a href="https://www.instagram.com/offthewallframing/" target="_blank"><img src="{{URL::to('')}}/images/instagram.png"></a>
-			                                            <a href="https://plus.google.com/u/0/109347086873122701317/about" target="_blank"><img src="{{URL::to('')}}/images/google-plus.png"></a>
-			                                        </li>
-			                                        <li>
-			                                            <a href="{{URL::to('')}}/about-us">About us</a>
-			                                        </li>
+	                                <div class="col-md-9 col-sm-9 col-xs-9">
+	                                    <ul class="footer_menu">
+	                                        <li>
+	                                            <a href="https://www.facebook.com/Off-the-wall-framing-PTY-Ltd-1180736021961295/" target="_blank"><img src="{{URL::to('')}}/images/facebook.png"></a>
+	                                            <a href="https://www.instagram.com/offthewallframing/" target="_blank"><img src="{{URL::to('')}}/images/instagram.png"></a>
+	                                            <a href="https://plus.google.com/u/0/109347086873122701317/about" target="_blank"><img src="{{URL::to('')}}/images/google-plus.png"></a>
+	                                        </li>
+	                                        <li>
+	                                            <a href="{{URL::to('')}}/about-us">About us</a>
+	                                        </li>
+	                                        
+	                                        <li>
+	                                            <a href="{{URL::to('')}}/picture-framing-rockdale">Contact us</a>
+	                                        </li>
+	                                    </ul>
+	                                </div>
 
-			                                        <li>
-			                                            <a href="{{URL::to('')}}/terms-and-conditions">Terms And Conditions</a>
-			                                        </li>
+	                            </div>
 
-			                                        <li>
-			                                            <a href="{{URL::to('')}}/privacy-security">Privacy & Security</a>
-			                                        </li>
-			                                        
-			                                        <li>
-			                                            <a href="{{URL::to('')}}/picture-framing-rockdale">Contact us</a>
-			                                        </li>
-			                                    </ul>
-			                                </div>
+	                            <a class="developer_company" href="http://www.visionads.com.au/" rel="nofollow" target="_blank">Seo &amp; Website by VisionsAds</a>
 
-			                            </div>
-
-			                            <a class="developer_company" href="http://www.visionads.com.au/" rel="nofollow" target="_blank">Seo &amp; Website by VisionsAds</a>
-
-			                        </div>
+                            </div>
+                        </div>
 			                        
 					</div>
-				</div>
+				
 				<div class="modal fade active" id="hanging-info-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">

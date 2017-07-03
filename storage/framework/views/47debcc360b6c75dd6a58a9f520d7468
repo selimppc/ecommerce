@@ -8,7 +8,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 		<meta id="csrf_token_id" name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 		<title>Custom Picture Frames Online</title>
-		<meta name="description" content="Online custom picture framing with a live view of your designs! Create and order professionally made frames for your photos and art online."/>
+		<meta name="description" content=""/>
 
 
 		<script type="text/javascript" src="<?php echo e(URL::asset('web/photo_frame/static/js/jquery-2.1.3.min.js')); ?>"></script>
