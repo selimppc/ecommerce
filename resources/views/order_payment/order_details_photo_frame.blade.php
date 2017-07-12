@@ -120,8 +120,8 @@
 											{{$order_details_data['14']}}
 											<br/>
 											{{$order_details_data['15']}}
-											<br/>
-											{{$order_details_data['37']}}
+											<!-- <br/>
+											{{$order_details_data['37']}} -->
 										</td>
 										<td>
 										
@@ -138,8 +138,8 @@
 											{{$order_details_data['23']}}
 											<br/>
 											{{$order_details_data['24']}}
-											<br/>
-											{{$order_details_data['25']}}
+											<!-- <br/>
+											{{$order_details_data['25']}} -->
 											<br/><br/>
 
 											{{$order_details_data['26']}}
@@ -155,8 +155,8 @@
 											{{$order_details_data['31']}}
 											<br/>
 											{{$order_details_data['32']}}
-											<br/>
-											{{$order_details_data['33']}}
+											<!-- <br/>
+											{{$order_details_data['33']}} -->
 
 										</td>
 										<td>			

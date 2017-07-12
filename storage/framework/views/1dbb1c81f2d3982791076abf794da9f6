@@ -130,9 +130,8 @@
 											<br/>
 											<?php echo e($order_details_data['15']); ?>
 
-											<br/>
-											<?php echo e($order_details_data['37']); ?>
-
+											<!-- <br/>
+											<?php echo e($order_details_data['37']); ?> -->
 										</td>
 										<td>
 										
@@ -156,9 +155,8 @@
 											<br/>
 											<?php echo e($order_details_data['24']); ?>
 
-											<br/>
-											<?php echo e($order_details_data['25']); ?>
-
+											<!-- <br/>
+											<?php echo e($order_details_data['25']); ?> -->
 											<br/><br/>
 
 											<?php echo e($order_details_data['26']); ?>
@@ -181,9 +179,8 @@
 											<br/>
 											<?php echo e($order_details_data['32']); ?>
 
-											<br/>
-											<?php echo e($order_details_data['33']); ?>
-
+											<!-- <br/>
+											<?php echo e($order_details_data['33']); ?> -->
 
 										</td>
 										<td>			
