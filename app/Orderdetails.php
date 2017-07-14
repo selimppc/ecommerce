@@ -15,7 +15,7 @@ class Orderdetails extends Model
         'qty',
         'price',
         'status',
-        'details'
-        
+        'details',
+        'image_link'
     ];
 }

@@ -90,7 +90,7 @@
 		<span>The selected frame (including matboard) can only support a maximum length of <span style="font-weight:bold;" id="max-frame-length-error">999</span> cm</span>
 		<p>Your current selection's size : <span id="error-current-selection-size"></span></p>
 	</div>
-	<div id="frame-details-panel" class="panel-heading toggle-collapse" role="button" data-toggle="collapse" href="#frame-details" aria-expanded="true"><span class="panel-title"><i class="fa fa-list"></i> <span class="hidden-xs">Frame </span>Details </span>
+	<div style="display: none;" id="frame-details-panel" class="panel-heading toggle-collapse" role="button" data-toggle="collapse" href="#frame-details" aria-expanded="true"><span class="panel-title"><i class="fa fa-list"></i> <span class="hidden-xs">Frame </span>Details </span>
 		<span class="panel-title pull-right"><i style="margin-left: 5px;" id="frame-details-icon" class="toggle-icon fa fa-minus"></i></span></div>
 	<!-- <label style="padding-top: 5px;" class="pull-right"><input type="checkbox" id="hide-unstable-frames" checked> Hide Unsuitable Frames</label> -->
 	<div class="panel-body collapse in table-clean flat-input row" id="frame-details">

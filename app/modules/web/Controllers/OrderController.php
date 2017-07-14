@@ -432,6 +432,13 @@ class OrderController extends Controller
                     $deliver_modal->qty = $photo_frame_cart['product']['quantity'];
                     $deliver_modal->price = $photo_frame_cart['product']['framePrice'];
                     $deliver_modal->details = $details_message;
+
+                    if(!empty($photo_frame_cart['thumb'])){
+                        $deliver_modal->image_link = $photo_frame_cart['thumb'];
+                    }else{
+                        $deliver_modal->image_link = '';
+                    }
+
                     $deliver_modal->status= 0;
 
                     $deliver_modal->save();

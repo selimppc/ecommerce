@@ -100,6 +100,9 @@
 
 									<tr>
 										<td>
+											<img style="width: 88px;display: inline-block;" src="{{$orderdetails->image_link}}"><br/>
+											<a style="color: #018b8d;    font-weight: 700;" target="_blank" href="{{$orderdetails->image_link}}">Download Image</a>
+											<br/><br/>
 											{{$order_details_data['0']}} cm<br/>
 											{{$order_details_data['1']}} cm
 										</td>
