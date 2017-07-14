@@ -22,6 +22,6 @@ class FrameCategory extends Model
 
      public function relFrame()
     {
-        return $this->HasMany('App\PhotoFrame', 'frame_category_id');
+        return $this->HasMany('App\PhotoFrame', 'frame_category_id')->where('status','active');
     }
 }

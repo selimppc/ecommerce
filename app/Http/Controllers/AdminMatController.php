@@ -16,7 +16,7 @@ class AdminMatController extends Controller{
 	{
         $pageTitle = "Mat";
 
-        $data = Mat::where('status','active')->orderBy('id', 'DESC')->paginate(30);
+        $data = Mat::orderBy('id', 'DESC')->paginate(30);
 
         return view('mat.index', ['data' => $data,'pageTitle'=> $pageTitle]);
 	}

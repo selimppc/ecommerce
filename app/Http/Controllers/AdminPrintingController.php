@@ -16,7 +16,7 @@ class AdminPrintingController extends Controller{
 	{
         $pageTitle = "Printing";
 
-        $data = Printing::where('status','active')->orderBy('id', 'DESC')->paginate(30);
+        $data = Printing::orderBy('id', 'DESC')->paginate(30);
 
         return view('printing.index', ['data' => $data,'pageTitle'=> $pageTitle]);
 	}

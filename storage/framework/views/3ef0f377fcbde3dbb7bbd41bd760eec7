@@ -1,0 +1,30 @@
+<?php $__env->startSection('sidebar'); ?>
+@parent
+<?php echo $__env->make('layout.sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	
+	<div class="row">
+	    <div class="col-lg-12">
+	        <section class="panel">
+
+	        	<header class="panel-heading">
+	                <?php echo e($title); ?>
+
+	                
+	            </header>
+	            
+	          	<br /><br />
+
+	          	&nbsp;&nbsp;&nbsp;<a class="btn btn-success" href="<?php echo e(URL::to('order_paid/generate_excel_current')); ?>">Current Order</a>
+	          	&nbsp;&nbsp;&nbsp;<a class="btn btn-success" href="<?php echo e(URL::to('order_paid/generate_excel_approved')); ?>">Approved Order</a>
+	          	&nbsp;&nbsp;&nbsp;<a class="btn btn-success" href="<?php echo e(URL::to('order_paid/generate_excel_delivered')); ?>">Deliverd Order</a>
+
+	          	<br /><br />
+	        </section>
+	    </div>
+	</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layout.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

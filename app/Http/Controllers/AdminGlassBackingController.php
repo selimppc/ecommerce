@@ -16,7 +16,7 @@ class AdminGlassBackingController extends Controller{
 	{
         $pageTitle = "Glass & Backing";
 
-        $data = GlassBacking::where('status','active')->orderBy('id', 'DESC')->paginate(30);
+        $data = GlassBacking::orderBy('id', 'DESC')->paginate(30);
 
         return view('glass_backing.index', ['data' => $data,'pageTitle'=> $pageTitle]);
 	}
