@@ -58,7 +58,7 @@ class ProductController extends Controller
                 $product_subgroup_lists = [''=>'Please select sub group']+ ProductSubgroups::where('product_group_id',$pg_id)->lists('title','id')->all();
             }
             //get data 
-            $data = $model->paginate(3);
+            $data = $model->paginate(30);
 
        }else{
         //get data

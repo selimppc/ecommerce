@@ -2,6 +2,11 @@
 
 @section('content')
 
+<a href="{{URL::to('')}}/custom-picture-frame" style="color: #fff;font-size: 20px;position: absolute;top: 6%;z-index: 99999;background: #018b8d;padding: 10px 30px;border-radius: 5px;
+    box-shadow: 1px 10px 5px #888888;right: 5%;text-decoration: none;" class="customize-your-photo-frame">
+Customize Your Picture Frame
+</a>
+
 <div class="col-md-12">
 	<div class="row">
 		<div class="home-banner margin-top-30">

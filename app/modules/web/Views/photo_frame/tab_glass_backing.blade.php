@@ -5,22 +5,19 @@
 				<fieldset id="glass-type">
 
 					@if(!empty($glass_backing_data))
-						<?php
-							$count = 1;
-						?>
+						
 						@foreach($glass_backing_data as $glass_backing)
 
 							@if($glass_backing->type == 'glass')
 
 								<label class="material-radio" data-glass-type="{{$glass_backing->slug}}">
-									<input type="radio" name="glass-type" value="{{$glass_backing->slug}}" checked="<?=$count=='1'?'checked':'';?>" data-calc-product/>
+									<input type="radio" name="glass-type" value="{{$glass_backing->slug}}" <?=$glass_backing->slug=='clear-glass'?'checked':'';?> data-calc-product/>
 									<span class="outer"><span class="inner"></span></span>
 									{{$glass_backing->title}}
 								</label>
 
 							@endif
 
-							<?php $count++; ?>
 
 						@endforeach
 					@endif

@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Session;
 use Input;
@@ -14,15 +15,43 @@ use App\Helpers\ImageResize;
 
 class AdminFrameController extends Controller{
 
-	public function index()
+	public function index(Request $request)
 	{
-        $pageTitle = "Photo Frame";
+
+        $input = $request->all();
 
         $data = PhotoFrame::orderBy('id', 'DESC')->paginate(30);
 
+        $pageTitle = "Photo Frame";
+
+        //set null id(s)
+        $id_category = null;
+
+        //if post method
+       if($_GET){ 
+            $cat_id = $request->get('frame_category_id');
+            if(!empty($cat_id)){
+
+                 $data = PhotoFrame::where('frame_category_id',$cat_id)
+                                ->orderBy('id', 'DESC')
+                                ->paginate(30);
+
+                 $id_category = $cat_id;
+
+            }
+                               
+       }
+
+        
+
         $frame_category_id = [''=>'Please select Frame']+ FrameCategory::lists('title','id')->all();
         
-        return view('frame.index', ['data' => $data,'pageTitle'=> $pageTitle,'frame_category_id' => $frame_category_id]);
+        return view('frame.index', [
+                    'data' => $data,
+                    'pageTitle'=> $pageTitle,
+                    'frame_category_id' => $frame_category_id,
+                    'id_category' => $id_category
+        ]);
 	}
 
 

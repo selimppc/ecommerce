@@ -5,15 +5,13 @@
 				<fieldset id="glass-type">
 
 					<?php if(!empty($glass_backing_data)): ?>
-						<?php
-							$count = 1;
-						?>
+						
 						<?php foreach($glass_backing_data as $glass_backing): ?>
 
 							<?php if($glass_backing->type == 'glass'): ?>
 
 								<label class="material-radio" data-glass-type="<?php echo e($glass_backing->slug); ?>">
-									<input type="radio" name="glass-type" value="<?php echo e($glass_backing->slug); ?>" checked="<?=$count=='1'?'checked':'';?>" data-calc-product/>
+									<input type="radio" name="glass-type" value="<?php echo e($glass_backing->slug); ?>" <?=$glass_backing->slug=='clear-glass'?'checked':'';?> data-calc-product/>
 									<span class="outer"><span class="inner"></span></span>
 									<?php echo e($glass_backing->title); ?>
 
@@ -21,7 +19,6 @@
 
 							<?php endif; ?>
 
-							<?php $count++; ?>
 
 						<?php endforeach; ?>
 					<?php endif; ?>
