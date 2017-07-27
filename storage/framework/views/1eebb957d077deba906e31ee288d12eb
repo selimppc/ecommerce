@@ -135,7 +135,9 @@
 
                                         </tr>
                                     <?php endforeach; ?>
-                                     <?php echo $data->render(); ?>
+                                   
+
+                                     <?php echo $data->appends(array('frame_category_id' => Input::get('frame_category_id')))->render(); ?>
 
                                 <?php endif; ?>
                             </tbody>    

@@ -70,9 +70,9 @@
 		                            	<div class="row">
 			                            	<ul class="main-menu">
 			                            		<li>
-			                            			<a class="active" href="#">Picture Framing</a>
+			                            			<a class="active" href="#">Custom Picture Framing</a>
 			                            		</li>
-			                            		<li>
+			                            		<!-- <li>
 			                            			<a href="#">Canvas Prints</a>
 			                            		</li>
 			                            		<li>
@@ -80,7 +80,7 @@
 			                            		</li>
 			                            		<li>
 			                            			<a href="#">Photo Frame</a>
-			                            		</li>
+			                            		</li> -->
 			                            	</ul>
 		                            	</div>
 		                            </div>                        			

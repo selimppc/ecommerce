@@ -122,7 +122,9 @@
 
                                         </tr>
                                     @endforeach
-                                     {!! $data->render() !!}
+                                   
+
+                                     {!! $data->appends(array('frame_category_id' => Input::get('frame_category_id')))->render() !!}
                                 @endif
                             </tbody>    
 
