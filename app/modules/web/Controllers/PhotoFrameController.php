@@ -59,4 +59,13 @@ class PhotoFrameController extends Controller{
 		
 	}
 
+	public function canvas_print(){
+
+		$title = 'Canvas Print';
+
+		return view('web::photo_frame.canvas_print.main',[
+                'title' => $title,
+            ]); 
+	}
+
 }

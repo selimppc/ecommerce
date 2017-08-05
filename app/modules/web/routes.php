@@ -24,6 +24,11 @@ Route::any('custom-picture-frame',[
 		'uses' => 'PhotoFrameController@photo_frame'
 	]);
 
+Route::any('canvas-print',[
+		'as' => 'canvas-print',
+		'uses' => 'PhotoFrameController@canvas_print'
+	]);
+
 Route::any('photo-frame-add-to-cart',[
 		'as' => 'photo-frame-add-to-cart',
 		'uses' => 'PhotoFrameController@add_to_cart'
