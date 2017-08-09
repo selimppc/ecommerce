@@ -68,4 +68,22 @@ class PhotoFrameController extends Controller{
             ]); 
 	}
 
+	public function plain_mirror(){
+
+		$title = 'Plain Mirror';
+
+		return view('web::photo_frame.plain_mirror.main',[
+                'title' => $title,
+            ]); 
+	}
+
+	public function plain_mirror_frame_it(){
+
+		$title = 'Plain Mirror';
+
+		return view('web::photo_frame.plain_mirror.main_frame_it',[
+                'title' => $title,
+            ]); 
+
+	}
 }

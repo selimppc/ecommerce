@@ -29,6 +29,16 @@ Route::any('canvas-print',[
 		'uses' => 'PhotoFrameController@canvas_print'
 	]);
 
+Route::any('plain-mirror',[
+		'as' => 'plain-mirror',
+		'uses' => 'PhotoFrameController@plain_mirror'
+	]);
+
+Route::any('frame-it-plain-mirror',[
+		'as' => 'frame-it-plain-mirror',
+		'uses' => 'PhotoFrameController@plain_mirror_frame_it'
+	]);
+
 Route::any('photo-frame-add-to-cart',[
 		'as' => 'photo-frame-add-to-cart',
 		'uses' => 'PhotoFrameController@add_to_cart'
