@@ -59,6 +59,10 @@ class PhotoFrameController extends Controller{
 		
 	}
 
+	public function canvas_print_add_to_cart(Request $request){
+		print_r($_POST);
+	}
+
 	public function canvas_print(){
 
 		$title = 'Canvas Print';

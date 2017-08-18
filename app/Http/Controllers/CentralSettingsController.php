@@ -126,7 +126,7 @@ class CentralSettingsController extends Controller
     {
         $id = '2';
 
-        $pageTitle = "Discounts";
+        $pageTitle = "Settings";
 
         $data = CentralSettings::findOrFail($id);
         return view('settings.discounts', ['data' => $data,'pageTitle' => $pageTitle]);
@@ -138,6 +138,10 @@ class CentralSettingsController extends Controller
         $input = $request->all();
         $model->status = 'no';
         $model->value = $input['value'];
+        $model->canvas_default_width = $input['canvas_default_width'];
+        $model->canvas_default_height = $input['canvas_default_height'];
+        $model->canvas_base_price = $input['canvas_base_price'];
+        $model->canvas_step_price = $input['canvas_step_price'];
 
         /* Transaction Start Here */
         DB::beginTransaction();

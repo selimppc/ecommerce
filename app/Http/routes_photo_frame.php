@@ -104,6 +104,39 @@ Route::any("admin_frame/delete/{id}", [
     "uses" => "AdminFrameController@delete"
 ]);
 
+/*Canvas Edge*/
+
+Route::any("admin_canvas_edge/index", [
+    "as"   => "admin-canvas-edge-index",
+    "uses" => "AdminCanvasEdgeController@index"
+]);
+
+Route::any("admin_canvas_edge/store", [
+    "as"   => "admin-canvas-edge-store",
+    "uses" => "AdminCanvasEdgeController@store"
+]);
+
+
+Route::any("admin_canvas_edge/show/{id}", [
+    "as"   => "admin-canvas-edge-show",
+    "uses" => "AdminCanvasEdgeController@show"
+]);
+
+Route::any("admin_canvas_edge/edit/{id}", [
+    "as"   => "admin-canvas-edge-edit",
+    "uses" => "AdminCanvasEdgeController@edit"
+]);
+
+Route::any("admin_canvas_edge/update/{id}", [
+    "as"   => "admin-canvas-edge-update",
+    "uses" => "AdminCanvasEdgeController@update"
+]);
+
+Route::any("admin_canvas_edge/delete/{id}", [
+    "as"   => "admin-canvas-edge-delete",
+    "uses" => "AdminCanvasEdgeController@delete"
+]);
+
 
 /*Mat*/
 

@@ -11,7 +11,7 @@
             <section class="panel">
 
             	<header class="panel-heading">
-                    {{ $pageTitle }}                    
+                    Settings                  
                 </header>
 
                 @if($errors->any())

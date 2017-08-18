@@ -95,7 +95,6 @@
 
             <script>
                 $(document).ready(function () {
-                   
                     function onImageUploadeSelect() {
                         var inp = $('.upload-input-inside-btn'),
                             uploadedImgHolder = $('#uploaded-image-holder');
@@ -107,17 +106,13 @@
                                 alert("only 'gif','png','jpg','jpeg' are allowd!");
                             } else {
 
-
                                 if (elm.files && elm.files[0]) {
                                     var reader = new FileReader();
                                     reader.onload = function (e) {
-//        $('#uploadForm').after('<img src="'+e.target.result+'" width="450" height="300"/>');
                                         var imageURL = URL.createObjectURL(elm.files[0]);
-//        var imageURL = e.target.result,
                                         uploaded_img = new Image();
                                         uploaded_img.src = imageURL;
                                         uploaded_img.onload = function () {
-//                                        if (typeof parent.gallery !== 'undefined') {
                                             var pixelWidth = uploaded_img.width;
                                             var pixelHeight = uploaded_img.height;
                                             imageURL = imageURL.replace(/^[a-z]{4}\:\/{2}[a-z]{1,}\:[0-9]{1,4}.(.*)/, '/$1');
@@ -135,10 +130,15 @@
                                             );
 //                                            return;
 //                                        }
+
                                             $('#width').val((uploaded_img.width / 37.795276).toFixed(2)).trigger("input");
                                             $('#height').val((uploaded_img.height / 37.795276).toFixed(2)).trigger("input");
+                                            /*setTimeout(function () {
+                                                $('#width').val((uploaded_img.width / 37.795276).toFixed(2)).trigger("input");
+                                                $('#height').val((uploaded_img.height / 37.795276).toFixed(2)).trigger("input");
+                                            }, 100);*/
                                         };
-                                    }
+                                    };
                                     reader.readAsDataURL(elm.files[0]);
                                 }
                             }
@@ -160,7 +160,7 @@
 
 
                     var im = $('#user-image-upload');
-                    if (im) {
+                    if (im.length) {
                         var pixelWidth = im.attr('data-pixel-width');
                         var pixelHeight = im.attr('data-pixel-height');
 
@@ -175,18 +175,24 @@
 
 
                 });
+
                 function roundNumber(num, dec) {
                     var result = Math.round(num * Math.pow(10, dec)) / Math.pow(10, dec);
                     return result;
                 }
+
                 function txtWidthKeyup() {
                     if ($('#imgup').length == 1) {
                         var w1 = parseFloat($("#width").val());
                         var w2 = parseFloat($("#width2").val());
                         var h1 = $("#height").val();
                         var h2 = $("#height2").val();
+                        console.log(w1);
+                        console.log(w2);
+                        console.log(h1);
+                        console.log(h2);
                         h1 = roundNumber(((parseFloat(w1) / parseFloat(w2)) * parseFloat(h2)), 2);
-                        $("#height").val(h1.toFixed(1));
+//                        $("#height").val(h1.toFixed(1));
                     }
                     if (isValidSize()) {
                         $('#fs-addToCartButton').removeAttr('disabled');
@@ -195,6 +201,7 @@
                     }
                     get_price();
                 }
+
                 function txtHeightKeyup() {
                     if ($('#imgup').length == 1) {
                         var h1 = parseFloat($("#height").val());
@@ -202,7 +209,7 @@
                         var w1 = $("#width").val();
                         var w2 = $("#width2").val();
                         w1 = roundNumber(((parseFloat(h1) / parseFloat(h2)) * parseFloat(w2)), 2);
-                        $("#width").val(w1.toFixed(1));
+//                        $("#width").val(w1.toFixed(1));
                     }
                     if (isValidSize()) {
                         $('#fs-addToCartButton').removeAttr('disabled');
@@ -212,6 +219,7 @@
 
                     get_price();
                 }
+
                 function get_price() {
                     w = $("[name=imgwidth]").val();
                     h = $("[name=imgheight]").val();
@@ -228,7 +236,7 @@
                             $("#wid3").html(nw / 2);
                         }
                     });
-                    $("#price").html("<img src='web/photo_frame/canvas_print/static/images/loading.gif' />");
+                    $("#price").html("<img src='static/images/loading.gif' />");
 
                     /*$.get("static/json/gcp.txt?w=" + w + "&h=" + h + "&c=" + c, function (data) {
                      $('#price').html(data);
@@ -244,21 +252,21 @@
                         basePrice = Number($('#basePrice').val()),
                         stepPrice = Number($('#stepPrice').val());
 
-                    var wPrice = w > baseWidth ? ((w - baseWidth)* stepPrice): 0,
-                        hPrice = h > baseHeight ? ((h - baseHeight)* stepPrice): 0;
+                    var wPrice = w > baseWidth ? ((w - baseWidth) * stepPrice) : 0,
+                        hPrice = h > baseHeight ? ((h - baseHeight) * stepPrice) : 0;
 
                     var totalPrice = Number((basePrice + wPrice + hPrice).toFixed(2));
 
-                  /*  if(baseWidth < w) {
-                        wPrice = basePrice + (w * stepPrice)
-                    } else if (baseWidth > w) {
-                        wPrice = basePrice - (w * stepPrice)
-                    }
-                    if(baseHeight < h) {
-                        hPrice = basePrice + (h * stepPrice)
-                    } else if (baseHeight > h) {
-                        hPrice = basePrice - (h * stepPrice)
-                    }*/
+                    /*  if(baseWidth < w) {
+                          wPrice = basePrice + (w * stepPrice)
+                      } else if (baseWidth > w) {
+                          wPrice = basePrice - (w * stepPrice)
+                      }
+                      if(baseHeight < h) {
+                          hPrice = basePrice + (h * stepPrice)
+                      } else if (baseHeight > h) {
+                          hPrice = basePrice - (h * stepPrice)
+                      }*/
                     $('#price').html(totalPrice).data('totalPrice', totalPrice);
                 }
 
@@ -268,12 +276,13 @@
                     c = $("#file").val();
                     var n = $("#nump").val();
                     var i = $("#imgv").html();
-                    $("#imgup").append("<div class='adding-to-cart'><br /><img src='web/photo_frame/canvas_print/static/images/loading.gif' /> Adding to Cart...</div>");
+                    $("#imgup").append("<div class='adding-to-cart'><br /><img src='static/images/loading.gif' /> Adding to Cart...</div>");
                     /*$.get("static/json/file-canvas.txt?file=canvas&action=add2cart&w=" + w + "&h=" + h + "&c=" + c + "&n=" + n + "&i=" + i + "&tr=" + $(".the-radio:checked").val(), function (data) {
                      /!*window.location = data;*!/
                      });*/
-                    $.post('add-to-cart.php', {
+                    $.post('add-to-cart-canvas-print', {
                         action: 'add2cart',
+                         "_token": "{{ csrf_token() }}",
                         w: w,
                         h: h,
                         c: c,
@@ -282,6 +291,7 @@
                         tr: $(".the-radio:checked").val(),
                         tp: $('#price').data('totalPrice')
                     }, function (e) {
+                        alert('ss');
                         $(".adding-to-cart").fadeOut(function () {
                             $(".adding-to-cart").remove();
                         });
@@ -311,6 +321,7 @@
                     });
                 });
             </script>
+
             <style>
                 .fs-page-title {
                     text-align: center;
@@ -420,6 +431,9 @@
                             <div class="row">
                                 <form name="userupload" action="/index.php" method="post"
                                       enctype="multipart/form-data">
+
+                                      {{ csrf_field() }}
+
                                     <input type="hidden" id="baseWidth" value="10">
                                     <input type="hidden" id="baseHeight" value="10">
                                     <input type="hidden" id="basePrice" value="7">
