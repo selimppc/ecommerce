@@ -10,7 +10,7 @@
             <section class="panel">
 
             	<header class="panel-heading">
-                    <?php echo e($pageTitle); ?>                    
+                    Settings                  
                 </header>
 
                 <?php if($errors->any()): ?>

@@ -11,6 +11,7 @@ use App\GlassBacking;
 use App\Printing;
 use App\Article;
 use App\CentralSettings;
+use App\CanvasEdge;
 
 class PhotoFrameController extends Controller{
 
@@ -55,20 +56,29 @@ class PhotoFrameController extends Controller{
 
 		if(isset($_POST)){
 			$request->session()->set('photo_frame_cart', $_POST);
+			$request->session()->set('photo_frame_type', 'photo_frame');
 		}
 		
 	}
 
 	public function canvas_print_add_to_cart(Request $request){
-		print_r($_POST);
+		
+
+			$request->session()->set('photo_frame_cart', $_POST);
+			$request->session()->set('photo_frame_type', 'canvas_print');
+	
 	}
 
 	public function canvas_print(){
 
 		$title = 'Canvas Print';
+		$discounts_value = CentralSettings::where('id','2')->first();
+		$canvas_edge_r = CanvasEdge::where('status','active')->orderBy('sort_order','asc')->get();
 
 		return view('web::photo_frame.canvas_print.main',[
                 'title' => $title,
+                'discounts_value' => $discounts_value,
+                'canvas_edge_r' => $canvas_edge_r
             ]); 
 	}
 

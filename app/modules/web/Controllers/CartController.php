@@ -21,6 +21,11 @@ class CartController extends Controller
 
         $photo_frame_cart = $request->session()->get('photo_frame_cart');
 
+
+        #print_r($product_cart);
+        print_r($photo_frame_cart);
+        exit();
+
         return view('web::cart.cart1',[
                 'title' => $title,
                 'product_cart_r' => $product_cart,

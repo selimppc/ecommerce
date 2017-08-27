@@ -280,7 +280,7 @@
                     /*$.get("static/json/file-canvas.txt?file=canvas&action=add2cart&w=" + w + "&h=" + h + "&c=" + c + "&n=" + n + "&i=" + i + "&tr=" + $(".the-radio:checked").val(), function (data) {
                      /!*window.location = data;*!/
                      });*/
-                    $.post('add-to-cart-canvas-print', {
+                    $.post('photo-frame-add-to-cart', {
                         action: 'add2cart',
                          "_token": "{{ csrf_token() }}",
                         w: w,
@@ -291,10 +291,8 @@
                         tr: $(".the-radio:checked").val(),
                         tp: $('#price').data('totalPrice')
                     }, function (e) {
-                        alert('ss');
-                        $(".adding-to-cart").fadeOut(function () {
-                            $(".adding-to-cart").remove();
-                        });
+                        window.location = "mycart";
+                        
                     });
                 }
 
@@ -354,7 +352,7 @@
                     transform: scale(1.1);
                 }
 
-                #cloneedge:checked + label {
+                .cloneedge:checked + label {
                     border: 2px solid rgb(58, 70, 146);
                     transform: scale(1.1);
                 }
@@ -434,10 +432,10 @@
 
                                       {{ csrf_field() }}
 
-                                    <input type="hidden" id="baseWidth" value="10">
-                                    <input type="hidden" id="baseHeight" value="10">
-                                    <input type="hidden" id="basePrice" value="7">
-                                    <input type="hidden" id="stepPrice" value="2">
+                                    <input type="hidden" id="baseWidth" value="{{$discounts_value->canvas_default_width}}">
+                                    <input type="hidden" id="baseHeight" value="{{$discounts_value->canvas_default_height}}">
+                                    <input type="hidden" id="basePrice" value="{{$discounts_value->canvas_base_price}}">
+                                    <input type="hidden" id="stepPrice" value="{{$discounts_value->canvas_step_price}}">
                                     <input type="hidden" name="file" id="file" value="Canvas_Print_and_Stretch_1_Panel">
                                     <input type="hidden" name="action" value="add">
                                     <input type="hidden" name="cid" id="cid" value="27547"/>
@@ -494,43 +492,25 @@
                                         <div class="row" id="canvas-edge">
                                             <div class="col-xs-12">
                                                 <h3>Choose A Canvas Edge</h3>
-                                                <div class="col-xs-3">
-                                                    <input id="cloneedge" class="the-radio" type="radio" name="radio2"
-                                                           value="Clone"
-                                                           checked="checked"/>
-                                                    <label for="cloneedge">
-                                                        <img src="{{ URL::asset('web/photo_frame/canvas_print/static/images/clone_edge.jpg') }}"
-                                                             alt="Canvas printed with cloned edge"/>
-                                                        <h4>Cloned Edge</h4>
-                                                    </label>
-                                                </div>
-                                                <div class="col-xs-3">
-                                                    <input id="wrapedge" class="the-radio" type="radio" name="radio2"
-                                                           value="Wrap"/>
-                                                    <label for="wrapedge">
-                                                        <img src="{{ URL::asset('web/photo_frame/canvas_print/static/images/wrap_edge.jpg') }}"
-                                                             alt="Canvas printed with gallery wrap edge"/>
-                                                        <h4>Gallery Wrap Edge</h4>
-                                                    </label>
-                                                </div>
-                                                <div class="col-xs-3">
-                                                    <input id="whiteedge" class="the-radio" type="radio" name="radio2"
-                                                           value="White"/>
-                                                    <label for="whiteedge">
-                                                        <img src="{{ URL::asset('web/photo_frame/canvas_print/static/images/white_edge.jpg') }}"
-                                                             alt="Canvas printed with white edge"/>
-                                                        <h4>White Edge</h4>
-                                                    </label>
-                                                </div>
-                                                <div class="col-xs-3">
-                                                    <input id="blackedge" class="the-radio" type="radio" name="radio2"
-                                                           value="Black"/>
-                                                    <label for="blackedge">
-                                                        <img src="{{ URL::asset('web/photo_frame/canvas_print/static/images/black_edge.jpg') }}"
-                                                             alt="Canvas printed with black edge"/>
-                                                        <h4>Black Edge</h4>
-                                                    </label>
-                                                </div>
+
+                                                @if(count($canvas_edge_r) > 0)
+                                                    <?php $count = 1 ?>
+                                                    @foreach($canvas_edge_r as $canvas_edge)
+
+                                                        <div class="col-xs-3">
+                                                            <input id="{{$canvas_edge->title}}" class="cloneedge the-radio" type="radio" name="radio2"
+                                                                   value="{{$canvas_edge->value}}"
+                                                                   @if($count==1) checked="checked" @endif  />
+                                                            <label for="{{$canvas_edge->title}}">
+                                                                <img src="{{ URL::asset($canvas_edge->image_link) }}"
+                                                                     alt="{{$canvas_edge->title}}"/>
+                                                                <h4>{{$canvas_edge->title}}</h4>
+                                                            </label>
+                                                        </div>
+                                                        <?php $count++; ?>
+                                                    @endforeach
+                                                @endif
+                                                
                                             </div>
                                         </div>
                                         <div class="row">

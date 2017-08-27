@@ -23,7 +23,7 @@
 	<div class="col-xs-12">
 
 		<div class="form-group">
-	        {!! Form::label('canvas_default_height', 'Canvas Default WiHeightdth:', ['class' => 'control-label']) !!}
+	        {!! Form::label('canvas_default_height', 'Canvas Default Height:', ['class' => 'control-label']) !!}
 	        <small class="required">(Required)</small>
 	        {!! Form::text('canvas_default_height', NULL, ['id'=>'canvas_default_height', 'class' => 'form-control','required']) !!}
 	    </div>

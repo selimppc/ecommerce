@@ -96,7 +96,6 @@
 
             <script>
                 $(document).ready(function () {
-                   
                     function onImageUploadeSelect() {
                         var inp = $('.upload-input-inside-btn'),
                             uploadedImgHolder = $('#uploaded-image-holder');
@@ -108,17 +107,13 @@
                                 alert("only 'gif','png','jpg','jpeg' are allowd!");
                             } else {
 
-
                                 if (elm.files && elm.files[0]) {
                                     var reader = new FileReader();
                                     reader.onload = function (e) {
-//        $('#uploadForm').after('<img src="'+e.target.result+'" width="450" height="300"/>');
                                         var imageURL = URL.createObjectURL(elm.files[0]);
-//        var imageURL = e.target.result,
                                         uploaded_img = new Image();
                                         uploaded_img.src = imageURL;
                                         uploaded_img.onload = function () {
-//                                        if (typeof parent.gallery !== 'undefined') {
                                             var pixelWidth = uploaded_img.width;
                                             var pixelHeight = uploaded_img.height;
                                             imageURL = imageURL.replace(/^[a-z]{4}\:\/{2}[a-z]{1,}\:[0-9]{1,4}.(.*)/, '/$1');
@@ -136,10 +131,15 @@
                                             );
 //                                            return;
 //                                        }
+
                                             $('#width').val((uploaded_img.width / 37.795276).toFixed(2)).trigger("input");
                                             $('#height').val((uploaded_img.height / 37.795276).toFixed(2)).trigger("input");
+                                            /*setTimeout(function () {
+                                                $('#width').val((uploaded_img.width / 37.795276).toFixed(2)).trigger("input");
+                                                $('#height').val((uploaded_img.height / 37.795276).toFixed(2)).trigger("input");
+                                            }, 100);*/
                                         };
-                                    }
+                                    };
                                     reader.readAsDataURL(elm.files[0]);
                                 }
                             }
@@ -161,7 +161,7 @@
 
 
                     var im = $('#user-image-upload');
-                    if (im) {
+                    if (im.length) {
                         var pixelWidth = im.attr('data-pixel-width');
                         var pixelHeight = im.attr('data-pixel-height');
 
@@ -176,18 +176,24 @@
 
 
                 });
+
                 function roundNumber(num, dec) {
                     var result = Math.round(num * Math.pow(10, dec)) / Math.pow(10, dec);
                     return result;
                 }
+
                 function txtWidthKeyup() {
                     if ($('#imgup').length == 1) {
                         var w1 = parseFloat($("#width").val());
                         var w2 = parseFloat($("#width2").val());
                         var h1 = $("#height").val();
                         var h2 = $("#height2").val();
+                        console.log(w1);
+                        console.log(w2);
+                        console.log(h1);
+                        console.log(h2);
                         h1 = roundNumber(((parseFloat(w1) / parseFloat(w2)) * parseFloat(h2)), 2);
-                        $("#height").val(h1.toFixed(1));
+//                        $("#height").val(h1.toFixed(1));
                     }
                     if (isValidSize()) {
                         $('#fs-addToCartButton').removeAttr('disabled');
@@ -196,6 +202,7 @@
                     }
                     get_price();
                 }
+
                 function txtHeightKeyup() {
                     if ($('#imgup').length == 1) {
                         var h1 = parseFloat($("#height").val());
@@ -203,7 +210,7 @@
                         var w1 = $("#width").val();
                         var w2 = $("#width2").val();
                         w1 = roundNumber(((parseFloat(h1) / parseFloat(h2)) * parseFloat(w2)), 2);
-                        $("#width").val(w1.toFixed(1));
+//                        $("#width").val(w1.toFixed(1));
                     }
                     if (isValidSize()) {
                         $('#fs-addToCartButton').removeAttr('disabled');
@@ -213,6 +220,7 @@
 
                     get_price();
                 }
+
                 function get_price() {
                     w = $("[name=imgwidth]").val();
                     h = $("[name=imgheight]").val();
@@ -229,7 +237,7 @@
                             $("#wid3").html(nw / 2);
                         }
                     });
-                    $("#price").html("<img src='web/photo_frame/canvas_print/static/images/loading.gif' />");
+                    $("#price").html("<img src='static/images/loading.gif' />");
 
                     /*$.get("static/json/gcp.txt?w=" + w + "&h=" + h + "&c=" + c, function (data) {
                      $('#price').html(data);
@@ -245,21 +253,21 @@
                         basePrice = Number($('#basePrice').val()),
                         stepPrice = Number($('#stepPrice').val());
 
-                    var wPrice = w > baseWidth ? ((w - baseWidth)* stepPrice): 0,
-                        hPrice = h > baseHeight ? ((h - baseHeight)* stepPrice): 0;
+                    var wPrice = w > baseWidth ? ((w - baseWidth) * stepPrice) : 0,
+                        hPrice = h > baseHeight ? ((h - baseHeight) * stepPrice) : 0;
 
                     var totalPrice = Number((basePrice + wPrice + hPrice).toFixed(2));
 
-                  /*  if(baseWidth < w) {
-                        wPrice = basePrice + (w * stepPrice)
-                    } else if (baseWidth > w) {
-                        wPrice = basePrice - (w * stepPrice)
-                    }
-                    if(baseHeight < h) {
-                        hPrice = basePrice + (h * stepPrice)
-                    } else if (baseHeight > h) {
-                        hPrice = basePrice - (h * stepPrice)
-                    }*/
+                    /*  if(baseWidth < w) {
+                          wPrice = basePrice + (w * stepPrice)
+                      } else if (baseWidth > w) {
+                          wPrice = basePrice - (w * stepPrice)
+                      }
+                      if(baseHeight < h) {
+                          hPrice = basePrice + (h * stepPrice)
+                      } else if (baseHeight > h) {
+                          hPrice = basePrice - (h * stepPrice)
+                      }*/
                     $('#price').html(totalPrice).data('totalPrice', totalPrice);
                 }
 
@@ -269,12 +277,13 @@
                     c = $("#file").val();
                     var n = $("#nump").val();
                     var i = $("#imgv").html();
-                    $("#imgup").append("<div class='adding-to-cart'><br /><img src='web/photo_frame/canvas_print/static/images/loading.gif' /> Adding to Cart...</div>");
+                    $("#imgup").append("<div class='adding-to-cart'><br /><img src='static/images/loading.gif' /> Adding to Cart...</div>");
                     /*$.get("static/json/file-canvas.txt?file=canvas&action=add2cart&w=" + w + "&h=" + h + "&c=" + c + "&n=" + n + "&i=" + i + "&tr=" + $(".the-radio:checked").val(), function (data) {
                      /!*window.location = data;*!/
                      });*/
-                    $.post('add-to-cart.php', {
+                    $.post('photo-frame-add-to-cart', {
                         action: 'add2cart',
+                         "_token": "<?php echo e(csrf_token()); ?>",
                         w: w,
                         h: h,
                         c: c,
@@ -283,9 +292,8 @@
                         tr: $(".the-radio:checked").val(),
                         tp: $('#price').data('totalPrice')
                     }, function (e) {
-                        $(".adding-to-cart").fadeOut(function () {
-                            $(".adding-to-cart").remove();
-                        });
+                        window.location = "mycart";
+                        
                     });
                 }
 
@@ -312,6 +320,7 @@
                     });
                 });
             </script>
+
             <style>
                 .fs-page-title {
                     text-align: center;
@@ -344,7 +353,7 @@
                     transform: scale(1.1);
                 }
 
-                #cloneedge:checked + label {
+                .cloneedge:checked + label {
                     border: 2px solid rgb(58, 70, 146);
                     transform: scale(1.1);
                 }
@@ -421,10 +430,14 @@
                             <div class="row">
                                 <form name="userupload" action="/index.php" method="post"
                                       enctype="multipart/form-data">
-                                    <input type="hidden" id="baseWidth" value="10">
-                                    <input type="hidden" id="baseHeight" value="10">
-                                    <input type="hidden" id="basePrice" value="7">
-                                    <input type="hidden" id="stepPrice" value="2">
+
+                                      <?php echo e(csrf_field()); ?>
+
+
+                                    <input type="hidden" id="baseWidth" value="<?php echo e($discounts_value->canvas_default_width); ?>">
+                                    <input type="hidden" id="baseHeight" value="<?php echo e($discounts_value->canvas_default_height); ?>">
+                                    <input type="hidden" id="basePrice" value="<?php echo e($discounts_value->canvas_base_price); ?>">
+                                    <input type="hidden" id="stepPrice" value="<?php echo e($discounts_value->canvas_step_price); ?>">
                                     <input type="hidden" name="file" id="file" value="Canvas_Print_and_Stretch_1_Panel">
                                     <input type="hidden" name="action" value="add">
                                     <input type="hidden" name="cid" id="cid" value="27547"/>
@@ -481,43 +494,25 @@
                                         <div class="row" id="canvas-edge">
                                             <div class="col-xs-12">
                                                 <h3>Choose A Canvas Edge</h3>
-                                                <div class="col-xs-3">
-                                                    <input id="cloneedge" class="the-radio" type="radio" name="radio2"
-                                                           value="Clone"
-                                                           checked="checked"/>
-                                                    <label for="cloneedge">
-                                                        <img src="<?php echo e(URL::asset('web/photo_frame/canvas_print/static/images/clone_edge.jpg')); ?>"
-                                                             alt="Canvas printed with cloned edge"/>
-                                                        <h4>Cloned Edge</h4>
-                                                    </label>
-                                                </div>
-                                                <div class="col-xs-3">
-                                                    <input id="wrapedge" class="the-radio" type="radio" name="radio2"
-                                                           value="Wrap"/>
-                                                    <label for="wrapedge">
-                                                        <img src="<?php echo e(URL::asset('web/photo_frame/canvas_print/static/images/wrap_edge.jpg')); ?>"
-                                                             alt="Canvas printed with gallery wrap edge"/>
-                                                        <h4>Gallery Wrap Edge</h4>
-                                                    </label>
-                                                </div>
-                                                <div class="col-xs-3">
-                                                    <input id="whiteedge" class="the-radio" type="radio" name="radio2"
-                                                           value="White"/>
-                                                    <label for="whiteedge">
-                                                        <img src="<?php echo e(URL::asset('web/photo_frame/canvas_print/static/images/white_edge.jpg')); ?>"
-                                                             alt="Canvas printed with white edge"/>
-                                                        <h4>White Edge</h4>
-                                                    </label>
-                                                </div>
-                                                <div class="col-xs-3">
-                                                    <input id="blackedge" class="the-radio" type="radio" name="radio2"
-                                                           value="Black"/>
-                                                    <label for="blackedge">
-                                                        <img src="<?php echo e(URL::asset('web/photo_frame/canvas_print/static/images/black_edge.jpg')); ?>"
-                                                             alt="Canvas printed with black edge"/>
-                                                        <h4>Black Edge</h4>
-                                                    </label>
-                                                </div>
+
+                                                <?php if(count($canvas_edge_r) > 0): ?>
+                                                    <?php $count = 1 ?>
+                                                    <?php foreach($canvas_edge_r as $canvas_edge): ?>
+
+                                                        <div class="col-xs-3">
+                                                            <input id="<?php echo e($canvas_edge->title); ?>" class="cloneedge the-radio" type="radio" name="radio2"
+                                                                   value="<?php echo e($canvas_edge->value); ?>"
+                                                                   <?php if($count==1): ?> checked="checked" <?php endif; ?>  />
+                                                            <label for="<?php echo e($canvas_edge->title); ?>">
+                                                                <img src="<?php echo e(URL::asset($canvas_edge->image_link)); ?>"
+                                                                     alt="<?php echo e($canvas_edge->title); ?>"/>
+                                                                <h4><?php echo e($canvas_edge->title); ?></h4>
+                                                            </label>
+                                                        </div>
+                                                        <?php $count++; ?>
+                                                    <?php endforeach; ?>
+                                                <?php endif; ?>
+                                                
                                             </div>
                                         </div>
                                         <div class="row">

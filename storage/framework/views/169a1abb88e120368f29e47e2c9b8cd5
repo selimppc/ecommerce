@@ -1,0 +1,232 @@
+<?php $__env->startSection('content'); ?>
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<div class="product-details-container">
+			<div class="col-md-4 col-sm-12 col-xs-12">
+				<div class="product-thum-image">
+					<img id="zoom_01" data-zoom-image="<?php echo e(URL::to('')); ?>/<?php echo e($product->image); ?>" src="<?php echo e(URL::to('')); ?>/<?php echo e($product->thumb); ?>" width="100%">
+				</div>
+				<a href="<?php echo e(URL::to('')); ?>/<?php echo e($product->image); ?>" class="fancybox image_gallery_container">
+					<img alt="<?php echo e($product->meta_title); ?>" title="<?php echo e($product->title); ?>" src="<?php echo e(URL::to('')); ?>/web/images/enlarge.png"><br/>
+						ENLARGE
+				</a>
+
+				<!-- <a href="#" class="image_gallery_container">
+					<img alt="<?php echo e($product->meta_title); ?>" title="<?php echo e($product->title); ?>" src="<?php echo e(URL::to('')); ?>/web/images/print.png"><br/>
+						PRINT
+				</a> -->
+
+				<a href="#" class="image_gallery_container">
+					<img alt="<?php echo e($product->meta_title); ?>" title="<?php echo e($product->title); ?>" src="<?php echo e(URL::to('')); ?>/web/images/ask.png">
+					<br/>
+						EMAIL
+				</a>
+			</div>
+			<div class="col-md-4 col-sm-12 col-xs-12">
+				<div class="product-header">
+					<?php echo e($product->title); ?>
+
+				</div>
+				<div class="product-descrption">
+					<?php echo $product->short_description;?>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-12 col-xs-12">
+				<div class="product-specification-header">
+					Product Specification
+				</div>
+
+				<div class="product-specification-description">
+					<table class="table">
+
+						<?php if(!empty($product->product_code)): ?>
+							<tr>
+								<td>Product Code</td>
+								<td><?php echo e($product->product_code); ?></td>
+							</tr>
+						<?php endif; ?>
+
+						<?php if(!empty($product->size)): ?>
+							<tr>
+								<td>Sizes</td>
+								<td><?php echo e($product->size); ?></td>
+							</tr>
+						<?php endif; ?>
+
+						<?php if(!empty($product->other_size)): ?>
+							<tr>
+								<td>Other sizes</td>
+								<td><?php echo e($product->other_size); ?></td>
+							</tr>
+						<?php endif; ?>
+
+						<?php if(!empty($product->stock_unit_quantity)): ?>
+							<tr>
+								<td>Stock Level</td>
+								<td><?php echo e($product->stock_unit_quantity); ?></td>
+							</tr>
+						<?php endif; ?>
+
+						<?php if(!empty($product->delivery_info)): ?>
+							<tr>
+								<td>Delivery Info</td>
+								<td><?php echo e($product->delivery_info); ?></td>
+							</tr>
+						<?php endif; ?>
+					</table>
+					
+
+					<div class="price_row">
+						Price
+					</div>
+
+					<form method="post" action="<?php echo e(URL::to('/')); ?>/order/add_to_cart">
+
+					<div class="price_container">
+
+						<?php if($product->product_group_id == 10): ?>
+
+							<div class="price">
+								<input checked id="price1" type="radio" name="price" value="<?php echo e($product->sell_rate); ?>">
+								<label for="price1">Pick up<br/> $<?php echo e($product->sell_rate); ?></label>
+							</div>
+
+							<?php if(!empty($product->cost_price)): ?>
+								<div class="price">
+									<input id="price2" type="radio" name="price" value="<?php echo e($product->cost_price); ?>">
+									<label for="price2">Delivered<br/> $<?php echo e($product->cost_price); ?></label>
+								</div>
+							<?php endif; ?>
+
+						<?php else: ?>
+
+							<?php if(!empty($product->before_price)): ?>
+								<div class="price">
+									<input  id="price1" type="radio" name="price" value="<?php echo e($product->before_price); ?>">
+									<label for="price1">Before<br/> $<?php echo e($product->before_price); ?></label>
+								</div>
+							<?php endif; ?>
+
+							<div class="price">
+								<input  checked id="price1" type="radio" name="price" value="<?php echo e($product->sell_rate); ?>">
+								<label for="price1">Pick up<br/> $<?php echo e($product->sell_rate); ?></label>
+							</div>
+
+							<?php if(!empty($product->cost_price)): ?>
+								<div class="price">
+									<input id="price2" type="radio" name="price" value="<?php echo e($product->cost_price); ?>">
+									<label for="price2">Delivered<br/> $<?php echo e($product->cost_price); ?></label>
+								</div>
+							<?php endif; ?>
+
+
+						<?php endif; ?>
+					</div>
+					
+					<div class="quantity">
+						<label>Quantity</label>
+						<select name="quantity">
+							<?php
+								if(count($product->stock_unit_quantity) > 0):
+									for($i=1;$i<= $product->stock_unit_quantity;$i++){
+							?>
+										<option value="<?php echo e($i); ?>"><?php echo e($i); ?></option>
+							<?php
+									}
+								endif;
+							?>
+						</select>
+					</div>
+					
+						
+					<?php if(!empty($product_variation_r)): ?>
+						<div class="quantity float-right">
+							<div class="width50">
+								<label>Matt Colour</label>
+								<select name="color">
+									<?php foreach($product_variation_r as $product_variation): ?>
+										<option value="<?php echo e($product_variation->id); ?>"><?php echo e($product_variation->title); ?></option>
+									<?php endforeach; ?>
+									
+								</select>
+							</div>
+						</div>
+					<?php endif; ?>
+
+					
+
+					<div class="buy_now_button">
+						<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+						<input type="hidden" name="product_id" value="<?php echo e($product->id); ?>">
+						<input type="submit" name="submit" value="Buy Now">
+					</div>
+
+					
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<div class="related_product_container">
+			<div class="border-top-2 border-bottom-2">
+				<div class="header">	
+					Related Products
+				</div>								
+			</div>
+			<div class="row">
+				<?php if(!empty($related_product_r)): ?>
+					<?php foreach($related_product_r as $related_product): ?>
+
+						<div class="col-lg-2 col-md-3 col-sm-6 col-xs-12">
+							<a href="<?php echo e(URL::to('')); ?>/<?php echo e($related_product->slug); ?>" class="featured_product_a">
+								<div class="product-listing-image">
+									<img alt="<?php echo e($related_product->meta_title); ?>" title="<?php echo e($related_product->title); ?>" src="<?php echo e(URL::to('')); ?>/<?php echo e($related_product->thumb); ?>">
+								</div>
+
+								<div class="product-listing-bottom">
+									<div class="product-name">
+										<?php echo e($related_product->title); ?>
+
+									</div>
+									<div class="product-price">
+										AUD <?php echo e($related_product->sell_rate); ?>
+
+									</div>
+								</div>
+							</a>
+							<a class="product-listing-buy-now-button" href="<?php echo e(URL::to('')); ?>/<?php echo e($related_product->slug); ?>">Buy Now</a>
+						</div>
+
+					<?php endforeach; ?>
+				<?php endif; ?>
+			</div>	
+		</div>
+	</div>
+
+	<script type='text/javascript' src="<?php echo e(URL::asset('web/scripts/jquery.fancybox.js')); ?>"></script> 
+	 <script>
+		jQuery(function(){
+			
+			
+			jQuery('.fancybox').fancybox({
+	     		'padding':0
+	     	});
+
+		});
+	</script>
+
+
+	<script>
+	     $('#zoom_01').elevateZoom({
+			cursor: "crosshair",
+			responsive:'True',
+			zoomWindowFadeIn: 500,
+			zoomWindowFadeOut: 750,
+			zoomWindowWidth:410,
+			zoomWindowHeight:378
+	   }); 
+	</script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('web::layout.web_master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

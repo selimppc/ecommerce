@@ -1,6 +1,0 @@
-[2017-07-16 16:48:27] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected ':'' in D:\xampp_5.6\htdocs\otw\storage\framework\views\911781d796d5393f4d5ab9b5ce5e3710:3
-Stack trace:
-#0 {main}  
-[2017-07-16 16:48:34] production.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'Class 'UR' not found' in D:\xampp_5.6\htdocs\otw\storage\framework\views\911781d796d5393f4d5ab9b5ce5e3710:3
-Stack trace:
-#0 {main}  
